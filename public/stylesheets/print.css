@@ -1,0 +1,64 @@
+/*
+Syntax error: Indentation can't use both tabs and spaces.
+        on line 7 of /home/sam/workspace/pSaMS/app/stylesheets/print.sass
+
+2: /*	width:8.5in;
+3: 	margin:1in 0.5in 1in 0.5in;*\/
+4: }
+5: #left_spacer,
+6: #right_spacer{
+7:  	width:0px;
+8:  }
+9:  #header{float:left;clear:both;width:100%;border-bottom:thick #000 solid;}
+10:  #header img{float:left;margin:0px;padding:0px;border-color:}
+11:  #header_custom{height:100%;max-height:100%;overflow:hidden;margin:0px;padding:0px;}
+12: 
+
+Backtrace:
+/home/sam/workspace/pSaMS/app/stylesheets/print.sass:7
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/engine.rb:403:in `block in tabulate'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/engine.rb:382:in `each'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/engine.rb:382:in `each_with_index'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/engine.rb:382:in `tabulate'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/engine.rb:345:in `_to_tree'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/engine.rb:315:in `_render'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/engine.rb:262:in `render'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:362:in `update_stylesheet'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:203:in `block in update_stylesheets'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:201:in `each'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/plugin/compiler.rb:201:in `update_stylesheets'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/plugin.rb:81:in `update_stylesheets'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/plugin.rb:54:in `check_for_updates'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sass-3.2.11/lib/sass/plugin/rack.rb:51:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/base.rb:50:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/xss_header.rb:18:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/base.rb:50:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/base.rb:50:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/path_traversal.rb:16:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/json_csrf.rb:18:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/base.rb:50:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/base.rb:50:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-protection-1.5.1/lib/rack/protection/frame_options.rb:31:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/padrino-core-0.11.4/lib/padrino-core/reloader.rb:337:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/padrino-core-0.11.4/lib/padrino-core/logger.rb:398:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sinatra-1.4.4/lib/sinatra/show_exceptions.rb:21:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sinatra-1.4.4/lib/sinatra/base.rb:2004:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sinatra-1.4.4/lib/sinatra/base.rb:1469:in `block in call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sinatra-1.4.4/lib/sinatra/base.rb:1778:in `synchronize'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/sinatra-1.4.4/lib/sinatra/base.rb:1469:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/padrino-core-0.11.4/lib/padrino-core/router.rb:81:in `block in call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/padrino-core-0.11.4/lib/padrino-core/router.rb:74:in `each'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/padrino-core-0.11.4/lib/padrino-core/router.rb:74:in `call'
+/home/sam/.rvm/gems/ruby-1.9.3-p484/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/home/sam/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+/home/sam/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+/home/sam/.rvm/rubies/ruby-1.9.3-p484/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Indentation can't use both tabs and spaces.\A         on line 7 of /home/sam/workspace/pSaMS/app/stylesheets/print.sass\A \A 2: /*	width:8.5in;\A 3: 	margin:1in 0.5in 1in 0.5in;*/\A 4: }\A 5: #left_spacer,\A 6: #right_spacer{\A 7:  	width:0px;\A 8:  }\A 9:  #header{float:left;clear:both;width:100%;border-bottom:thick #000 solid;}\A 10:  #header img{float:left;margin:0px;padding:0px;border-color:}\A 11:  #header_custom{height:100%;max-height:100%;overflow:hidden;margin:0px;padding:0px;}\A 12: "; }

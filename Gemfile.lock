@@ -1,0 +1,130 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activemodel (3.2.14)
+      activesupport (= 3.2.14)
+      builder (~> 3.0.0)
+    activerecord (3.2.14)
+      activemodel (= 3.2.14)
+      activesupport (= 3.2.14)
+      arel (~> 3.0.2)
+      tzinfo (~> 0.3.29)
+    activesupport (3.2.14)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
+    arel (3.0.2)
+    bcrypt-ruby (3.1.2)
+    builder (3.0.4)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
+    execjs (2.0.2)
+    haml (4.0.3)
+      tilt
+    hike (1.2.3)
+    http_router (0.11.0)
+      rack (>= 1.0.0)
+      url_mount (~> 0.2.1)
+    i18n (0.6.5)
+    json (1.8.1)
+    libv8 (3.16.14.3)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.25)
+    multi_json (1.8.2)
+    padrino (0.11.4)
+      padrino-admin (= 0.11.4)
+      padrino-cache (= 0.11.4)
+      padrino-core (= 0.11.4)
+      padrino-gen (= 0.11.4)
+      padrino-helpers (= 0.11.4)
+      padrino-mailer (= 0.11.4)
+    padrino-admin (0.11.4)
+      padrino-core (= 0.11.4)
+      padrino-helpers (= 0.11.4)
+    padrino-assets (0.3.1)
+      padrino-core
+      padrino-helpers
+      sprockets (~> 2.4.0)
+    padrino-cache (0.11.4)
+      padrino-core (= 0.11.4)
+      padrino-helpers (= 0.11.4)
+    padrino-core (0.11.4)
+      activesupport (>= 3.1, < 4.0)
+      http_router (~> 0.11.0)
+      rack-protection (>= 1.5.0)
+      sinatra (~> 1.4.2)
+      thor (~> 0.17.0)
+      tilt (~> 1.4.1)
+    padrino-gen (0.11.4)
+      bundler (~> 1.0)
+      padrino-core (= 0.11.4)
+    padrino-helpers (0.11.4)
+      i18n (~> 0.6)
+      padrino-core (= 0.11.4)
+    padrino-mailer (0.11.4)
+      mail (~> 2.5.3)
+      padrino-core (= 0.11.4)
+    polyglot (0.3.3)
+    rack (1.5.2)
+    rack-protection (1.5.1)
+      rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    rake (10.1.0)
+    ref (1.0.5)
+    sass (3.2.11)
+    shoulda (3.5.0)
+      shoulda-context (~> 1.0, >= 1.0.1)
+      shoulda-matchers (>= 1.4.1, < 3.0)
+    shoulda-context (1.1.4)
+    shoulda-matchers (2.2.0)
+      activesupport (>= 3.0.0)
+    sinatra (1.4.4)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    sprockets (2.4.5)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.8)
+    therubyracer (0.12.0)
+      libv8 (~> 3.16.14.0)
+      ref
+    thor (0.17.0)
+    tilt (1.4.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
+    tzinfo (0.3.38)
+    uglifier (2.3.1)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    url_mount (0.2.1)
+      rack
+    will_paginate (3.0.5)
+    yui-compressor (0.12.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  activerecord (>= 3.1)
+  bcrypt-ruby
+  coffee-script
+  haml
+  padrino (= 0.11.4)
+  padrino-assets
+  rack-test
+  rake
+  sass
+  shoulda
+  sqlite3
+  therubyracer
+  uglifier
+  will_paginate (~> 3.0)
+  yui-compressor
