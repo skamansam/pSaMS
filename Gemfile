@@ -21,10 +21,12 @@ gem 'haml'
 gem 'coffee-script'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
-gem 'padrino-assets'
-#gem 'padrino-sprockets', :require => "padrino/sprockets"
-#gem 'sprockets-helpers'
+
+gem 'padrino-sprockets', :require => "padrino/sprockets"
+gem 'sprockets-helpers'
+
 gem 'therubyracer'
+
 # enable js minification
 gem 'uglifier'
 # enable css compression

@@ -22,8 +22,9 @@ module Padrino::Sprockets
       config.environment = base.sprockets
       config.prefix      = '/assets'
       config.manifest    = Sprockets::Manifest.new(base.sprockets, manifest_path)
-      config.digest      = true
+      config.digest      = false
       config.public_path = base.public_folder
+      config.debug       = true #if development?
     end
 
     # call sprockets :D

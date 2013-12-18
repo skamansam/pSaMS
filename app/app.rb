@@ -1,13 +1,13 @@
 module PSaMs
   class App < Padrino::Application
-  register WillPaginate::Sinatra
+    register Padrino::Sprockets
+    register WillPaginate::Sinatra
     register SassInitializer
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
-    register Padrino::Sprockets
-
+    #register Sprockets::Helpers
     enable :sessions
     # Sprockets support
     require 'sprockets'
