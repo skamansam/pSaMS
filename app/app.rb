@@ -1,18 +1,19 @@
+require 'sinatra/base'
+require 'uglifier_with_source_map_compressor'
+#require 'sinatra/assetpack'
 module PSaMs
   class App < Padrino::Application
-    register Padrino::Sprockets
     register WillPaginate::Sinatra
-    register SassInitializer
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
-    #register Sprockets::Helpers
-    enable :sessions
-    # Sprockets support
-    require 'sprockets'
-    sprockets #:minify => (Padrino.env == :production)
 
+    register Padrino::Sprockets
+    
+    enable :sessions
+    
+    
     ##
     # Caching support.
     #
@@ -43,14 +44,21 @@ module PSaMs
     # disable :flash                # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
     # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
+    #layout :application
 
     ##
     # You can configure for a specified environment like:
     #
-    #   configure :development do
-    #     set :foo, :bar
-    #     disable :asset_stamp # no asset timestamping for dev
-    #   end
+    configure :development do
+      set :server, :thin
+      disable :asset_stamp # no asset timestamping for dev
+      sprockets :minify=>true , :js_compressor => UglifierWithSourceMapCompressor #, :css_compressor=>:yui
+    end
+    configure :production do
+      set :run,false
+      disable :asset_stamp # no asset timestamping for dev
+      sprockets :minify=>true
+    end
     #
 
     ##
@@ -67,7 +75,7 @@ module PSaMs
     get "/" do
       @posts = Post.all
       @news = News.all
-      render "welcome/index"
+      render "welcome/index",:layout=>'application'
     end
   end
 end

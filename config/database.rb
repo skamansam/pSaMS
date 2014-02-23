@@ -15,33 +15,35 @@
 #
 ActiveRecord::Base.configurations[:development] = {
   :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'p_sa_ms_development.db')
+  :database => Padrino.root('db', 'pSaMS_development.db')
 
 }
 
 ActiveRecord::Base.configurations[:production] = {
   :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'p_sa_ms_production.db')
+  :database => Padrino.root('db', 'pSaMS_production.db')
 
 }
 
 ActiveRecord::Base.configurations[:test] = {
   :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'p_sa_ms_test.db')
+  :database => Padrino.root('db', 'pSaMS_test.db')
 
 }
 
 # Setup our logger
 ActiveRecord::Base.logger = logger
 
-# Raise exception on mass assignment protection for Active Record models.
-ActiveRecord::Base.mass_assignment_sanitizer = :strict
+if ActiveRecord::VERSION::MAJOR.to_i < 4
+  # Raise exception on mass assignment protection for Active Record models.
+  ActiveRecord::Base.mass_assignment_sanitizer = :strict
 
-# Log the query plan for queries taking more than this (works
-# with SQLite, MySQL, and PostgreSQL).
-ActiveRecord::Base.auto_explain_threshold_in_seconds = 0.5
+  # Log the query plan for queries taking more than this (works
+  # with SQLite, MySQL, and PostgreSQL).
+  ActiveRecord::Base.auto_explain_threshold_in_seconds = 0.5
+end
 
-# Include Active Record class name as root for JSON serialized output.
+# Doesn't include Active Record class name as root for JSON serialized output.
 ActiveRecord::Base.include_root_in_json = false
 
 # Store the full class name (including module namespace) in STI type column.

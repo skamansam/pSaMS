@@ -1,4 +1,5 @@
 module Padrino::Sprockets
+=begin
   def self.registered(base)
     base.set :sprockets, ::Sprockets::Environment.new(Padrino.root)
 
@@ -13,7 +14,7 @@ module Padrino::Sprockets
       base.sprockets.js_compressor = Uglifier.new(mangle: true)
       base.sprockets.css_compressor = YUI::CssCompressor.new
     end
-
+=begin
     # sprockets-helpers
     base.helpers Sprockets::Helpers
     # We can configure `sprockets-helpers` to find the correct assets for us.
@@ -21,12 +22,12 @@ module Padrino::Sprockets
       manifest_path      = File.join(Padrino.root,'public','assets','manifest.json')
       config.environment = base.sprockets
       config.prefix      = '/assets'
-      config.manifest    = false #Sprockets::Manifest.new(base.sprockets, manifest_path)
+      config.manifest    = Sprockets::Manifest.new(base.sprockets, manifest_path)
       config.digest      = false
       config.public_path = base.public_folder
       config.debug       = true #if development?
     end
-
+=end
     # call sprockets :D
     if PADRINO_ENV == 'development'
       base.get '/assets/*splat' do
@@ -35,4 +36,5 @@ module Padrino::Sprockets
       end
     end
   end
+=end
 end

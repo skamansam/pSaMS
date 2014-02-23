@@ -4,6 +4,8 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery
+//= require jquery-2.0.3
 //= require jquery-ujs
-//= require_tree .
+//= require jquery-ui-1.10.3.custom
+//=# require angular
+//=# require_tree .

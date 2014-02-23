@@ -1,5 +1,6 @@
 PSaMs::App.controllers :welcome do
-  
+  layout &:set_theme
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -18,6 +19,6 @@ PSaMs::App.controllers :welcome do
   # get '/example' do
   #   'Hello world!'
   # end
-  
+
 
 end

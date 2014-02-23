@@ -5,6 +5,13 @@ module PSaMs
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
+    #register Padrino::Pipeline
+    enable :sessions
+    #configure_assets do |config|
+    #  config.pipeline = Padrino::Pipeline::Sprockets
+    #  config.prefix = '/public'
+    #  config.
+    #end
 
     ##
     # Application configuration options
@@ -38,7 +45,7 @@ module PSaMs
     role.project_module :accounts, '/accounts'
     end
 
-    # Custom error management 
+    # Custom error management
     error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }
     error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }
     error(500) { @title = "Error 500"; render('errors/500', :layout => :error) }
