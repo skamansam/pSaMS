@@ -15,6 +15,7 @@ config/database.yml
 bin/
 public/assets*/
 coverage
+*.js.map
 *~
 .jhw-cache
 .project
