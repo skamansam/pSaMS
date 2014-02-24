@@ -1,6 +1,4 @@
 require 'sinatra/base'
-require 'uglifier_with_source_map_compressor'
-#require 'sinatra/assetpack'
 module PSaMs
   class App < Padrino::Application
     register WillPaginate::Sinatra

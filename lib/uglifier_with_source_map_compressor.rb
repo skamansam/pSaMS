@@ -12,7 +12,7 @@ class UglifierWithSourceMapCompressor
     'application/javascript'
   end
   
-  def render(context,blah)
+  def render(context,options)
     require 'uglifier' unless defined? ::Uglifier
     puts "Padrino #{Padrino.root rescue []}"
     puts "Compressing #{@file.inspect}"
