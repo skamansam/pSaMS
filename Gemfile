@@ -30,7 +30,7 @@ gem 'shoulda', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.0' #, '0.11.4'
+gem 'padrino', '0.12.0'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
@@ -40,11 +40,9 @@ gem 'padrino', '0.12.0' #, '0.11.4'
 #   gem 'padrino-' + g, '0.11.4'
 # end
 
-#gem 'sinatra-assetpack', :require => 'sinatra/assetpack'
-
-#gem 'padrino-pipeline'
 gem 'padrino-sprockets', :require => "padrino/sprockets", :path=>"/home/sam/workspace/padrino-sprockets" #:git=>https://github.com/skamansam/padrino-sprockets.git
-#gem 'sprockets-helpers'
+
+gem 'closure-compiler', :group => 'production'
 
 gem 'therubyracer'
 
