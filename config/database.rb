@@ -20,8 +20,13 @@ ActiveRecord::Base.configurations[:development] = {
 }
 
 ActiveRecord::Base.configurations[:production] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'pSaMS_production.db')
+  :adapter => 'mysql',
+  :database => {
+    :host=>ENV['OPENSHIFT_MYSQL_DB_HOST'],
+    :port => ENV['OPENSHIFT_MYSQL_DB_PORT'],
+    :username => ENV['OPENSHIFT_MYSQL_DB_USERNAME'],
+    :password => ENV['OPENSHIFT_MYSQL_DB_PASSWORD']
+  }
 
 }
 
