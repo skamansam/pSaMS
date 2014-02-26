@@ -8,7 +8,7 @@ module PSaMs
     register Padrino::Helpers
 
     register Padrino::Sprockets
-    
+    sprockets
     enable :sessions
     
     
@@ -50,12 +50,15 @@ module PSaMs
     configure :development do
       set :server, :thin
       disable :asset_stamp # no asset timestamping for dev
-      sprockets :minify=>true , :js_compressor => UglifierWithSourceMapCompressor #, :css_compressor=>:yui
+      #sprockets #:minify=>true , :js_compressor => UglifierWithSourceMapCompressor do |env| #, :css_compressor=>:yui
+      #  puts "Configure: #{env.inspect}" 
+      #  env.css_compressor = :yui
+      #end
     end
     configure :production do
       set :run,false
       disable :asset_stamp # no asset timestamping for dev
-      sprockets :minify=>true
+      #sprockets :minify=>true
     end
     #
 

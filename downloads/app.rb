@@ -1,19 +1,11 @@
-require 'sinatra/base'
-require 'uglifier_with_source_map_compressor'
-#require 'sinatra/assetpack'
 module PSaMs
-  class App < Padrino::Application
-    register WillPaginate::Sinatra
-    use ActiveRecord::ConnectionAdapters::ConnectionManagement
+  class Downloads < Padrino::Application
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
 
-    register Padrino::Sprockets
-    
     enable :sessions
-    
-    
+
     ##
     # Caching support.
     #
@@ -22,11 +14,16 @@ module PSaMs
     #
     # You can customize caching store engines:
     #
-    # set :cache, Padrino::Cache::Store::Memcache.new(::Memcached.new('127.0.0.1:11211', :exception_retry_limit => 1))
-    # set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new('127.0.0.1:11211', :exception_retry_limit => 1))
-    # set :cache, Padrino::Cache::Store::Redis.new(::Redis.new(:host => '127.0.0.1', :port => 6379, :db => 0))
-    # set :cache, Padrino::Cache::Store::Memory.new(50)
-    # set :cache, Padrino::Cache::Store::File.new(Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
+    # set :cache, Padrino::Cache.new(:LRUHash) # Keeps cached values in memory
+    # set :cache, Padrino::Cache.new(:Memcached) # Uses default server at localhost
+    # set :cache, Padrino::Cache.new(:Memcached, '127.0.0.1:11211', :exception_retry_limit => 1)
+    # set :cache, Padrino::Cache.new(:Memcached, :backend => memcached_or_dalli_instance)
+    # set :cache, Padrino::Cache.new(:Redis) # Uses default server at localhost
+    # set :cache, Padrino::Cache.new(:Redis, :host => '127.0.0.1', :port => 6379, :db => 0)
+    # set :cache, Padrino::Cache.new(:Redis, :backend => redis_instance)
+    # set :cache, Padrino::Cache.new(:Mongo) # Uses default server at localhost
+    # set :cache, Padrino::Cache.new(:Mongo, :backend => mongo_client_instance)
+    # set :cache, Padrino::Cache.new(:File, :dir => Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
     #
 
     ##
@@ -44,21 +41,14 @@ module PSaMs
     # disable :flash                # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
     # layout  :my_layout            # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
-    #layout :application
 
     ##
     # You can configure for a specified environment like:
     #
-    configure :development do
-      set :server, :thin
-      disable :asset_stamp # no asset timestamping for dev
-      sprockets :minify=>true #, :js_compressor => UglifierWithSourceMapCompressor #, :css_compressor=>:yui
-    end
-    configure :production do
-      set :run,false
-      disable :asset_stamp # no asset timestamping for dev
-      sprockets :minify=>true
-    end
+    #   configure :development do
+    #     set :foo, :bar
+    #     disable :asset_stamp # no asset timestamping for dev
+    #   end
     #
 
     ##
@@ -72,10 +62,5 @@ module PSaMs
     #     render 'errors/505'
     #   end
     #
-    get "/" do
-      @posts = Post.all
-      @news = News.all
-      render "welcome/index",:layout=>'application'
-    end
   end
 end

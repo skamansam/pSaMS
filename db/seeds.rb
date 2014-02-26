@@ -25,4 +25,7 @@ else
   account.errors.full_messages.each { |m| shell.say "   - #{m}" }
 end
 
-shell.say ""
+shell.say "\nNow we need a first post to get started."
+title = shell.ask "What is the title of your first post?"
+body = shell.ask "Now give me some content for the first post:"
+post = Post.create(:title=>title,:body=>body,:category=>'home_page')

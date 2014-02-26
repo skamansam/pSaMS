@@ -10,6 +10,18 @@
   .controls
     ~f.text_area :body, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:body, :class => 'text-error') : pat(:example)
+- error = @post.errors.include?(:account_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :account_id, :class => 'control-label'
+  .controls
+    =f.select :account_id, :options=>Account.all.map{|a| [a.full_name,a.id]},:default=>current_account.id,:class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:account_id, :class => 'text-error') : pat(:example)
+- error = @post.errors.include?(:category_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :category_id, :class => 'control-label'
+  .controls
+    =f.select :category_id, :options=>Category.all.map{|c| [c.name,c.id]},:class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:category_id, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

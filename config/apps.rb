@@ -33,6 +33,13 @@ Padrino.configure_apps do
 end
 
 # Mounts the core application for this project
+
+Padrino.mount('PSaMs::Photos', :app_file => Padrino.root('photos/app.rb')).to('/photos')
+
+Padrino.mount('PSaMs::Downloads', :app_file => Padrino.root('downloads/app.rb')).to('/downloads')
+Padrino.mount('PSaMs::Admin', :app_file => Padrino.root('admin/app.rb')).to('/admin')
+
+Padrino.mount("PSaMs::Admin", :app_file => Padrino.root('admin/app.rb')).to("/admin")
 Padrino.mount('PSaMs::App', :app_file => Padrino.root('app/app.rb')).to('/')
 
-Padrino.mount("PSaMs::Admin", :app_file => File.expand_path('../../admin/app.rb', __FILE__)).to("/admin")
+#Padrino.mount("PSaMs::Admin", :app_file => File.expand_path('../../admin/app.rb', __FILE__)).to("/admin")

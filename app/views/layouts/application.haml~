@@ -7,8 +7,8 @@
     =js "application"
     =css 'application'
     /[if IE]
-      =css 'ie.css'
-    =css 'print.css', :media=>:print
+      =css 'ie'
+    =css 'print', :media=>:print
 
     =partial "#{theme_partial_path}/header"
   %body

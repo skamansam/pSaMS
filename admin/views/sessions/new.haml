@@ -11,11 +11,11 @@
     =favicon_tag 'favicon.ico'
     =stylesheet_link_tag 'bootstrap', 'application'
   %body
-    - form_tag url(:sessions, :create), :class=>'login form-horizontal' do
+    = form_tag url(:sessions, :create), :class=>'login form-horizontal' do
       .login-header.modal-header
         .login-logo=image_tag('logo.png', :alt => "Padrino's logo", :height => 250, :width => 193)
       .login-body.modal-body
-        = [:error, :warning, :notice].map { |type| flash_tag(type, :class => "alert alert-#{type} fade in", :bootstrap => true) }.join.html_safe
+        =  {:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name} fade in", :bootstrap => true) }.join.html_safe
 
         .form-group
           %label.col-lg-2.control-label{:for => :email}= pat('login.email')
@@ -23,7 +23,7 @@
 
         .form-group
           %label.col-lg-2.control-label{:for => :password}= pat('login.password')
-          .col-lg-10=password_field_tag :password, :value => params[:password], :class =>'form-control'
+          .col-lg-10=password_field_tag :password, :class =>'form-control'
 
         %fieldset.login-control-group-last.control-group
           .login-controls.controls
