@@ -21,13 +21,11 @@ ActiveRecord::Base.configurations[:development] = {
 
 ActiveRecord::Base.configurations[:production] = {
   :adapter => 'mysql',
-  :database => {
+  :database => 'pSaMS',
     :host=>ENV['OPENSHIFT_MYSQL_DB_HOST'],
-    :port => ENV['OPENSHIFT_MYSQL_DB_PORT'],
+    :port => ENV['OPENSHIFT_MYSQL_DB_PORT'].to_i,
     :username => ENV['OPENSHIFT_MYSQL_DB_USERNAME'],
     :password => ENV['OPENSHIFT_MYSQL_DB_PASSWORD']
-  }
-
 }
 
 ActiveRecord::Base.configurations[:test] = {
