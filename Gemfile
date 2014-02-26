@@ -22,7 +22,8 @@ gem 'sass'
 gem 'haml'
 gem 'coffee-script'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
-gem 'sqlite3'
+gem 'sqlite3', :group=>['development','test']
+gem 'mysql', :group=>'production'
 
 # Test requirements
 gem 'shoulda', :group => 'test'
