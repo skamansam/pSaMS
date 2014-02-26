@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     %title
-      Rude Boy Enterprises :: #{yield(:title) || "Home"}
+      Rude Boy Enterprises :: #{@page_title || yield_content(:page_title) || "Home"}
     =js "application"
     =css 'application'
     =css 'test'

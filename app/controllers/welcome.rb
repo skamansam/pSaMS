@@ -1,10 +1,10 @@
 PSaMs::App.controllers :welcome do
   layout &:set_theme
 
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
+  get :index, :map => '/' do
+     @page_title = "Home"
+     render 'index'
+   end
 
   # get :sample, :map => '/sample/url', :provides => [:any, :js] do
   #   case content_type
