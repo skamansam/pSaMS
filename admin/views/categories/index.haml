@@ -29,6 +29,7 @@
         %th.header= mat(:category, :id)
         %th.header= mat(:category, :name)
         %th.header= mat(:category, :description)
+        %th.header= mat(:category, :parent_id)
         %th.header= mat(:category, :created_at)
         %th.header= mat(:category, :updated_at)
         %th.header.list-row-action-header
@@ -41,6 +42,7 @@
           %td.list-column=category.id
           %td.list-column=category.name
           %td.list-column=category.description
+          %td.list-column=category.try(:parent).try :name
           %td.list-column=time_ago_in_words category.created_at
           %td.list-column=time_ago_in_words category.updated_at
           %td.list-column.list-row-action

@@ -10,6 +10,12 @@
   .controls
     ~f.text_area :description, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:description, :class => 'text-error') : pat(:example)
+- error = @category.errors.include?(:parent_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :parent_id, :class => 'control-label'
+  .controls
+    =f.select :parent_id, :options=>Category.all.map{|c| [c.name,c.id]},:include_blank=>true,:class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:parent_id, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

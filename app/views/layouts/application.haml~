@@ -3,9 +3,10 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
     %title
-      Rude Boy Enterprises :: #{yield(:title) || "Home"}
+      Rude Boy Enterprises :: #{@page_title || yield(:page_title) || "Home"}
     =js "application"
     =css 'application'
+    =css 'test'
     /[if IE]
       =css 'ie'
     =css 'print', :media=>:print
