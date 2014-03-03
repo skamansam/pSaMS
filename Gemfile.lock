@@ -87,6 +87,7 @@ GEM
     mysql2 (0.3.15)
     padrino-sprockets (0.0.3)
       sprockets
+    pg (0.15.1)
     polyglot (0.3.4)
     rack (1.5.2)
     rack-protection (1.5.2)
@@ -149,6 +150,7 @@ DEPENDENCIES
   mysql2
   padrino!
   padrino-sprockets
+  pg
   rack-test
   rake
   sass
