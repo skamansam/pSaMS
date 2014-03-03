@@ -13,21 +13,46 @@
 #     :socket    => '/tmp/mysql.sock'
 #   }
 #
+# SQLite Configurtion
 ActiveRecord::Base.configurations[:development] = {
   :adapter => 'sqlite3',
   :database => Padrino.root('db', 'pSaMS_development.db')
 
 }
 
-ActiveRecord::Base.configurations[:production] = {
-  :adapter => 'mysql',
-  :database => 'pSaMS',
-    :host=>ENV['OPENSHIFT_MYSQL_DB_HOST'],
-    :port => ENV['OPENSHIFT_MYSQL_DB_PORT'].to_i,
-    :username => ENV['OPENSHIFT_MYSQL_DB_USERNAME'],
-    :password => ENV['OPENSHIFT_MYSQL_DB_PASSWORD']
-}
+=begin # MongoDB configuration
+ActiveRecord::Base.configurations[:development] = {
+  :adapter => 'mongodb',
+  :database => 'pSaMS_development'
 
+}
+=end
+
+if ENV['PG_DB'] && ENV['PG_USER'] && ENV['PG_PASS']  # we are using Heroku
+   ActiveRecord::Base.configurations[:production] = ENV['HEROKU_POSTGRESQL_CRIMSON_URL']
+#   {
+#     :adapter   => 'pg',
+#     :ssl       => true,
+#     :encoding  => 'utf8',
+#     :reconnect => true,
+#     :database  => ENV['PG_DB'],
+#     :username  => ENV['PG_USER'],
+#     :password  => ENV['PG_PASS'],
+#     :host      => ENV['PG_HOST']
+#   }
+else
+
+  # MySQL or MariaDB Configuration
+  ActiveRecord::Base.configurations[:production] = {
+    :adapter => 'mysql2',
+    :database => 'pSaMS',
+      :host=>ENV['OPENSHIFT_MYSQL_DB_HOST'],
+      :port => ENV['OPENSHIFT_MYSQL_DB_PORT'].to_i,
+      :username => ENV['OPENSHIFT_MYSQL_DB_USERNAME'],
+      :password => ENV['OPENSHIFT_MYSQL_DB_PASSWORD']
+  }
+
+end
 ActiveRecord::Base.configurations[:test] = {
   :adapter => 'sqlite3',
   :database => Padrino.root('db', 'pSaMS_test.db')

@@ -23,7 +23,9 @@ gem 'haml'
 gem 'coffee-script'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3', :group=>['development','test']
-gem 'mysql', :group=>'production'
+#gem 'mongodb', :group=>['development','test']
+gem 'pg', :group=>'production' if ENV['PG_DB']
+gem 'mysql2', :group=>'production'
 
 # Test requirements
 gem 'shoulda', :group => 'test'

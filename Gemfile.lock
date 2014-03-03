@@ -84,7 +84,7 @@ GEM
     minitest (4.7.5)
     moneta (0.7.20)
     multi_json (1.8.4)
-    mysql (2.9.1)
+    mysql2 (0.3.15)
     padrino-sprockets (0.0.3)
       sprockets
     polyglot (0.3.4)
@@ -146,7 +146,7 @@ DEPENDENCIES
   coffee-script
   haml
   less
-  mysql
+  mysql2
   padrino!
   padrino-sprockets
   rack-test
