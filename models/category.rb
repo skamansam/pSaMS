@@ -2,7 +2,7 @@ class Category < ActiveRecord::Base
   belongs_to :parent, :class_name=>Category, :foreign_key=>:parent_id
   has_many :children, :class_name=>Category, :foreign_key=>:parent_id
   
-  default_scope order('order DESC')
+  default_scope order('item_order DESC')
 
   def self.top_level
     where "parent_id is null"
@@ -12,7 +12,7 @@ class Category < ActiveRecord::Base
     ret = []
     puts "CHILDREN OF:"
     puts self
-    ordered_children = self.children.order_by(:order) 
+    ordered_children = self.children.order_by(:item_order) 
     ordered_children.each do |child|
       child.name = (child == ordered_children.last ? options[:end_marker] : options[:parent_marker]) + (options[:cur_indent] + options[:indent])
       ret << child

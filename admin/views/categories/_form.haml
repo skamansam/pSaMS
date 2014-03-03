@@ -14,8 +14,13 @@
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :parent_id, :class => 'control-label'
   .controls
-    =f.select :parent_id, :options=>Category.all.map{|c| [c.name,c.id]},:include_blank=>true,:class => 'form-control input-large input-with-feedback'
+    =f.select :parent_id, :options=>(Category.all - [@category]).map{|c| [c.name,c.id]},:include_blank=>true,:class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:parent_id, :class => 'text-error') : pat(:example)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :link, :class => 'control-label'
+  .controls
+    =f.text_field :link, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:link, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'
@@ -23,3 +28,22 @@
   =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
   &nbsp;
   =link_to pat(:cancel), url(:categories, :index), :class => 'btn btn-default'
+  
+%h2 Child Order
+%p Drag each child to reorder. To add children, drag them from the list below.
+
+.sortable-list-section
+  %h3 
+    Children of Category 
+    %span.italic= @category.name
+  %ul.category-child-order.reorderable{data: { url: url(:categories,:update, id: @category.id)}}
+    - @category.children.each do |child|
+      -#%li{ data: {id: child.id} }= link_to child.name, url(:categories, :edit, id: child.id) 
+      %li.btn.btn-default.btn-lg.btn-block{ data: {id: child.id} }= link_to child.name, url(:categories, :edit, id: child.id) 
+
+.sortable-list-section
+  %h3 All Categories
+  %ul.category-all-order.reorderable{data: { url: url(:categories,:update, id: @category.id)}}
+    - (Category.all - @category.children).each do |category|
+      %li.btn.btn-default.btn-lg.btn-block{ data: {id: category.id} }= link_to category.name, url(:categories, :edit, id: category.id) 
+  

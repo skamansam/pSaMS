@@ -351,3 +351,23 @@ footer p {
   }
 }
 /* -- End Application -- */
+
+.sortable-list-section {
+  width: 45%;
+  float: left;
+}
+.sortable-list-section h3{
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.sortable-list-section ul{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.italic,.italics{
+  font-style: italic;
+}
+

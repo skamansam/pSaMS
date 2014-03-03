@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 10) do
+ActiveRecord::Schema.define(version: 11) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -35,10 +35,11 @@ ActiveRecord::Schema.define(version: 10) do
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "order"
+    t.integer  "item_order"
+    t.integer  "parent_id"
+    t.string   "link"
   end
 
   create_table "comments", force: true do |t|

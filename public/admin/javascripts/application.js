@@ -114,5 +114,29 @@
     // Autofocus first field with an error. (usability)
     var error_input;
     if (error_input = $('.has-error :input').first()) { error_input.focus(); }
+    
+    //apply re-order to .reorderable lists
+    $('ul.reorderable.category-child-order').sortable({
+      cursor: "move",
+      placeholder: "sortable-placeholder",
+      connectWith: ".category-all-order",
+      update: function( event, ui ) {
+        var new_order = new Array;
+        var cur_idx = 0;
+        $(this).children().each(function(){
+          post_url = $(this).attr("data-update-url");
+          console.log($(this).attr("data-id"));
+          new_order.push($(this).attr("data-id"));
+          $.post($(this));
+          cur_idx ++;
+        });
+        console.log("New Order: ",new_order);
+      }
+    });
+    $('ul.reorderable.category-all-order').sortable({
+      connectWith: ".category-child-order",
+    });
+    $( ".reorderable" ).disableSelection();
+        
   });
 }(window.jQuery);

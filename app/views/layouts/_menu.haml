@@ -19,6 +19,7 @@
       %a{:href => "http://remedialmedia.wordpress.com"} ReMedial
     %li
       %a{:href => "http://skamansam.wordpress.com"} Personal
+ 
 %li{:class => "#{'active' if route.controller=='projects'}"}
   %a.nohref Projects
   %ul.submenu
@@ -83,25 +84,4 @@
       %a{:href => "/content/projects/ideas/"} Ideas
     %li
       %a{:href => "/content/projects/abandoned/"} Abandoned
-%li{:class => "#{'active' if route.controller=='download'}"}
-  %a{:href => "/content/downloads/", :title => "Download some of my stuff!"} Downloads
-%li{:class => "#{'active' if route.controller=='resume'}"}
-  %a{:href => "/content/resume/", :title => "Check out my resum&eacute;"} Resum&eacute;
-%li{:class => "#{'active' if route.controller=='more'}"}
-  %a{:href => "/content/more/"} More...
-  %ul.submenu
-    %li
-      %a{:href => "http://music.rbe.homeip.net"} Music
-    %li
-      %a.nohref The Tyler Family
-      %ul.submenu
-        %li
-          %a{:href => "http://earle.rbe.homeip.net", :title => "Earle Goodson Tyler's Wiki"} Earlewiki
-        %li
-          %a{:href => "http://tylers.rbe.homeip.net", :title => "The Tyler Geneology"} Geneology
-    %li
-      %a{:href => "http://photos.rbe.homeip.net", :title => "My Photo Gallery"} Photos
-    %li
-      %a{:href => "/content/honeymoon/", :title => "Mr. and Mrs. Tyler's honeymoon in Montauk!"} Honeymoon
-    %li
-      %a{:href => "http://old.rbe.homeip.net", :title => "You are currently viewing my new site. Click here to go to my old site."} My Old Site
+
