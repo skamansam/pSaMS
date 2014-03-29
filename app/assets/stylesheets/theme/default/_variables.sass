@@ -1,0 +1,21 @@
+$page-width: 1333px
+$content-width: 871px
+$right-sidebar-width: 307px
+
+@mixin box-shadow($x-offset,$y-offset,$blur-radius,$color):
+  box-shadow: $x-offset $y-offset $blur-radius $color 
+  -moz-box-shadow: $x-offset $y-offset $blur-radius $color 
+  -webkit-box-shadow: $x-offset $y-offset $blur-radius $color 
+
+@mixin border-radius($corner,$radius):
+  -moz-border-$corner-radius: $radius
+  -webkit-border-$corner-radius: $radius
+
+@mixin border-radius-all($top-left,$top-right,$bottom-right,$bottom-left):
+  -moz-border-radius: 0px 0px 10px 10px;
+  -webkit-border-radius: 0px 0px 10px 10px;
+
+@mixin text-shadow($color,$x-offset,$y-offset,$blur-radius):
+  text-shadow: $color $x-offset $y-offset $blur-radius
+  -moz-text-shadow: $color $x-offset $y-offset $blur-radius
+

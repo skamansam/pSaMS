@@ -1,3 +1,4 @@
+@import "variables.sass"
 @import "menu_dropdown.css"
 @import "print.css"
 
@@ -8,7 +9,7 @@ body
 #envelope
   margin: 10px auto
   padding: 0px
-  width: 1000pt // == 11 inches
+  width: $page-width
 
 #header, #footer
   border-radius: 10px
@@ -35,10 +36,11 @@ body
   .company
     font-size: 36pt
     margin: 0px auto
-    width: 756px //== 8 inches, printing width.
+    width: 756px
     height: 80px
-    text-shadow: #ccf 2px 2px 2px
-    -moz-text-shadow: #ccf 2px 2px 2px
+    @include text-shadow(#ccf 2px 2px 2px)
+    //text-shadow: #ccf 2px 2px 2px
+    //-moz-text-shadow: #ccf 2px 2px 2px
 
 #body
   margin-top: -1px
@@ -230,7 +232,7 @@ body
   margin-top: -2px
   padding-left: 0px
   padding-right: 3px
-  width: 763px
+  width: 877px
 
 #footer
   vertical-align: bottom
