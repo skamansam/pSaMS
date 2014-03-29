@@ -46,7 +46,7 @@
           %td.list-column=time_ago_in_words post.created_at
           %td.list-column=time_ago_in_words post.updated_at
           %td.list-column=post.account.full_name
-          %td.list-column=post.category.name
+          %td.list-column=post.category.try(:name)
           %td.list-column.list-row-action
             .list-row-action-wrapper
               =link_to tag_icon(:edit), :href => url(:posts, :edit, :id => post.id), :rel => :tooltip, :title => "#{pat(:edit)} post", :class => 'list-row-action-wrapper-link'
