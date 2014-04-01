@@ -39,6 +39,57 @@ There are two apps included:
   * A download app, for tracking and uploading files for sharing
   * A photo app, for showing the world your amazing adventures
 
+## Roadmap
+
+This is a tentative release schedule. My personal challenge is to hit a 
+release or mid-release every 6 months, so that means version 0.5 should be finished
+sometime in June 2014 and version 4.0 should come out January 2018.
+
+NOTE: I will not support non-free or non-cross-platform APIs or data sources, 
+such as iCloud, which is iOS only.
+
+* Release 0.5
+  * Source Map Support in development mode
+  * Themeability
+    * Three themes: basic, clean and RBE "Bubbly Blue" theme
+  * Two Sub-apps:
+    * Downloads
+    * Photos
+  * Filestore backend capabilities:
+    * EC2 File Store
+    * Google Drive
+* Release 1.0
+  * Package as a gem for ease of installation
+  * Create plugin generator for ease of installation
+* Release 1.5
+  * More filestore backend capabilities:
+    * Box.net
+    * DropBox
+    * ownCloud
+  * More sub-apps: 
+    * GeoCaching
+* Release 2.0
+  * Theme API (with isolatled filepath and namespace)
+  * Ability to import/export themes via admin console
+  * Domain-Specific Language (DSL) for content
+* Release 2.5
+  * More sub-apps:
+    * recipe management
+  * More filestore backend capabilities:
+    * SkyDrive
+    * SugarSync
+* Release 3.0
+  * Theme Packaging for redistribution
+  * DSL for page creation/templates
+* Release 3.5
+  * More filestore backend capabilities:
+    * SpiderOak
+    * SugarSync
+* Release 4.0
+  * Edit site layouts/templates via admin console
+  * Package sub-apps as gems with "psams" namespace (i.e. 'psams-photos') for easy in/exclusion  
+
+
 ## Getting Started
 
 ### Requirements
@@ -130,7 +181,32 @@ There are a few optimizations you can make to pSaMS if you want to speed up cont
 delivery on your server. 
 
 #### Redis
+From the Redis homepage, "Redis is an open source, BSD licensed, advanced key-value store." What this means
+for Padrino is that instead of a slow, disk-based caching mechanism (or none at all!), Padrino
+can use a running Redis server to store caching information.
 
 #### Memcached
+From Wikipedia, "Memcached is a general-purpose distributed memory caching system. It is often 
+used to speed up dynamic database-driven websites by caching data and objects in RAM to reduce the number 
+of times an external data source (such as a database or API) must be read." What this means is that Padrino
+can use a memcached server to store the cache, in order to speed up page load times. In order to use this 
+feature, simply add the following to app/app.rb (there is already a block comment for this so you 
+can uncomment the appropriate code)
+
+
+```register Padrino::Cache
+   enable :caching 
+   set :cache, Padrino::Cache::Store::Memcache.new(::Memcached.new('$host:port', :exception_retry_limit => 1))
+```
+Where $host:$port is the server host and port of your running Memcached server (i.e. 127.0.0.1:11211).
+
+You can also setup your database to use Memcached.
+
+#### Memcached + MySQL
+See [the MySQL manual](http://dev.mysql.com/doc/refman/5.5/en/ha-memcached.html) for more information on this topic.
+#### Memcached + PostgreSQL
+#### Memcached + Your DB
+I am sure by doing a little searching, you can find instructions on how to enable Memcached on the database of your choosing.
+
 
 
