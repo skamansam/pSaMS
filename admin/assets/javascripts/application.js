@@ -120,6 +120,7 @@
       cursor: "move",
       placeholder: "sortable-placeholder",
       connectWith: ".category-all-order",
+      dropOnEmpty: true,
       update: function( event, ui ) {
         var new_order = new Array;
         var cur_idx = 0;
@@ -135,6 +136,7 @@
     });
     $('ul.reorderable.category-all-order').sortable({
       connectWith: ".category-child-order",
+      dropOnEmpty: true
     });
     $( ".reorderable" ).disableSelection();
         
