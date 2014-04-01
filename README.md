@@ -56,7 +56,7 @@ such as iCloud, which is iOS only.
     * Downloads
     * Photos
   * Filestore backend capabilities:
-    * EC2 File Store
+    * Amazon S3 File Store
     * Google Drive
 * Release 1.0
   * Package as a gem for ease of installation
