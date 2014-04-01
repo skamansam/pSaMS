@@ -32,18 +32,19 @@
 %h2 Child Order
 %p Drag each child to reorder. To add children, drag them from the list below.
 
-.sortable-list-section
-  %h3 
-    Children of Category 
-    %span.italic= @category.name
-  %ul.category-child-order.reorderable{data: { url: url(:categories,:update, id: @category.id)}}
-    - @category.children.each do |child|
-      -#%li{ data: {id: child.id} }= link_to child.name, url(:categories, :edit, id: child.id) 
-      %li.btn.btn-default.btn-lg.btn-block{ data: {id: child.id} }= link_to child.name, url(:categories, :edit, id: child.id) 
+- if !@category.new_record?
+  .sortable-list-section
+    %h3
+      Children of Category 
+      %span.italic= @category.name
+    %ul.category-child-order.reorderable{ data: { url: url_for(:categories, :update, id: @category.id) } }
+      - @category.children.each do |child|
+        -#%li{ data: {id: child.id} }= link_to child.name, url(:categories, :edit, id: child.id) 
+        %li.btn.btn-default.btn-lg.btn-block{ data: {id: child.id} }= link_to child.name, url(:categories, :edit, id: child.id) 
 
-.sortable-list-section
-  %h3 All Categories
-  %ul.category-all-order.reorderable{data: { url: url(:categories,:update, id: @category.id)}}
-    - (Category.all - @category.children).each do |category|
-      %li.btn.btn-default.btn-lg.btn-block{ data: {id: category.id} }= link_to category.name, url(:categories, :edit, id: category.id) 
-  
+  .sortable-list-section
+    %h3 All Categories
+    %ul.category-all-order.reorderable{data: { url: url_for(:categories,:update, id: @category.id)}}
+      - (Category.all - @category.children).each do |category|
+        %li.btn.btn-default.btn-lg.btn-block{ data: {id: category.id} }= link_to category.name, url(:categories, :edit, id: category.id) 
+    
