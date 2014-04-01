@@ -1,0 +1,10 @@
+en:
+  models:
+    news:
+      name: News
+      attributes:
+        id: Id
+        title: Title
+        body: Body
+        created_at: Created at
+        updated_at: Updated at

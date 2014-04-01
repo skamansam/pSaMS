@@ -10,6 +10,8 @@ gem 'thin' # or mongrel
 # Optional JSON codec (faster performance)
 # gem 'oj'
 
+gem 'i18n'
+
 # Project requirements
 gem 'rake'
 

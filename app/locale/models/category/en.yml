@@ -1,0 +1,14 @@
+en:
+  models:
+    category:
+      name: Category
+      attributes:
+        id: Id
+        name: Name
+        description: Description
+        created_at: Created at
+        updated_at: Updated at
+        item_order: Item order
+        parent_id: Parent
+        link: Link
+        post_count: Number of Posts

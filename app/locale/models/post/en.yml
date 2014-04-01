@@ -1,0 +1,12 @@
+en:
+  models:
+    post:
+      name: Post
+      attributes:
+        id: Id
+        title: Title
+        body: Body
+        created_at: Created at
+        updated_at: Updated at
+        account_id: Account
+        category_id: Category

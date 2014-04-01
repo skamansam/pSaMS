@@ -1,0 +1,13 @@
+en:
+  models:
+    account:
+      name: Account
+      attributes:
+        id: Id
+        name: Name
+        surname: Surname
+        email: Email
+        crypted_password: Crypted password
+        role: Role
+        created_at: Created at
+        updated_at: Updated at

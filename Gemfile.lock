@@ -147,6 +147,7 @@ DEPENDENCIES
   closure-compiler
   coffee-script
   haml
+  i18n
   less
   memcached
   mysql2

@@ -61,13 +61,14 @@ such as iCloud, which is iOS only.
 * Release 1.0
   * Package as a gem for ease of installation
   * Create plugin generator for ease of installation
+  * i18n editor in admin panel (with https://github.com/svenfuchs/i18n-active_record ?)
 * Release 1.5
   * More filestore backend capabilities:
     * Box.net
     * DropBox
     * ownCloud
   * More sub-apps: 
-    * GeoCaching
+    * Image GeoCaching
 * Release 2.0
   * Theme API (with isolatled filepath and namespace)
   * Ability to import/export themes via admin console
@@ -75,6 +76,13 @@ such as iCloud, which is iOS only.
 * Release 2.5
   * More sub-apps:
     * recipe management
+      * kitchen inventory management
+      * conversion of units
+      * ingredient quantity change based on a single ingredient (i.e "I only have one egg, and I need two...\[recipe adjusts to suit\]")
+      * MOP Checklist/wizard
+      * Item checklist
+      * Wizard interface (show about, then ingredients, then m.o.p. step by step)
+      * print card-size and full-page
   * More filestore backend capabilities:
     * SkyDrive
     * SugarSync
