@@ -48,6 +48,10 @@ gem 'closure-compiler', :group => 'production'
 gem 'yui-compressor'
 gem 'less'
 
+# for caching. 
+gem 'memcached'
+#gem 'redis'
+
 # Padrino Stable Gem
 #gem 'padrino', '0.12.0'
 
