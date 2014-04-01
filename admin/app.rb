@@ -5,6 +5,8 @@ module PSaMs
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
+    register Padrino::Sprockets
+    sprockets
 
     ##
     # Application configuration options
