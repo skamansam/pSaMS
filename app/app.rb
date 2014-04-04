@@ -65,9 +65,15 @@ module PSaMs
     ##
     # You can manage errors like:
     #
-    #   error 404 do
-    #     render 'errors/404'
-    #   end
+    #error 404 do
+    #  title = request.path_info.split('/')[-1]
+    #  logger.info "Requestind #{title}"
+    #  if @post = Post.find_by_path(title)
+    #    redirect url_for(:posts, :show, id: @post.id)
+    #  else  
+    #    #render '/__sinatra__/404.png'
+    #  end
+    #end
     #
     #   error 505 do
     #     render 'errors/505'
@@ -79,5 +85,6 @@ module PSaMs
       @news = News.all
       render "welcome/index",:layout=>'application'
     end
+        
   end
 end
