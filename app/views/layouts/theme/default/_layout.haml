@@ -5,8 +5,7 @@
     .company
       %a{:href => "/", :style => "text-decoration:none;color:#000;"} Rude Boy Enterprises
     #menu
-      %ul
-        =partial "layouts/menu"
+      = category_menu(Category.top_level, class: 'menu', submenu_class: 'submenu')
   #body
     #content
       = yield_content :page_content
