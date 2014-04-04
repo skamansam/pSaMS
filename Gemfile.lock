@@ -80,7 +80,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memcached (1.7.2)
     mime-types (1.25.1)
     minitest (4.7.5)
     moneta (0.7.20)
@@ -149,7 +148,6 @@ DEPENDENCIES
   haml
   i18n
   less
-  memcached
   mysql2
   padrino!
   padrino-sprockets

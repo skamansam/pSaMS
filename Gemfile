@@ -51,7 +51,7 @@ gem 'yui-compressor'
 gem 'less'
 
 # for caching. 
-gem 'memcached'
+#gem 'memcached' #disabled for Openshift
 #gem 'redis'
 
 # Padrino Stable Gem
