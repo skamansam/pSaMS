@@ -1,13 +1,17 @@
 module Tree
-
-  def self.top_level
-    where "parent_id is null"
+  
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+  
+  module ClassMethods
+    def top_level
+      where "parent_id is null"
+    end
   end
   
   def children_with_indent(options={:parent_marker=>'|',:indent=>"--",:end_marker=>'-'})
     ret = []
-    puts "CHILDREN OF:"
-    puts self
     ordered_children = self.children.order_by(:item_order) 
     ordered_children.each do |child|
       child.name = (child == ordered_children.last ? options[:end_marker] : options[:parent_marker]) + (options[:cur_indent] + options[:indent])

@@ -46,5 +46,16 @@ PSaMs::App.helpers do
     image_tag "/assets/#{theme_asset_path}/#{file}", options
   end
 
+  def category_menu(categories = Category.top_level,options={})
+    return "" if categories.blank?
+    ret = "<ul class=\"#{options[:class] || 'menu'}\">\n"
+    categories.each do |cat|
+      ret += "<li> 
+                #{link_to( cat.name, url_for(:posts,:category, id: cat.id) )}
+                #{category_menu(cat.children, options.deep_merge({ :class => (options[:submenu_class] || "sub-menu") }) )}
+             </li>"
+    end
+    (ret += "\n</ul>").html_safe
+  end
 
 end

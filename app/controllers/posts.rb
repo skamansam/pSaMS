@@ -25,9 +25,12 @@ PSaMs::App.controllers :posts do
   end
 
   get :show do
-    @post = Post.find_by_id(params[:id])
+    @post = Post.find_by_id(params[:id]) || Post.find_by_path(params[:id])
     render "posts/show"
-
   end
 
+  get :category, with: :id do 
+    @posts = Category.find_by_id(params[:id])
+    render "posts/index"
+  end
 end
