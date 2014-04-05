@@ -17,7 +17,6 @@ gem 'rake'
 
 # Component requirements
 gem 'bcrypt'
-#gem 'padrino-sprockets', :require => 'padrino/sprockets', :git => 'https://github.com/nightsailer/padrino-sprockets.git'
 gem 'will_paginate', '~>3.0'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'sass'
@@ -55,9 +54,9 @@ gem 'less'
 #gem 'redis'
 
 # Padrino Stable Gem
-#gem 'padrino', '0.12.0'
+gem 'padrino', '0.12.0'
 
 # Or Padrino Edge
-gem 'padrino', :github => 'padrino/padrino-framework'
+#gem 'padrino', :github => 'padrino/padrino-framework'
 
 

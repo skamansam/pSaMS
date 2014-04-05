@@ -6,18 +6,21 @@ PSaMs::App.helpers do
   #method to set the theme. returns the layout.
 
   def set_theme
-    Padrino.logger.info "Setting theme"
+    puts "Setting theme"
     theme = params[:theme] || 'default'
     theme_path = '/views/layouts/theme/'+theme
+    
     #Padrino::Pipeline.configure_assets do |config|
     #  config.css_assets = [config.css_assets] + [theme_path+'/stylesheets']
     #  config.js_assets = [config.js_assets] + [theme_path+'/javascripts']
     #  config.image_assets = [config.image_assets] + [theme_path+'/images']
     #end
     #layout theme
-    return theme.to_sym
+    return theme_path #theme.to_sym
   end
-
+  def theme_layout_path
+    "theme/"+(params[:theme] || 'default')
+  end
   def theme_partial_path
     '/layouts/theme/'+(params[:theme] || 'default')
   end

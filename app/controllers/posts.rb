@@ -1,36 +1,27 @@
 PSaMs::App.controllers :posts do
+  #layout &:set_theme
+  layout :application
 
-  # get :index, :map => '/foo/bar' do
-  #   session[:foo] = 'bar'
-  #   render 'index'
-  # end
-
-  # get :sample, :map => '/sample/url', :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   'Maps to url '/foo/#{params[:id]}''
-  # end
-
-  # get '/example' do
-  #   'Hello world!'
-  # end
-
-  get :index do
+  get :index, :map=>"/posts" do
     @posts = Post.all(:order=>'updated_at desc')
-    render "posts/index"
+    render "posts/index" #, :layout=>theme_layout_path
   end
 
-  get :show do
-    @post = Post.find_by_id(params[:id]) || Post.find_by_path(params[:id])
-    render "posts/show"
+  get :show, map: "/posts/:id" do
+    @post = nil #Post.find_by_id(params[:id]) || Post.find_by_path(params[:id])
+    render "show"
   end
-
   get :category, with: :id do 
-    @posts = Category.find_by_id(params[:id])
-    render "posts/index"
+    @posts = Category.find_by_id(params[:id]).posts # || Category.find_by_name(:id)).try(:posts)
+    render "index"
   end
+
+  get :category_tags, map: "/posts/category/:category_id/tags/*tags" do
+    render params.inspect
+  end
+  
+  get :tags, with: :tag_name do
+    render params.inspect
+  end
+
 end

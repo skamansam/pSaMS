@@ -62,5 +62,8 @@ module PSaMs
     #     render 'errors/505'
     #   end
     #
+    get :index, :map=>"/" do
+      "Downloads index"
+    end
   end
 end

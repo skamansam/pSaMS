@@ -1,4 +1,8 @@
 .post
-  .title #{link_to post.title, url_for(:posts, :show, :id=>post.id)} by #{account_link(post.account)}
-  .modified Last Modified #{time_ago_in_words post.updated_at} ago
+  .head
+    .title 
+      #{link_to post.title, url_for(:posts, :show, :id=>post.id)} 
+    .modified 
+      Last Modified #{time_ago_in_words post.updated_at} ago
+      %span.author by #{account_link(post.account)}
   .body= post.body.html_safe

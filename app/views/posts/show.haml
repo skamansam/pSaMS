@@ -1,1 +1,11 @@
-=partial "posts/post",:object=>@post
+- if @post.blank?
+  .post
+    .head
+      .title 
+        There is no Post 
+    .body.bold
+      %h4 Do not try and read this post. That's impossible. Instead... only try to realize the truth:
+      %h4 There is no Post.
+      %h4 Then you'll see, that it is not the post that reads, it is only yourself.
+-else
+  =partial "posts/post",:object=>@post, :locals=>{:post=>@post}
