@@ -29,8 +29,16 @@ gem 'pg', :group=>'production'
 gem 'mysql2', :group=>'production'
 
 # Test requirements
-gem 'shoulda', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
+group :test do 
+  #gem 'shoulda'
+  gem 'rspec'
+  gem 'forgery'
+  gem 'factory_girl'
+  gem 'capybara'
+  gem 'cucumber'
+  gem 'rack-test', :require => 'rack/test'
+  gem 'database_cleaner'
+end
 
 # Or Individual Gems
 # %w(core gen helpers cache mailer admin).each do |g|
