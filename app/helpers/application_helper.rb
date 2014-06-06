@@ -54,11 +54,22 @@ PSaMs::App.helpers do
     ret = "<ul class=\"#{options[:class] || 'menu'}\">\n"
     categories.each do |cat|
       ret += "<li> 
-                #{link_to( cat.name, url_for(:posts,:category, id: cat.id) )}
+                #{link_for_category(cat)}
                 #{category_menu(cat.children, options.deep_merge({ :class => (options[:submenu_class] || "sub-menu") }) )}
              </li>"
     end
     (ret += "\n</ul>").html_safe
   end
 
+  def load_category
+    @category = Category.find_by_id(params[:category_id]) || Category.first
+  end
+
+  def link_for_category(category)
+    link_to( category.name, (category.link || url_for(:posts,:category, id: category.id)) )
+  end
+
+  def news_posts_for(category = Category.first, num = 5)
+    category.posts.for_news.limit(num)
+  end
 end

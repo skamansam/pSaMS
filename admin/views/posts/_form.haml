@@ -28,6 +28,13 @@
   .controls
     =f.select :category_id, :options=>Category.all.map{|c| [c.name,c.id]},:class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:category_id, :class => 'text-error') : pat(:example)
+- error = @post.errors.include?(:is_news)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  .controls
+    =f.check_box :is_news, :class => 'input-large input-with-feedback'
+    =f.label :is_news, :caption=>"Show in News pane?", :class => 'control-label'
+    %br/
+    %span.help-inline=error ? f.error_message_on(:is_news, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

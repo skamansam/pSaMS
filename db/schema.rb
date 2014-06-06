@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 12) do
+ActiveRecord::Schema.define(version: 13) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 12) do
     t.integer  "account_id"
     t.integer  "category_id"
     t.string   "path"
+    t.boolean  "is_news",     default: false
   end
 
 end

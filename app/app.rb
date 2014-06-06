@@ -81,8 +81,9 @@ module PSaMs
     #
     get "/" do
       content_for(:page_title, "Home")
-      @posts = Post.all
-      @news = News.all
+      load_category
+      @posts = Post.without_news.all
+
       render "welcome/index",:layout=>'application'
     end
         

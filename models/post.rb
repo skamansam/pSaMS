@@ -20,4 +20,10 @@ class Post < ActiveRecord::Base
         
     return cur_category.posts
   end
+  def self.for_news
+    where(is_news: true)
+  end
+  def self.without_news
+    where(is_news: false)
+  end
 end
