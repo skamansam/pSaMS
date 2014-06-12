@@ -61,12 +61,12 @@ PSaMs::App.helpers do
     (ret += "\n</ul>").html_safe
   end
 
-  def load_category
-    @category = Category.find_by_id(params[:category_id]) || Category.first
+  def load_category(category_id = nil)
+    @category = Category.find_by_id(category_id || params[:category_id] || params[:id]) || Category.first
   end
 
   def link_for_category(category)
-    link_to( category.name, (category.link || url_for(:posts,:category, id: category.id)) )
+    link_to( category.name, (category.link.present? ? category.link : url_for(:posts,:category, id: category.id)) )
   end
 
   def news_posts_for(category = Category.first, num = 5)
