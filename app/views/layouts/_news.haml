@@ -1,0 +1,6 @@
+- news_posts_for(@category).each do |post|
+  %div
+  .title
+    %a{:href => "#"} #{post.title}
+  %div
+    = post.body
