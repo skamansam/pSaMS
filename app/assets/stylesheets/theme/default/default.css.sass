@@ -1,10 +1,14 @@
+@import "utility.sass"
 @import "variables.sass"
 @import "menu_dropdown.css"
 @import "print.css"
 
+
+
 body
   margin: 0px
   padding: 0px
+  @include background-horizontal-gradient(#bbb, #ccc)
 
 #envelope
   margin: 10px auto
@@ -12,17 +16,11 @@ body
   width: $page-width
 
 #header, #footer
-  border-radius: 10px
-  background-color: #3399ff
-  background-image: url("bg_1x100.jpg")
-  background-repeat: repeat-x
-  border: 1px solid #666
-  -moz-border-radius: 10px
-  -webkit-border-radius: 10px
+  border: 1px solid $dark-blue
   height: 100px
-  box-shadow: 4px 4px 2px #ccf
-  -moz-box-shadow: 4px 4px 2px #ccf
-  -webkit-box-shadow: 4px 4px 2px #ccf
+  @include border-radius(all,10px)
+  @include background-vertical-gradient($dark-blue, $light-blue)
+  @include box-shadow(2px, 2px, 4px, #333)
   width: 100%
 
 #header
@@ -34,7 +32,7 @@ body
     img
       height: 100px
   .company
-    font-size: 36pt
+    font-size: 48pt
     margin: 0px auto
     width: 756px
     height: 80px
