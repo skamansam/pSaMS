@@ -1,6 +1,8 @@
 - news_posts_for(@category).each do |post|
   %div
   .title
-    %a{:href => "#"} #{post.title}
+    %a{:href => "#"} #{post.title} 
+    .date
+      #{post.to_date}
   %div
     = post.body

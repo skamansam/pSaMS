@@ -1,0 +1,112 @@
+#menu
+  background: transparent
+  position: absolute
+  z-index: 2
+  padding-left: 0px
+  padding-right: 0px
+  border: none
+  margin-top: -3px
+  ul, ol
+    display: block
+    margin-top: 0px
+    padding-left: 0px
+  li
+    //float: left;
+    width: 30ex
+    display: block
+    float: left
+    position: relative
+    margin-left: 0px
+    padding-left: 0px
+    padding-top: 4px
+    padding-bottom: 2px
+    width: 100%
+    height: 100%
+    text-align: left
+    font-family: monospace
+    font-size: 9pt
+    a
+      height: 100%
+      display: inline-block
+  .submenu li a
+    color: inherit
+    text-decoration: none
+    width: 100%
+    height: 100%
+    text-indent: 1em
+    &:hover
+      color: inherit
+  ol.submenu, ul.submenu
+    display: none
+    float: left
+    position: absolute
+    z-index: 10000
+    margin-top: -2px
+    padding-left: 0px
+    background-color: #6CC567
+    border: 1px outset #336699
+  ol.submenu li, ul.submenu li
+    text-align: left
+    color: #333
+    width: 12em
+    background: #6cc567 url(ui-bg_highlight-soft_65_6cc567_1x100.png) repeat-x scroll 50% 50%
+  ol.submenu li:hover, ul.submenu li:hover
+    background: #0f73b3 url(ui-bg_highlight-soft_75_0f73b3_1x100.png) repeat-x scroll 50% 50%
+    color: #fff
+  >
+    ul > li, ol > li
+      background: #0f73b3 url(ui-bg_highlight-soft_75_0f73b3_1x100.png) repeat-x scroll 50% 50%
+      border-radius: 10px 10px 0 0
+      -moz-border-radius: 10px 10px 0 0
+      -webkit-border-radius: 10px 10px 0 0
+      border: 1px solid #666
+      width: 126px
+    ul > li > a, ol > li > a
+      width: 100%
+      height: 100%
+      text-align: center
+      font-weight: bold
+      text-decoration: none
+      color: inherit
+    ul > li > a:hover, ol > li > a:hover
+      color: inherit
+  .active
+    border-bottom: none
+    color: #fff
+    background: #6cc567 url(ui-bg_highlight-soft_65_6cc567_1x100.png) repeat-x scroll 50% 50%
+    border-radius: 10px 10px 0 0
+    -moz-border-radius: 10px 10px 0 0
+    -webkit-border-radius: 10px 10px 0 0
+  >
+    ul > li:hover, ol > li:hover
+      background: #6cc567 url(ui-bg_highlight-soft_65_6cc567_1x100.png) repeat-x scroll 50% 50%
+      border-radius: 10px 10px 0 0
+      -moz-border-radius: 10px 10px 0 0
+      -webkit-border-radius: 10px 10px 0 0
+  >
+    ul > li > ul.submenu, ol > li > ol.submenu
+      border-top: none
+      border-radius: 0px 0px 10px 10px
+      -moz-border-radius: 0px 0px 10px 10px
+      -webkit-border-radius: 0px 0px 10px 10px
+  ul.submenu > li > ul.submenu, ol.submenu > li > ol.submenu
+    margin-left: 10em
+    margin-top: -1.4em
+  li
+    &:hover
+      ul, ol
+        display: block
+    > ul
+      border-radius: 0px 10px 10px 10px
+      -moz-border-radius: 0px 10px 10px 10px
+      -webkit-border-radius: 0px 10px 10px 10px
+  > ul > li > ul.submenu > li
+    > ul
+      display: none
+    &:hover > ul
+      display: block
+    > ul > li
+      > ul
+        display: none
+      &:hover > ul
+        display: block

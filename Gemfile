@@ -40,6 +40,10 @@ group :test do
   gem 'database_cleaner'
 end
 
+group :development do
+  gem 'pry'
+end
+
 # Or Individual Gems
 # %w(core gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.11.4'

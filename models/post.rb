@@ -20,10 +20,16 @@ class Post < ActiveRecord::Base
         
     return cur_category.posts
   end
+
   def self.for_news
     where(is_news: true)
   end
+
   def self.without_news
     where(is_news: false)
+  end
+
+  def to_date
+    (self.updated_at || self.created_at).to_date.to_formatted_s :rfc822
   end
 end
