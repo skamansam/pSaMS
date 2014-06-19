@@ -82,9 +82,9 @@ module PSaMs
     get "/" do
       content_for(:page_title, "Home")
       load_category
-      @posts = Post.without_news.all
+      @posts = Post.without_news.limit(10).all
 
-      render "welcome/index",:layout=>'application'
+      render "posts/index",:layout=>'application'
     end
         
   end
