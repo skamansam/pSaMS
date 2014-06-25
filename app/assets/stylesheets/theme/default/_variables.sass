@@ -8,39 +8,3 @@ $dark-green: #148708
 $green-border: #2fd327
 $blue-border: #0f61b3
 
-@mixin box-shadow($x-offset,$y-offset,$blur-radius,$color)
-  box-shadow: $x-offset $y-offset $blur-radius $color 
-  -moz-box-shadow: $x-offset $y-offset $blur-radius $color 
-  -webkit-box-shadow: $x-offset $y-offset $blur-radius $color 
-
-@mixin border-radius($corner,$radius)
-  @if $corner == 'all'
-    -moz-border-radius: $radius
-    -webkit-border-radius: $radius
-  @else
-    -moz-border-$corner-radius: $radius
-    -webkit-border-$corner-radius: $radius
-
-@mixin text_shadow($color,$x-offset,$y-offset,$blur-radius)
-  text-shadow: $color $x-offset $y-offset $blur-radius
-  -moz-text-shadow: $color $x-offset $y-offset $blur-radius
-
-@mixin background-vertical-gradient($start-color, $end-color)
-  background: $end-color /* Old browsers */
-  background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%) /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color)) /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top,  $start-color 0%, $end-color 100%) /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top,  $start-color 0%, $end-color 100%) /* Opera 11.10+ */
-  background: -ms-linear-gradient(top,  $start-color 0%, $end-color 100%) /* IE10+ */
-  background: linear-gradient(to bottom,  $start-color 0%, $end-color 100%) /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 ) /* IE6-8 */
-
-@mixin background-horizontal-gradient($start-color, $end-color)
-  background: $end-color /* Old browsers */
-  background: -moz-linear-gradient(left,  $start-color 0%, $end-color 100%) /* FF3.6+ */
-  background: -webkit-gradient(linear, left, right, color-stop(0%,$start-color), color-stop(100%,$end-color)) /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  $start-color 0%, $end-color 100%) /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  $start-color 0%, $end-color 100%) /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  $start-color 0%, $end-color 100%) /* IE10+ */
-  background: linear-gradient(to right,  $start-color 0%, $end-color 100%) /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 ) /* IE6-8 */
