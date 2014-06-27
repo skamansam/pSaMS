@@ -61,12 +61,17 @@ gem 'closure-compiler', :group => 'production'
 gem 'yui-compressor'
 gem 'less'
 
+#gems for extensibility
+#gem 'actionview'
+#gem 'acts-as-taggable-on', '2.4.1'
+gem 'rdiscount'
+
 # for caching. 
 #gem 'memcached' #disabled for Openshift
 #gem 'redis'
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.0'
+gem 'padrino'
 
 # Or Padrino Edge
 #gem 'padrino', :github => 'padrino/padrino-framework'
