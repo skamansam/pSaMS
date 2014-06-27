@@ -13,7 +13,7 @@
   %body
     = form_tag url(:sessions, :create), :class=>'login form-horizontal' do
       .login-header.modal-header
-        .login-logo=image_tag('/admin/assets/logo.png', :alt => "Padrino's logo", :height => 250, :width => 193)
+        .login-logo=image_tag('/admin/assets/admin_logo.gif', :alt => "Padrino's logo", :height => 250, :width => 250)
       
       .login-body.modal-body
         =  {:error => 'danger', :warning => 'warning', :success => 'success', :notice => 'info'}.map { |type, class_name| flash_tag(type, :class => "alert alert-#{class_name} fade in", :bootstrap => true) }.join.html_safe
