@@ -42,6 +42,7 @@ end
 
 group :development do
   gem 'pry'
+  gem 'pry-rescue'
 end
 
 # Or Individual Gems
@@ -64,7 +65,7 @@ gem 'less'
 #gems for extensibility
 #gem 'actionview'
 #gem 'acts-as-taggable-on', '2.4.1'
-gem 'rdiscount'
+gem 'rdiscount'  #for markdown processing
 
 # for caching. 
 #gem 'memcached' #disabled for Openshift

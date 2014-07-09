@@ -29,13 +29,16 @@ You can have a single plugin that has many different methods for hooking into pS
 # /path/to/pSaMS/plugins/HelloWorld.rb
 # This plugin creates a new menu item, and displays simple text.
 Module PSaMS
-    class Route::HelloWorld << Plugin::Page
-      route '/hello' do
+  Module Plugin
+    class Page::HelloWorld
+      add_gem "rdiscount"
+      page '/hello' do
         menu "Hello, World!"
         contents file("content.html") 
       end
     end
-    class Editor::HelloWorld << PSaMS::Plugin::Editor
+    
+    class Editor::HelloWorld << Editor
       admin_page ""
       class "hello_editor"
       id "hello"
@@ -55,10 +58,11 @@ Module PSaMS
       def convert_to_haml(post)
         ...
       end
-      def convert_to_haml(post)
+      def replace_markers(post)
         ...
       end
     end
+  end
 end
 
 register_plugin(PSamS::Editor::HelloWorld)
