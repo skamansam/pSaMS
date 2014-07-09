@@ -36,6 +36,12 @@
     %br/
     %span.help-inline=error ? f.error_message_on(:is_news, :class => 'text-error') : pat(:example)
 
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :tag_list, :class => 'control-label'
+  .controls
+    =f.text_field :tag_list, :class => 'form-control input-large input-with-feedback tag-list-for-post', 'data-role' => 'tagsinput'
+    %span.help-inline=error ? f.error_message_on(:tag_list , :class => 'text-error') : pat(:example)
+
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'
   &nbsp;

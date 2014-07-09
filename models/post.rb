@@ -3,7 +3,11 @@ class Post < ActiveRecord::Base
   belongs_to :category
   validates_presence_of :title
   validates_presence_of :body
-  
+  acts_as_taggable
+
+  def self.tag_cloud
+  end
+
   # finds all posts according to category path
   # Examples:
   # <code>

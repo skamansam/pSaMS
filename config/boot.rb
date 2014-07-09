@@ -37,6 +37,7 @@ Padrino.before_load do
   require 'will_paginate'
   require 'will_paginate/active_record'
   require 'will_paginate/view_helpers/sinatra'
+  #require 'actionview'
   include WillPaginate::Sinatra::Helpers
 end
 

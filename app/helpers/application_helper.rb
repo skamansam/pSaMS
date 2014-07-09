@@ -70,6 +70,7 @@ PSaMs::App.helpers do
   end
 
   def news_posts_for(category = Category.first, num = 5)
+    category = Category.first if category.blank?
     category.posts.for_news.limit(num)
   end
 end

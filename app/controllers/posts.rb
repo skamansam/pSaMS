@@ -2,6 +2,11 @@ PSaMs::App.controllers :posts do
   #layout &:set_theme
   layout :application
 
+  get :tag_cloud, map: "/posts/tag_cloud" do
+    @tags = Post.tag_counts_on(:tags)
+    render "_tag_cloud"
+  end
+
   get :index, :map=>"/posts" do
     @posts = Post.without_news.order('updated_at desc').all
     load_category
