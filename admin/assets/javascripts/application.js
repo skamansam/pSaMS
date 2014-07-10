@@ -139,6 +139,15 @@
       dropOnEmpty: true
     });
     $( ".reorderable" ).disableSelection();
-        
+    
+
+    //the following is for tagsinput typeahead
+    $('.tag-list-for-post').tagsinput('input').typeahead({
+      prefetch: '/posts/tags.json'
+    }).bind('typeahead:selected', $.proxy(function (obj, datum) {  
+      this.tagsinput('add', datum);
+      this.tagsinput('input').typeahead('setQuery', '');
+    }, $('input')));
+
   });
 }(window.jQuery);
