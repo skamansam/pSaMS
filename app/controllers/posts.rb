@@ -2,16 +2,18 @@ PSaMs::App.controllers :posts do
   #layout &:set_theme
   layout :application
 
-  get :tag_cloud, map: "/posts/tag_cloud" do
-    @tags = Post.tag_counts_on(:tags)
-    render "_tag_cloud"
-  end
   get :tags, provides: [:json,:js] do
     ActsAsTaggableOn::Tag.all.map(&:name).to_json
   end
 
   get :index, :map=>"/posts" do
     @posts = Post.without_news.order('updated_at desc').all
+    load_category
+    render "posts/index" #, :layout=>theme_layout_path
+  end
+
+  get :tags, :with=>:tag_name do
+    @posts = Post.without_news.tagged_with(params[:tag_name]).order('updated_at desc')
     load_category
     render "posts/index" #, :layout=>theme_layout_path
   end

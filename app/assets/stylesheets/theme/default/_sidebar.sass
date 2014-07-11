@@ -11,11 +11,22 @@
   background-color: #74b1ef
   background-image: url("bg_1x100.jpg")
   background-repeat: repeat-x
-  .accordion
-    height: 500px
   #newsTitle
     font-size: 24px
     text-align: center
   .title
     .date
       float: right
+  .block
+    margin-top: 2em
+    .title
+      font-weight: bold
+      font-size: 24px
+      text-align: center
+    .body
+      padding: 1em 2.2em
+      overflow: auto
+      font-size: 12pt
+      @include border-radius(all,10px)
+      border: 1px solid #000000
+      background: #74b1ef url(images/ui-bg_flat_65_74b1ef_40x100.png) 50% 50% repeat-x

@@ -5,4 +5,8 @@
     .modified 
       Last Modified #{time_ago_in_words post.updated_at} ago
       %span.author by #{account_link(post.account)}
-  .body= post.body.html_safe
+  .body
+    = post.body.html_safe
+    .tags
+      - if post.tags.present?
+        tagged with: #{post_tag_cloud(post.tags)}

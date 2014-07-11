@@ -49,22 +49,23 @@ items are finished! All others are features that have not been started.
     * Switcher for editor
   * HTML Validator for all pages (javascript/link)
   * Add View shortcuts (helpers), for use with themes:
-    * Tag Cloud
+    * __Tag Cloud__
     * Category Cloud
     * __Category Menu__
   * Enable "widget" editor for helpers (which panels have which widgets in what order)
   * __Add a category as an external link__
-  * Manage Categories
+  * __Manage Categories__
+    * Sort via sort_by field__
     * Sortable categories
-  * Enable Tagging
-    * Tag Cloud Widget on sidebar
-  * configure Menu based on Categories
-  * Enable basic theme support
-    * Base theme is RBE "Bubbly Blue" theme
+  * __Enable Tagging__
+    * __Tag Cloud Widget on sidebar__
+  * __configure Menu based on Categories__
+  * __Enable basic theme support__ (see Themes section)
+    * __Base theme is RBE "Bubbly Blue" theme__
   * Add several js libraries, with on-demand support, via require.js:
-    * jquery (no module loading support)
+    * __jquery (no module loading support)__
     * jquery-ui (module loading of components)
-    * bootstrap (comes with padrino-admin)
+    * __bootstrap__ (comes with padrino-admin)
     * angular (on-demand module loading of components)
     * Modernizr support (in case you REALLY want to break the interwebs)
 
