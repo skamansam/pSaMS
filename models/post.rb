@@ -5,7 +5,14 @@ class Post < ActiveRecord::Base
   validates_presence_of :body
   acts_as_taggable
 
+  before_save :apply_before_save_filters
+
   def self.tag_cloud
+  end
+
+  def filtered
+    body = Pugin::Filter.apply_filter('the_content',body)
+    title = Pugin::Filter.apply_filter('the_title',title)
   end
 
   # finds all posts according to category path
@@ -36,4 +43,5 @@ class Post < ActiveRecord::Base
   def to_date
     (self.updated_at || self.created_at).to_date.to_formatted_s :rfc822
   end
+
 end

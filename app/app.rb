@@ -11,7 +11,12 @@ module PSaMs
     sprockets
     enable :sessions
     
+
+    register Plugin
+    puts Plugin::Filter.filter_table
     
+
+
     ##
     # Caching support.
     #
