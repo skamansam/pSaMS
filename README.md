@@ -40,7 +40,7 @@ items are finished! All others are features that have not been started.
 
 * Release 0.1 "MV" ("Minimal Viable")
   * _Manage posts_
-    * _Cane be authored in several formats_:
+    * _Can be authored in several formats_:
       * __Plain text__
       * Markdown
       * HTML
@@ -52,11 +52,12 @@ items are finished! All others are features that have not been started.
     * __Tag Cloud__
     * Category Cloud
     * __Category Menu__
-  * Enable "widget" editor for helpers (which panels have which widgets in what order)
+  * Enable "widget" editor for helpers (which panels have which widgets and in what order)
   * __Add a category as an external link__
   * __Manage Categories__
-    * Sort via sort_by field__
+    * __Sort via sort_by field__
     * Sortable categories
+    * Drag 'n Drop Category Order Editor
   * __Enable Tagging__
     * __Tag Cloud Widget on sidebar__
   * __configure Menu based on Categories__
