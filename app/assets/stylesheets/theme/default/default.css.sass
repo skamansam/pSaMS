@@ -7,6 +7,13 @@
 
 @import "print.sass"
 
+@font-face 
+  font-family: "Motter Tektura"
+  src: url("/fonts/motter_tektura.woff") format("woff"), url("/fonts/motter_tektura.ttf") format("truetype")
+  font-weight: normal
+  font-style: normal
+
+
 body
   margin: 0px
   padding: 0px
@@ -36,9 +43,11 @@ body
   .company
     font-size: 48pt
     margin: 0px auto
-    width: 756px
-    height: 80px
+    margin-top: 10px
+    width: 80%
+    height: 70px
     @include text_shadow(#ccf, 2px, 2px, 2px)
+    font-family: Motter Tektura, monospace
     //text-shadow: #ccf 2px 2px 2px
     //-moz-text-shadow: #ccf 2px 2px 2px
 

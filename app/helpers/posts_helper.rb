@@ -8,12 +8,12 @@ PSaMs::App.helpers do
     link_to account.name+' '+account.surname, 'mailto:'+account.email
   end
 
-  def post_tag_cloud(tags = Post.tag_counts_on(:tags))
-    out = ""
+  def post_tag_cloud(tags = Post.tag_counts_on(:tags), separator = " | ")
+    out = []
     tag_cloud(tags, %w(cloud1 cloud2 cloud3 cloud4)) do |tag, css_class|
-      out+="\n"+link_to( tag.name, url_for(:posts, :tags, :tag_name=>tag.name), :class => css_class)
+      out << link_to( tag.name, url_for(:posts, :tags, :tag_name=>tag.name), :class => css_class)
     end
-    out.html_safe
+    out.join(separator).html_safe
   end
 
 end
