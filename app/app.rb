@@ -13,7 +13,9 @@ module PSaMs
     
 
     register PluginLoader
-    load_plugins
+    Padrino.after_load do
+      load_plugins
+    end
     #puts Plugin::Filter.filter_table
     #puts page_refs
         

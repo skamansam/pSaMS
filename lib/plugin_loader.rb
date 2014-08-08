@@ -17,9 +17,13 @@ module PluginLoader
       logger.info "Loading Plugins..."
       Dir.glob("lib/plugins/*") do |file| 
         if File.directory?(file)
-          puts File.basename(file).camelize
-        elsif file=~/\.rb$/
-
+          cname = File.basename(file).camelize
+        elsif file=~/(.*)\.rb$/
+          cname = $1.camelize
+        end
+        if cname.instance_of?(Module)
+          puts "Loading  #{cname}"
+        end
       end
     end
   end
