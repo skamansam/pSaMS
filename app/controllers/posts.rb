@@ -7,19 +7,21 @@ PSaMs::App.controllers :posts do
   end
 
   get :index, :map=>"/posts" do
-    @posts = Post.without_news.order('updated_at desc').all
+    @presenter = PostsPresenter.new(@posts = Post.without_news.order('updated_at desc').all)
     load_category
     render "posts/index" #, :layout=>theme_layout_path
   end
 
   get :tags, :with=>:tag_name do
     @posts = Post.without_news.tagged_with(params[:tag_name]).order('updated_at desc')
+    @presenter = PostsPresenter.new(@posts)
     load_category
     render "posts/index" #, :layout=>theme_layout_path
   end
 
   get :show, map: "/posts/:id" do
     @post = Post.find_by_id(params[:id]) #|| Post.find_by_path(params[:id])
+    @presenter = PostPresenter.new(@post)
     load_category
     render "show"
   end
@@ -28,6 +30,7 @@ PSaMs::App.controllers :posts do
     logger.info params.inspect
     logger.info @category.inspect
     @posts = @category.posts.without_news # || Category.find_by_name(:id)).try(:posts)
+    @presenter = PostsPresenter.new(@posts)
     render "index"
   end
 

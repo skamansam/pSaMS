@@ -1,2 +1,2 @@
-#post-list
-  = partial "posts/post", :collection=>@posts
+#post-list{ class: @presenter.posts_class }
+  = partial "posts/post", :collection=>@presenter.posts

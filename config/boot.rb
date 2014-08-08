@@ -39,6 +39,7 @@ Padrino.before_load do
   require 'will_paginate/view_helpers/sinatra'
   #require 'actionview'
   include WillPaginate::Sinatra::Helpers
+  Padrino.dependency_paths << Padrino.root('app','presenters','**','*.rb')
 end
 
 ##

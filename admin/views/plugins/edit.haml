@@ -1,0 +1,8 @@
+%ul.nav.nav-tabs
+  %li=link_to tag_icon(:list, pat(:list)), url(:plugins, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:plugins, :new)
+  %li.active=link_to tag_icon(:edit, pat(:edit)), url(:plugins, :edit, :id => @plugin.id)
+
+.tabs-content
+  = form_for :plugin, url(:plugins, :update, :id => @plugin.id), :method => :put, :class => 'form-horizontal' do |f|
+    =partial 'plugins/form', :locals => { :f => f }

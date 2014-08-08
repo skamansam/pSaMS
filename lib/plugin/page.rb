@@ -1,4 +1,4 @@
-module Plugin::Page
+module Page
   attr_reader :plugin_page_routing_table, # maps menu items to page renderers
                   :plugin_page_menu_table     # maps manu item
   

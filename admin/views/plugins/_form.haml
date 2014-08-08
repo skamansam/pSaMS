@@ -1,0 +1,37 @@
+- error = @plugin.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @plugin.errors.include?(:location)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :location, :class => 'control-label'
+  .controls
+    =f.text_field :location, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:location, :class => 'text-error') : pat(:example)
+- error = @plugin.errors.include?(:features)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :features, :class => 'control-label'
+  .controls
+    ~f.text_area :features, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:features, :class => 'text-error') : pat(:example)
+- error = @plugin.errors.include?(:options)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :options, :class => 'control-label'
+  .controls
+    ~f.text_area :options, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:options, :class => 'text-error') : pat(:example)
+- error = @plugin.errors.include?(:active)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :active, :class => 'control-label'
+  .controls
+    =f.check_box :active, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:active, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:plugins, :index), :class => 'btn btn-default'

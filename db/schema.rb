@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 14) do
+ActiveRecord::Schema.define(version: 15) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -76,6 +76,20 @@ ActiveRecord::Schema.define(version: 14) do
     t.string   "thumbnail_location"
     t.integer  "album_id"
     t.string   "filename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plugins", force: true do |t|
+    t.string   "name"
+    t.integer  "priority"
+    t.string   "location"
+    t.string   "type"
+    t.string   "method_name"
+    t.string   "class_name"
+    t.string   "hook_name"
+    t.text     "options"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

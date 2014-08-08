@@ -1,5 +1,5 @@
 class BasicEditor 
-  include Plugin
+  #include Editor
   
   def initialize(plugin_path,post)
   end

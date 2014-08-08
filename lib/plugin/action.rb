@@ -1,4 +1,4 @@
-module Plugin::Action
+module Action
   attr_reader :action_table # hash in the form ClassName => 'hook_name' => priority_int => [fxn1, fxn2,...]
   
   # for HOOKS, see the Wordpress dox
@@ -46,3 +46,4 @@ module Plugin::Action
 
 
 end
+

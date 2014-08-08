@@ -3,8 +3,8 @@
     .title 
       #{link_to post.title, url_for(:posts, :show, :id=>post.id)} 
     .modified 
-      Last Modified #{time_ago_in_words post.updated_at} ago
-      %span.author by #{account_link(post.account)}
+      Last Modified #{time_ago_in_words (post.updated_at || DateTime.now)} ago
+      %span.author by #{account_link(post.post.account)}
   .body
     = post.body.html_safe
     .tags

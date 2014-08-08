@@ -12,10 +12,11 @@ module PSaMs
     enable :sessions
     
 
-    register Plugin
-    puts Plugin::Filter.filter_table
-    
-
+    register PluginLoader
+    load_plugins
+    #puts Plugin::Filter.filter_table
+    #puts page_refs
+        
 
     ##
     # Caching support.
@@ -88,6 +89,9 @@ module PSaMs
       content_for(:page_title, "Home")
       load_category
       @posts = Post.without_news.limit(10).all
+      #PostPresenter.new(@posts.first)
+      #binding.pry
+      @presenter = PostsPresenter.new(@posts)
 
       render "posts/index",:layout=>'application'
     end

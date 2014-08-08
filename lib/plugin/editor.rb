@@ -1,4 +1,4 @@
-module Plugin::Editor
+module Editor
   attr_reader :editor_table
 
   def get_default_editor

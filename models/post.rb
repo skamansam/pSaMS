@@ -10,11 +10,6 @@ class Post < ActiveRecord::Base
   def self.tag_cloud
   end
 
-  def filtered
-    body = Pugin::Filter.apply_filter('the_content',body)
-    title = Pugin::Filter.apply_filter('the_title',title)
-  end
-
   # finds all posts according to category path
   # Examples:
   # <code>
