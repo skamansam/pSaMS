@@ -43,6 +43,10 @@ end
 group :development do
   gem 'pry'
   gem 'pry-rescue'
+  gem 'pry-byebug' # same as pry-debugger, but for 2.0
+  gem 'pry-coolline'
+  gem 'pry-stack_explorer' #not for 2.0 yet!
+  gem 'pry-macro'
 end
 
 # Or Individual Gems
