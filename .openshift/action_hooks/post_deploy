@@ -4,4 +4,4 @@
 # it could be python, php, ruby, etc.
 
 RACK_ENV=production
-rake ar:create ar:migrate
+bundle exec rake ar:create ar:migrate
