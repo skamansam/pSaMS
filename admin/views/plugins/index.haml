@@ -1,7 +1,7 @@
-%ul.nav.nav-tabs
+-#%ul.nav.nav-tabs
   %li.active=link_to tag_icon(:list, pat(:list)), url(:plugins, :index)
   %li=link_to tag_icon(:plus, pat(:new)), url(:plugins, :new)
-
+%p The following is a list of installed plugins.
 .tabs-content
   %table#list.table.table-striped.table-hover.table-condensed
     %thead
@@ -28,9 +28,8 @@
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
         %th.header= mat(:plugin, :id)
         %th.header= mat(:plugin, :name)
-        %th.header= mat(:plugin, :location)
-        %th.header= mat(:plugin, :features)
-        %th.header= mat(:plugin, :options)
+        %th.header= mat(:plugin, :class_name)
+        %th.header= mat(:plugin, :method_name)
         %th.header= mat(:plugin, :active)
         %th.header= mat(:plugin, :created_at)
         %th.header= mat(:plugin, :updated_at)
@@ -43,16 +42,16 @@
             =check_box_tag 'plugin_ids[]', :value => plugin.id, :class => 'list-selectable-checkbox'
           %td.list-column=plugin.id
           %td.list-column=plugin.name
-          %td.list-column=plugin.location
-          %td.list-column=plugin.features
-          %td.list-column=plugin.options
+          %td.list-column=plugin.class_name
+          %td.list-column=plugin.method_name
           %td.list-column= plugin.active ? tag_icon(:ok) : tag_icon(:remove)
           %td.list-column=time_ago_in_words plugin.created_at
           %td.list-column=time_ago_in_words plugin.updated_at
           %td.list-column.list-row-action
             .list-row-action-wrapper
-              =link_to tag_icon(:edit), :href => url(:plugins, :edit, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
-              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
+              =#link_to tag_icon(:edit), :href => url(:plugins, :edit, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
+              =#link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
               .popover.list-row-action-popover-delete-one.left
                 .arrow
                 %h3.popover-title=pat(:delete, :model => "plugin")

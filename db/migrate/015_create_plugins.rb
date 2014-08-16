@@ -3,11 +3,13 @@ class CreatePlugins < ActiveRecord::Migration
     create_table :plugins do |t|
       t.string :name
       t.integer :priority
-      t.string :location
-      t.string :type
-      t.string :method_name
+      t.string :plugin_type
+      t.string :file_name
+      t.integer :line_number
       t.string :class_name
+      t.string :method_name
       t.string :hook_name
+      t.integer :num_args
       t.text :options
       t.boolean :active
       t.timestamps

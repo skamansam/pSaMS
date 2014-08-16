@@ -1,0 +1,13 @@
+%ul.nav.nav-tabs
+  %li=link_to tag_icon(:list, pat(:list)), url(:plugins, :index)
+  -#%li=link_to tag_icon(:edit, pat(:edit)), url(:plugins, :edit, :id => @plugin.id)
+  %li.active=link_to tag_icon(:info, pat(:show)), url(:plugins, :show, :id => @plugin.id)
+.tabs-content
+  .page-header
+    %h2 
+      =@plugin.name
+      %small 
+        =@plugin.plugin_type
+    %p= @plugin.info[1]
+    
+

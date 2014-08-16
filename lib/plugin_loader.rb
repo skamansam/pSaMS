@@ -1,31 +1,55 @@
 module PluginLoader
-  #include Action
-  #include Filter::Publisher
-  #include Editor
-  #include Page
-  
-  #attr_reader :page_refs
 
+  def self.included(base)
+    logger.info "PluginLoader included in #{base}"
+    base.extend ClassMethods
+  end
   def self.registered(base)
-    puts "PluginManager registered to #{base}"
+    logger.info "PluginLoader registered to #{base}"
     #base.send :attr_reader, :page_refs
     base.extend ClassMethods
   end
   module ClassMethods
-    #attr_accessor :page_refs, :filter_table
-    def load_plugins
+    attr_accessor :pages_list, :plugin_list
+    def load_plugins(path)
       logger.info "Loading Plugins..."
-      Dir.glob("lib/plugins/*") do |file| 
-        if File.directory?(file)
-          cname = File.basename(file).camelize
-        elsif file=~/(.*)\.rb$/
-          cname = $1.camelize
-        end
-        if cname.instance_of?(Module)
-          puts "Loading  #{cname}"
+      process_files(path) do |filename, classname|
+        if ENV['MIGRATIONS']
+          classname.constantize.try(:migrate) 
+        else
+          if classname.to_s.instance_of?(Module)
+            logger.info "Loading  #{classname} from #{filename}..."
+            include cname.constantize
+          else
+            logger.info "Creating new #{classname} from #{filename}..."
+            #binding.pry
+            classname.constantize.setup
+          end
         end
       end
     end
+
+    private
+
+    def process_files(dir,&block)
+      Dir.glob(Padrino.root("#{dir}/*")) do |file| 
+        logger.info "looking in #{file}"
+
+        file = "#{file}/#{File.basename(file)}.rb" if File.directory?(file)
+
+        if File.basename(file) =~ /(.*)\.rb$/
+          logger.info "Found class #{$1.camelize}"
+          cname = $1.camelize
+        end
+        Padrino.load_paths << file
+        Padrino.dependency_paths << file
+        Padrino.require_dependencies(file)
+        require file
+
+        yield file, cname
+      end
+    end
+  
   end
 end
 

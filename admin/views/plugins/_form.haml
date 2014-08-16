@@ -8,7 +8,7 @@
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :location, :class => 'control-label'
   .controls
-    =f.text_field :location, :class => 'form-control input-large input-with-feedback'
+    =f.text_field :file_name, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:location, :class => 'text-error') : pat(:example)
 - error = @plugin.errors.include?(:features)
 %fieldset.control-group{:class => error ? 'has-error' : ''}

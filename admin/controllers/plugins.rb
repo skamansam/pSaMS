@@ -11,6 +11,12 @@ PSaMs::Admin.controllers :plugins do
     render 'plugins/new'
   end
 
+  get :show, :with=> :id do
+    @title = pat(:show_title, :model => 'plugin')
+    @plugin = Plugin.find(params[:id])
+    render 'plugins/show'
+  end
+
   post :create do
     @plugin = Plugin.new(params[:plugin])
     if @plugin.save

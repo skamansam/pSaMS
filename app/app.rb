@@ -12,10 +12,10 @@ module PSaMs
     enable :sessions
     
 
-    register PluginLoader
-    Padrino.after_load do
-      load_plugins
-    end
+    #register PluginLoader
+    #Padrino.after_load do
+    #  load_plugins
+    #end
     #puts Plugin::Filter.filter_table
     #puts page_refs
         
