@@ -69,6 +69,9 @@ items are finished! All others are features that have not been started.
     * __bootstrap__ (comes with padrino-admin)
     * angular (on-demand module loading of components)
     * Modernizr support (in case you REALLY want to break the interwebs)
+  * __Plugin API Base__
+    * _Filter Plugin Base API_
+    * Editor Plugin Base API
 
 * Release 0.5 "MV5"
   * Source Map Support in development mode
