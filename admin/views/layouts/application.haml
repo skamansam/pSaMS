@@ -10,7 +10,7 @@
     %title= @title.present? ? "#{@title} | Padrino Admin" : "Padrino Admin"
     =favicon_tag 'favicon.ico'
     %link{:href => 'http://fonts.googleapis.com/css?family=Varela', :rel => :stylesheet}
-    =stylesheet_link_tag 'bootstrap', 'application', 'bootstrap-tagsinput'
+    =stylesheet_link_tag 'bootstrap', 'application', 'bootstrap-tagsinput', 'prism-dev'
 
   %body
     .navbar.navbar-fixed-top
@@ -46,4 +46,4 @@
           %li= link_to tag_icon(:github, 'code'), 'https://github.com/padrino/padrino-framework', :target => :_blank, :class => 'footer-links-link'
           %li= link_to tag_icon(:twitter, 'twitter'), 'http://twitter.com/padrinorb', :target => :_blank, :class => 'footer-links-link'
 
-    =javascript_include_tag 'jquery-1.9.0.min','jquery-ui-1.10.3.custom', 'typeahead.min', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab bootstrap/bootstrap-tagsinput]), :application
+    =javascript_include_tag 'jquery-1.9.0.min','jquery-ui-1.10.3.custom', 'typeahead.min', 'prism-dev', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab bootstrap/bootstrap-tagsinput]), :application

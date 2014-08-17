@@ -14,6 +14,7 @@ PSaMs::Admin.controllers :plugins do
   get :show, :with=> :id do
     @title = pat(:show_title, :model => 'plugin')
     @plugin = Plugin.find(params[:id])
+    @plugin_object = @plugin.plugin_object
     render 'plugins/show'
   end
 

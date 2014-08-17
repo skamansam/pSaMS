@@ -9,5 +9,16 @@
       %small 
         =@plugin.plugin_type
     %p= @plugin.info[1]
-    
+  - @plugin.actions.each do |plugin|
+    .panel.panel-default
+      .panel-heading
+        #{plugin.method_name} (filters 
+        %em #{plugin.hook_name}
+        )
+      .panel-body
+        %pre{class: 'language-ruby'}
+          %code{class: 'language-ruby'}
+            = preserve do
+              = @plugin_object.new.method(plugin.method_name.to_sym).source
+        
 

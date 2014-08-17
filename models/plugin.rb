@@ -5,7 +5,6 @@ class Plugin < ActiveRecord::Base
   include Filter
   include Filter::Publisher
 
-
   load_plugins('plugins')
   validate :type, :method_name, :class_name, :hook_name, presence: true
   
@@ -28,7 +27,15 @@ class Plugin < ActiveRecord::Base
     by_install_date.order(:priority)
   end
 
+  def plugin_object
+    @plugin_object ||= class_name.constantize
+  end
+
   def info
-    class_name.constantize.info
+    plugin_object.info
+  end
+
+  def actions
+    Plugin.where(class_name: class_name)
   end
 end
