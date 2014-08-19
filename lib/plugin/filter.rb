@@ -6,7 +6,7 @@ module Filter
   end
   module ClassMethods
     def filters
-      where(plugin_type: ['Filter','filter'])
+      where(plugin_type: ['Filter','filter']).active
     end
     def add_filter(hook_name,class_name,method_name,priority=10,num_args=nil)
       puts "Registering (#{self} #{self.class}) Filter for #{hook_name}: #{class_name}.#{method_name}(#{num_args}) at priority #{priority}"
@@ -30,7 +30,6 @@ module Filter::Publisher
   module PublisherMethods
     def apply_filter(hook_name,*data)
       return data[0] if (filters = Plugin.filters.by_priority.for_hook(hook_name)).blank?
-      binding.pry
       filters.each do |filter|
         puts "Applying filter #{filter.hook_name} with #{data.inspect}"
         the_obj = filter.class_name.constantize.new

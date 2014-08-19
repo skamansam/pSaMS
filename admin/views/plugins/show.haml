@@ -18,7 +18,6 @@
       .panel-body
         %pre{class: 'language-ruby'}
           %code{class: 'language-ruby'}
-            = preserve do
-              = @plugin_object.new.method(plugin.method_name.to_sym).source
+            = preserve @plugin_object.new.method(plugin.method_name.to_sym).source
         
 

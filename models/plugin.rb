@@ -6,10 +6,18 @@ class Plugin < ActiveRecord::Base
   include Filter::Publisher
 
   load_plugins('plugins')
-  validate :type, :method_name, :class_name, :hook_name, presence: true
+  validate :plugin_type, :method_name, :class_name, :hook_name, presence: true
   
   serialize :options, Hash
   serialize :features, Array
+
+  def self.active
+    where(active: true)
+  end
+
+  def self.inactive
+    where(active: false)
+  end
 
   def self.by_install_date
     order(:created_at)
