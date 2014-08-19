@@ -13,6 +13,7 @@ class SimpleReplace
   def self.setup
     Plugin.add_filter('the_content', "SimpleReplace", 'filter_content')
   end
+  
   def filter_content(content, post)
     logger.info "Filtering Content: #{content}"
     "This has been filtered!"
