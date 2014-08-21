@@ -80,5 +80,3 @@ gem 'padrino'
 
 # Or Padrino Edge
 #gem 'padrino', :github => 'padrino/padrino-framework'
-
-
