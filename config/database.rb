@@ -21,11 +21,13 @@ ActiveRecord::Base.configurations[:development] = {
 }
 
 =begin # MongoDB configuration
+
 ActiveRecord::Base.configurations[:development] = {
   :adapter => 'mongodb',
   :database => 'pSaMS_development'
 
 }
+
 =end
 
 if ENV['PG_DB'] && ENV['PG_USER'] && ENV['PG_PASS']  # we are using Heroku
