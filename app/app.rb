@@ -8,7 +8,7 @@ module PSaMs
     register Padrino::Helpers
 
     register Padrino::Sprockets
-    sprockets
+    sprockets paths: ['assets','../plugins']
     enable :sessions
     
 
