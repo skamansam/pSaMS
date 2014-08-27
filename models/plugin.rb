@@ -4,6 +4,7 @@ class Plugin < ActiveRecord::Base
   include PluginLoader
   include Filter
   include Filter::Publisher
+  include Action
 
   load_plugins('plugins')
   validate :plugin_type, :method_name, :class_name, :hook_name, presence: true

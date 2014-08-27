@@ -1,20 +1,43 @@
 module Action
-  attr_reader :action_table # hash in the form ClassName => 'hook_name' => priority_int => [fxn1, fxn2,...]
-  
-  # for HOOKS, see the Wordpress dox
+  # for WP HOOKS, see the Wordpress dox
   HOOKS = {
     :muplugins_loaded => "After must-use plugins are loaded. no params.",
     :registered_taxonomy => "After adding a new tag or category. passes taxonomy, object_type, args",
     :plugins_loaded => "",
     :after_setup_theme => "",
+    :head => "Included in <head> of each page",
+    :body => "Included in top of body of each page",
+    :footer => "Included in top of body of each page",
+    :js => "Included at end of body of each page, in the javascript includes. Is wrapped in a javascript tag, so must be javascript string",
+    :js_file => "Included at end of body of each page, in the javascript includes. Included using a JS include tag",
+    :css => "Included in <head> of each page, in CSS section. Must be valid CSS",
+    :css_file => "Included in <head> of each page, in CSS section. Must be a path to a file."
   }
 
   def self.included(base)
-    #base.send(:include, AssetTagHelpers)
-    #base.extend ClassMethods
+    logger.info "#{self} included in #{base}"
+    base.extend ClassMethods
+    #base.extend PluginBase
+  end
+  module ClassMethods
+    def actions
+      where(plugin_type: ['Action','action']).active
+    end
+    def add_action(action_name,action_context,class_name,method_name,priority=10,num_args=nil)
+      logger.info "Registering (#{self} #{class_name}) Action for #{action_name} in #{action_context}: #{class_name}.#{method_name}(#{num_args}) at priority #{priority}"
+      binding.pry
+      plugins = Plugin.where(class_name: class_name, hook_location: action_context, hook_name: action_name, method_name: method_name, plugin_type: ['Action','action'])
+      unless plugins.first
+        file,line = class_name.constantize.new.method(method_name).source_location
+        name,description = class_name.constantize.info
+        plugin = Plugin.create!(class_name: class_name, hook_name: action_name, name: name, 
+                             method_name: method_name, file_name: file, hook_location: action_context,
+                             line_number: line, priority: priority, num_args: num_args, plugin_type: 'Action')
+      end
+    end
   end
 
-
+=begin
   # registers action with pSaMS. Necessary to use plugin. Fails if function name is already registered.
   # @param hook_name the name of the hook. see Hooks.md for a list of known hooks.
   # @param function_name the name of the function to call, executed within the scope of your plugin.
@@ -44,6 +67,6 @@ module Action
   end
   alias :action_exist? :action_exists?
 
-
+=end
 end
 

@@ -14,7 +14,7 @@ module PluginLoader
     def load_plugins(path)
       logger.info "Loading Plugins..."
       process_files(path) do |filename, classname|
-        if ENV['MIGRATIONS']
+        if ENV['MIGRATIONS'] && get_const(classname).present?
           classname.constantize.try(:migrate) 
         else
           if classname.to_s.instance_of?(Module)

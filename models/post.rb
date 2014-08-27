@@ -1,4 +1,6 @@
+#require ActsAsTaggableOn
 class Post < ActiveRecord::Base
+  include ActsAsTaggableOn
   belongs_to :account
   belongs_to :category
   validates_presence_of :title
