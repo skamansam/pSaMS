@@ -99,10 +99,10 @@ items are finished! All others are features that have not been started.
   * More sub-apps: 
     * Image GeoCaching
 
-* Release 2.0 "ZedsDead"
-  * Theme API (with isolated filepath and namespace)
-  * Ability to import/export themes via admin console
-  * Domain-Specific Language (DSL) for content
+  * Release 2.0 "ZedsDead"
+    * Theme API (with isolated filepath and namespace)
+    * Ability to import/export themes via admin console
+    * Domain-Specific Language (DSL) for content
 
 * Release 2.5 "2ed5Dead"
   * More sub-apps:
@@ -151,10 +151,16 @@ cd /path/to/my/projects/folder
 git clone https://github.com/skamansam/pSaMS.git
 cd pSaMS
 bundle install
+rake ar:migrate MIGRATIONS=true
 ```
+
 ### Problems?
 
 If the `bundle install` command fails with errors installing the mysql gem, you could try installing the gem manually or removing the line that begins `gem "mysql"` from the file Gemfile. See [Changing Databases](Changing Databases) for more.
+
+### Running Migrations in Plugins
+
+You can add migrations to plugins by adding a #migrate method to the plugin class definition. To use this method, you must specify the environment variable MIGRATIONS on the command line, as shown above. It is recommended to always add the MIGRATIONS=true.
 
 ### Changing Databases
 
