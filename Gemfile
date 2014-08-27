@@ -22,7 +22,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'sass'
 gem 'haml'
 gem 'coffee-script'
-gem 'activerecord', '>= 3.1', :require => 'active_record'
+gem 'activerecord', '4.1.2', :require => 'active_record'
 gem 'sqlite3', :group=>['development','test']
 #gem 'mongodb', :group=>['development','test']
 gem 'pg', :group=>'production'

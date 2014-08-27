@@ -25,7 +25,6 @@ module Action
     end
     def add_action(action_name,action_context,class_name,method_name,priority=10,num_args=nil)
       logger.info "Registering (#{self} #{class_name}) Action for #{action_name} in #{action_context}: #{class_name}.#{method_name}(#{num_args}) at priority #{priority}"
-      binding.pry
       plugins = Plugin.where(class_name: class_name, hook_location: action_context, hook_name: action_name, method_name: method_name, plugin_type: ['Action','action'])
       unless plugins.first
         file,line = class_name.constantize.new.method(method_name).source_location
