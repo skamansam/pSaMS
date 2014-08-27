@@ -43,11 +43,7 @@ end
 group :development do
   gem 'pry'
   gem 'pry-rescue'
-  if RUBY_VERSION.to_i < 2.0
-    gem 'pry-debugger'
-  else
-    gem 'pry-byebug'
-  end
+  gem 'pry-byebug' # same as pry-debugger, but for 2.0
   gem 'pry-coolline'
   gem 'pry-stack_explorer' #not for 2.0 yet!
   gem 'pry-macro'
@@ -80,7 +76,7 @@ gem 'rdiscount'  #for markdown processing
 #gem 'redis'
 
 # Padrino Stable Gem
-gem 'padrino'
+gem 'padrino', '0.12.2'
 
 # Or Padrino Edge
 #gem 'padrino', :github => 'padrino/padrino-framework'

@@ -214,7 +214,7 @@ DEPENDENCIES
   i18n
   less
   mysql2
-  padrino
+  padrino (= 0.12.2)
   padrino-sprockets
   pg
   pry
