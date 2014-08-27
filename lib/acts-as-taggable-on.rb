@@ -32,8 +32,7 @@ module ActsAsTaggableOn
   end
 end
 
-
-require "acts_as_taggable_on/utils"
+require "acts_as_taggable_on/utils.rb"
 
 require "acts_as_taggable_on/taggable"
 require "acts_as_taggable_on/acts_as_taggable_on/compatibility"
