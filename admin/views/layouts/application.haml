@@ -16,7 +16,9 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          =link_to 'Padrino', url(:base, :index), :class => 'navbar-brand', :title => 'Padrino Admin'
+          .navbar-brand{style: 'text-transform:none'}
+            =link_to image_tag('/admin/assets/admin_logo.gif', :alt => "pSaMs logo", style: 'height: 36px'), url(:base, :index), :title => 'pSaMS Admin'
+            =link_to "pSaMS Admin", url(:base, :index),  :title => 'pSaMS Admin'
           %ul.nav.navbar-nav.pull-right
             %li.navbar-edit-account=link_to tag_icon(:user), url(:accounts, :edit, :id => current_account.id), :title => pat(:profile), :class => 'navbar-nav-link'
             %li.navbar-logout
