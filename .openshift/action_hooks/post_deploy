@@ -1,7 +1,8 @@
 #!/bin/bash
 # This is a simple post deploy hook executed after your application
-# is deployed and started.  This script gets executed directly, so 
+# is deployed and started.  This script gets executed directly, so
 # it could be python, php, ruby, etc.
 
 RACK_ENV=production
+MIGRATIONS=true
 bundle exec rake ar:create ar:migrate
