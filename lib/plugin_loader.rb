@@ -11,11 +11,11 @@ module PluginLoader
   end
   module ClassMethods
     attr_accessor :pages_list, :plugin_list
-    def load_plugins(path)
+    def load_plugins(path,run_migrations)
       logger.info "Loading Plugins..."
       process_files(path) do |filename, classname|
-        if ENV['MIGRATIONS'] && get_const(classname).present?
-          classname.constantize.try(:migrate) 
+        if run_migrations && const_get(classname).present?
+          classname.constantize.try(:migrate)
         else
           if classname.to_s.instance_of?(Module)
             logger.info "Loading  #{classname} from #{filename}..."
@@ -32,7 +32,7 @@ module PluginLoader
     private
 
     def process_files(dir,&block)
-      Dir.glob(Padrino.root("#{dir}/*")) do |file| 
+      Dir.glob(Padrino.root("#{dir}/*")) do |file|
         logger.info "looking in #{file}"
 
         file = "#{file}/#{File.basename(file)}.rb" if File.directory?(file)
@@ -49,7 +49,7 @@ module PluginLoader
         yield file, cname
       end
     end
-  
+
   end
 end
 

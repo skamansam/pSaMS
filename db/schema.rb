@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 16) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "hook_location", default: "*"
+    t.string   "context",     default: "*"
   end
 
   create_table "posts", force: true do |t|

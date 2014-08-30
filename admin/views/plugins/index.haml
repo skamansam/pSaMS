@@ -29,6 +29,8 @@
         %th.header= mat(:plugin, :id)
         %th.header= mat(:plugin, :name)
         %th.header= mat(:plugin, :plugin_type)
+        %th.header= mat(:plugin, :hook_name)
+        %th.header= mat(:plugin, :context)
         %th.header= mat(:plugin, :class_name)
         %th.header= mat(:plugin, :method_name)
         %th.header= mat(:plugin, :active)
@@ -44,6 +46,8 @@
           %td.list-column=plugin.id
           %td.list-column=link_to plugin.name, url(:plugins, :show, id: plugin.id)
           %td.list-column=plugin.plugin_type
+          %td.list-column=plugin.hook_name
+          %td.list-column=plugin.context
           %td.list-column=plugin.class_name
           %td.list-column=plugin.method_name
           %td.list-column= plugin.active ? tag_icon(:ok) : tag_icon(:remove)

@@ -5,10 +5,11 @@ class Plugin < ActiveRecord::Base
   include Filter
   include Filter::Publisher
   include Action
+  include Action::Publisher
 
-  load_plugins('plugins')
+  load_plugins('plugins', ENV['MIGRATIONS'])
   validate :plugin_type, :method_name, :class_name, :hook_name, presence: true
-  
+
   serialize :options, Hash
   serialize :features, Array
 
@@ -23,13 +24,17 @@ class Plugin < ActiveRecord::Base
   def self.by_install_date
     order(:created_at)
   end
-  
+
   def self.by_last_updated
     order(:modified_at)
   end
 
   def self.for_hook(hook)
     where(hook_name: hook)
+  end
+
+  def self.with_context(context)
+    where(context: context)
   end
 
   def self.by_priority
