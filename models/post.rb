@@ -25,7 +25,7 @@ class Post < ActiveRecord::Base
     path[1..-1].each do |s|
       cur_category = Category.find_by_name(s) unless cur_category.nil
     end if path.size > 1
-        
+
     return cur_category.posts
   end
 
@@ -39,6 +39,10 @@ class Post < ActiveRecord::Base
 
   def to_date
     (self.updated_at || self.created_at).to_date.to_formatted_s :rfc822
+  end
+
+  private
+  def apply_before_save_filters
   end
 
 end
