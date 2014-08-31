@@ -14,8 +14,8 @@ module Filter
       unless plugins.first
         file,line = class_name.constantize.new.method(method_name).source_location
         name,description = class_name.constantize.info
-        plugin = Plugin.create!(class_name: class_name, hook_name: hook_name, name: name, 
-                             method_name: method_name, file_name: file, 
+        plugin = Plugin.create!(class_name: class_name, hook_name: hook_name, name: name,
+                             method_name: method_name, file_name: file,
                              line_number: line, priority: priority, num_args: num_args, plugin_type: 'Filter')
       end
     end
@@ -60,9 +60,8 @@ module Filter::ClassMethods
       arr[priority][class_name] = [method_name]
     end
     filter_table[hook_name] = arr
-    #self.class_variable_set "@@filter_table",arr 
+    #self.class_variable_set "@@filter_table",arr
     Filter::filter_table = filter_table
-    #binding.pry
   end
   alias :register_filter :add_filter
 

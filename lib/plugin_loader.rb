@@ -22,7 +22,6 @@ module PluginLoader
             include cname.constantize
           else
             logger.info "Creating new #{classname} from #{filename}..."
-            #binding.pry
             classname.constantize.setup
           end
         end

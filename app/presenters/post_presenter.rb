@@ -1,7 +1,6 @@
 class PostPresenter
   attr_reader :body, :title, :post_date, :author_string, :body_class, :title_class, :post, :id, :updated_at, :created_at, :tags, :account
   def initialize(post)
-    #binding.pry
     puts post.inspect
     @post = post
     @body = Plugin.apply_filter('the_content', post.body,post.freeze)

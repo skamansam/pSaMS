@@ -9,7 +9,7 @@ module PSaMs
 
     register Padrino::Sprockets
     sprockets paths: ['assets','../plugins']
-    enable :sessions 
+    enable :sessions
     include ActsAsTaggableOn
     register ActsAsTaggableOn
 
@@ -52,7 +52,7 @@ module PSaMs
       set :server, :thin
       disable :asset_stamp # no asset timestamping for dev
       #sprockets #:minify=>true , :js_compressor => UglifierWithSourceMapCompressor do |env| #, :css_compressor=>:yui
-      #  puts "Configure: #{env.inspect}" 
+      #  puts "Configure: #{env.inspect}"
       #  env.css_compressor = :yui
       #end
     end
@@ -71,7 +71,7 @@ module PSaMs
     #  logger.info "Requestind #{title}"
     #  if @post = Post.find_by_path(title)
     #    redirect url_for(:posts, :show, id: @post.id)
-    #  else  
+    #  else
     #    #render '/__sinatra__/404.png'
     #  end
     #end
@@ -85,11 +85,10 @@ module PSaMs
       load_category
       @posts = Post.without_news.limit(10).all
       #PostPresenter.new(@posts.first)
-      #binding.pry
       @presenter = PostsPresenter.new(@posts)
 
       render "posts/index",:layout=>'application'
     end
-        
+
   end
 end
