@@ -29,7 +29,7 @@ gem 'pg', :group=>'production'
 gem 'mysql2', :group=>'production'
 
 # Test requirements
-group :test do 
+group :test do
   #gem 'shoulda'
   gem 'rspec'
   gem 'forgery'
@@ -71,12 +71,12 @@ gem 'less'
 #gem 'acts-as-taggable-on', '2.4.1'
 gem 'rdiscount'  #for markdown processing
 
-# for caching. 
+# for caching.
 #gem 'memcached' #disabled for Openshift
 #gem 'redis'
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.2'
+gem 'padrino', '0.12.2' #0.12.3 is broked
 
 # Or Padrino Edge
 #gem 'padrino', :github => 'padrino/padrino-framework'
