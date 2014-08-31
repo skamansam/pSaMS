@@ -3,6 +3,7 @@
 # is deployed and started.  This script gets executed directly, so
 # it could be python, php, ruby, etc.
 
+#we want to run  migrations each deploy
 RACK_ENV=production
 MIGRATIONS=true
 cd $OPENSHIFT_REPO_DIR
