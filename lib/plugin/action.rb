@@ -44,15 +44,15 @@ module Action::Publisher
     base.extend PublisherMethods
   end
   module PublisherMethods
-    def apply_action(hook_name,context='*',*data)
-      data = ''
+    def apply_action(hook_name,context='*', *data, &block)
+      #data = ''
       return data if (actions = Plugin.actions.by_priority.for_hook(hook_name).with_context(context)).blank?
       actions.each do |action|
-        puts "Applying action #{action.hook_name} for #{context} with #{data.inspect}"
+        logger.info "Applying action #{action.hook_name} for #{context}"
         the_obj = action.class_name.constantize.new
         data = the_obj.send(action.method_name, *data)
       end
-      data
+      yield data if block_given?
     end
   end
 end

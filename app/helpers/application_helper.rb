@@ -9,7 +9,7 @@ PSaMs::App.helpers do
     puts "Setting theme"
     theme = params[:theme] || 'default'
     theme_path = '/views/layouts/theme/'+theme
-    
+
     #Padrino::Pipeline.configure_assets do |config|
     #  config.css_assets = [config.css_assets] + [theme_path+'/stylesheets']
     #  config.js_assets = [config.js_assets] + [theme_path+'/javascripts']
@@ -53,7 +53,7 @@ PSaMs::App.helpers do
     return "" if categories.blank?
     ret = "<ul class=\"#{options[:class] || 'menu'}\">\n"
     categories.each do |cat|
-      ret += "<li> 
+      ret += "<li>
                 #{link_for_category(cat)}
                 #{category_menu(cat.children, options.deep_merge({ :class => (options[:submenu_class] || "sub-menu") }) )}
              </li>"
@@ -72,5 +72,10 @@ PSaMs::App.helpers do
   def news_posts_for(category = Category.first, num = 5)
     category = Category.first if category.blank?
     category.posts.for_news.limit(num)
+  end
+
+  def render_from_file(path, *opts, &block)
+    ret = render_to_string path, opts
+    yield ret &block_given?
   end
 end

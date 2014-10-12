@@ -4,34 +4,42 @@
   .controls
     =f.text_field :title, :class => 'form-control input-large input-with-feedback', :autofocus => true
     %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
+
 - error = @post.errors.include?(:path)
 -#%fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :path, :class => 'control-label'
   .controls
     =f.text_field :path, :class => 'form-control input-large input-with-feedback', :autofocus => true
     %span.help-inline=error ? f.error_message_on(:path, :class => 'text-error') : pat(:example)
-- error = @post.errors.include?(:body)
-%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :body, :class => 'control-label'
-  .controls
-    ~f.text_area :body, :class => 'form-control input-large input-with-feedback'
-    %span.help-inline=error ? f.error_message_on(:body, :class => 'text-error') : pat(:example)
-- error = @post.errors.include?(:account_id)
 
+= Plugin.apply_action('add_editor','admin.posts.edit',self,f,@post.errors.include?(:body) ? f.error_message_on(:body, :class => 'text-error') : nil) do |name,editor|
+  %h4.editor_name= name
+  .editor= editor
+
+-# error = @post.errors.include?(:body)
+  %fieldset.control-group{:class => error ? 'has-error' : ''}
+    =f.label :body, :class => 'control-label'
+    .controls
+      ~f.text_area :body, :class => 'form-control input-large input-with-feedback'
+      %span.help-inline=error ? f.error_message_on(:body, :class => 'text-error') : pat(:example)
+
+
+
+- error = @post.errors.include?(:account_id)
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :account_id, caption: "Author",:class => 'control-label'
   .controls
     =f.select :account_id, :options=>Account.all.map{|a| [a.full_name,a.id]},:default=>current_account.id,:class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:account_id, :class => 'text-error') : pat(:example)
-- error = @post.errors.include?(:category_id)
 
+- error = @post.errors.include?(:category_id)
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :category_id, :class => 'control-label'
   .controls
     =f.select :category_id, :options=>Category.all.map{|c| [c.name,c.id]},:class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:category_id, :class => 'text-error') : pat(:example)
-- error = @post.errors.include?(:is_news)
 
+- error = @post.errors.include?(:is_news)
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   .controls
     =f.check_box :is_news, :class => 'input-large input-with-feedback'

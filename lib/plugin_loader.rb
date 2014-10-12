@@ -10,7 +10,6 @@ module PluginLoader
     base.extend ClassMethods
   end
   module ClassMethods
-    attr_accessor :pages_list, :plugin_list
     def load_plugins(path,run_migrations)
       logger.info "Loading Plugins..."
       process_files(path) do |filename, classname|
@@ -32,23 +31,35 @@ module PluginLoader
 
     def process_files(dir,&block)
       Dir.glob(Padrino.root("#{dir}/*")) do |file|
-        logger.info "looking in #{file}"
-
-        file = "#{file}/#{File.basename(file)}.rb" if File.directory?(file)
-
-        if File.basename(file) =~ /(.*)\.rb$/
-          logger.info "Found class #{$1.camelize}"
-          cname = $1.camelize
-        end
-        Padrino.load_paths << file
-        Padrino.dependency_paths << file
-        Padrino.require_dependencies(file)
-        require file
-
-        yield file, cname
+        reload_plugin(file)
       end
     end
+    def is_loaded?(class_name)
+      begin
+        Module.const_get(class_name)
+        return true
+      rescue NameError
+        return false
+      end
+    end
+    def reload_plugin(path, force=false)
+      logger.info "looking in #{path}"
+      path = "#{path}/#{File.basename(path)}.rb" if File.directory?(path)
 
+      if File.basename(path) =~ /(.*)\.rb$/
+        logger.info "Found class #{$1.camelize}"
+        cname = $1.camelize
+      end
+      return if self.is_a?(Class) && is_loaded?(cname) && !force #already loaded
+      set_load_paths(path)
+      yield path, '::'+cname if block_given?
+    end
+
+    def set_load_paths(path)
+      Padrino.load_paths << path
+      Padrino.dependency_paths << path
+      Padrino.require_dependencies(path)
+    end
   end
 end
 

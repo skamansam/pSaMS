@@ -8,6 +8,7 @@ class Plugin < ActiveRecord::Base
   include Action::Publisher
 
   load_plugins('plugins', ENV['MIGRATIONS'])
+
   validate :plugin_type, :method_name, :class_name, :hook_name, presence: true
 
   serialize :options, Hash
@@ -41,15 +42,20 @@ class Plugin < ActiveRecord::Base
     by_install_date.order(:priority)
   end
 
+  def self.reload_plugins
+    load_plugins('plugins', ENV['MIGRATIONS'])
+  end
+
   def plugin_object
     @plugin_object ||= class_name.constantize
+  end
+
+  def actions
+    Plugin.where(class_name: class_name)
   end
 
   def info
     plugin_object.info
   end
 
-  def actions
-    Plugin.where(class_name: class_name)
-  end
 end

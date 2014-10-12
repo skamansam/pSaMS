@@ -2,6 +2,7 @@ module PSaMs
   class Admin < Padrino::Application
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Rendering
+    require File.dirname(__FILE__)+'/../patches/application.rb' #needs to be right after Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
@@ -23,7 +24,7 @@ module PSaMs
     # disable :flash                  # Disables sinatra-flash (enabled by default if Sinatra::Flash is defined)
     # layout  :my_layout              # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
     #
-
+    set :views, [ File.absolute_path(File.join(root,'../plugins/')), File.join(File.dirname(__FILE__),"views/")]
     set :admin_model, 'Account'
     set :login_page,  '/sessions/new'
 
@@ -42,7 +43,7 @@ module PSaMs
       role.project_module :accounts, '/accounts'
     end
 
-    # Custom error management 
+    # Custom error management
     error(403) { @title = "Error 403"; render('errors/403', :layout => :error) }
     error(404) { @title = "Error 404"; render('errors/404', :layout => :error) }
     error(500) { @title = "Error 500"; render('errors/500', :layout => :error) }
