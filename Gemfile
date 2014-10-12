@@ -75,6 +75,9 @@ gem 'rdiscount'  #for markdown processing
 #gem 'memcached' #disabled for Openshift
 #gem 'redis'
 
+#for displaying a method's source, the legacy way
+gem 'method_source'
+
 # Padrino Stable Gem
 gem 'padrino', '0.12.2' #0.12.3 is broked
 

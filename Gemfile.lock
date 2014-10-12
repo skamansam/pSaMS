@@ -213,6 +213,7 @@ DEPENDENCIES
   haml
   i18n
   less
+  method_source
   mysql2
   padrino (= 0.12.2)
   padrino-sprockets
