@@ -1,4 +1,5 @@
 PSaMs::Admin.controllers :posts do
+  layout 'application.haml'
   get :index do
     @title = "Posts"
     @posts = Post.all
@@ -78,9 +79,9 @@ PSaMs::Admin.controllers :posts do
     end
     ids = params[:post_ids].split(',').map(&:strip)
     posts = Post.find(ids)
-    
+
     if Post.destroy posts
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Posts', :ids => "#{ids.to_sentence}")
     end
     redirect url(:posts, :index)

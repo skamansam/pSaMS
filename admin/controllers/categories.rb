@@ -1,4 +1,5 @@
 PSaMs::Admin.controllers :categories do
+  layout 'application.haml'
   get :index do
     @title = "Categories"
     @categories = Category.all
@@ -78,9 +79,9 @@ PSaMs::Admin.controllers :categories do
     end
     ids = params[:category_ids].split(',').map(&:strip)
     categories = Category.find(ids)
-    
+
     if Category.destroy categories
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Categories', :ids => "#{ids.to_sentence}")
     end
     redirect url(:categories, :index)

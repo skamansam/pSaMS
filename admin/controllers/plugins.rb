@@ -1,4 +1,5 @@
 PSaMs::Admin.controllers :plugins do
+  layout 'application.haml'
   get :index do
     @title = "Plugins"
     @plugins = Plugin.all
@@ -90,9 +91,9 @@ PSaMs::Admin.controllers :plugins do
     end
     ids = params[:plugin_ids].split(',').map(&:strip)
     plugins = Plugin.where(id: ids)
-    
+
     if plugins.update_all(:active=>false)
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Plugins', :ids => "#{ids.to_sentence}")
     end
     redirect url(:plugins, :index)

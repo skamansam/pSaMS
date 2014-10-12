@@ -1,4 +1,5 @@
 PSaMs::Admin.controllers :sessions do
+  layout 'application.haml'
   get :new do
     render "/sessions/new", nil, :layout => false
   end

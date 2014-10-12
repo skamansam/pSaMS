@@ -1,5 +1,6 @@
 PSaMs::Admin.controllers :plugin_manager do
-  
+  layout 'application.haml'
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'
@@ -18,6 +19,6 @@ PSaMs::Admin.controllers :plugin_manager do
   # get '/example' do
   #   'Hello world!'
   # end
-  
+
 
 end

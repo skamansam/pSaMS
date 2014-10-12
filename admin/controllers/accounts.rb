@@ -1,4 +1,5 @@
 PSaMs::Admin.controllers :accounts do
+  layout 'application.haml'
   get :index do
     @title = "Accounts"
     @accounts = Account.all
@@ -78,11 +79,11 @@ PSaMs::Admin.controllers :accounts do
     end
     ids = params[:account_ids].split(',').map(&:strip)
     accounts = Account.find(ids)
-    
+
     if accounts.include? current_account
       flash[:error] = pat(:delete_error, :model => 'account')
     elsif Account.destroy accounts
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Accounts', :ids => "#{ids.to_sentence}")
     end
     redirect url(:accounts, :index)
