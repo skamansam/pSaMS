@@ -28,6 +28,9 @@ gem 'sqlite3', :group=>['development','test']
 gem 'pg', :group=>'production'
 gem 'mysql2', :group=>'production'
 
+# adds annotations to the model files
+gem 'annotate'
+
 # Test requirements
 group :test do
   #gem 'shoulda'
