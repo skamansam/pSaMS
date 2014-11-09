@@ -1,19 +1,22 @@
 module PluginLoader
 
   def self.included(base)
-    logger.info "PluginLoader included in #{base}"
+    logger.info "#{base} is a PluginLoader"
     base.extend ClassMethods
   end
+
   def self.registered(base)
-    logger.info "PluginLoader registered to #{base}"
-    #base.send :attr_reader, :page_refs
+    logger.info "#{base} is a PluginLoader"
     base.extend ClassMethods
   end
+
   module ClassMethods
     def load_plugins(path,run_migrations)
       logger.info "Loading Plugins..."
       process_files(path) do |filename, classname|
+        logger.info "Initializing plugin #{classname} in #{filename}"
         if run_migrations && const_get(classname).present?
+          logger.info "Running Migrations for #{classname}..."
           classname.constantize.try(:migrate)
         else
           if classname.to_s.instance_of?(Module)
@@ -27,13 +30,25 @@ module PluginLoader
       end
     end
 
+    def clean_plugins!
+      Plugin.all.each do |plugin|
+        plugin.active = false unless is_loaded?(plugin.class_name)
+        plugin_class = plugin.class_name.constantize
+        plugin.active = false unless plugin_class.new.respond_to?(plugin.method_name)
+        plugin.name = plugin_class.info[0]
+        plugin.save
+      end
+    end
+
+
     private
 
     def process_files(dir,&block)
       Dir.glob(Padrino.root("#{dir}/*")) do |file|
-        reload_plugin(file)
+        reload_plugin(file, &block)
       end
     end
+
     def is_loaded?(class_name)
       begin
         Module.const_get(class_name)
@@ -42,6 +57,7 @@ module PluginLoader
         return false
       end
     end
+
     def reload_plugin(path, force=false)
       logger.info "looking in #{path}"
       path = "#{path}/#{File.basename(path)}.rb" if File.directory?(path)
@@ -62,4 +78,3 @@ module PluginLoader
     end
   end
 end
-

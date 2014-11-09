@@ -37,15 +37,19 @@ Padrino.before_load do
   require 'will_paginate'
   require 'will_paginate/active_record'
   require 'will_paginate/view_helpers/sinatra'
+
   #require 'actionview'
   include WillPaginate::Sinatra::Helpers
-  Padrino.dependency_paths << Padrino.root('app','presenters','**','*.rb')
+  presenters_path = Padrino.root('app','presenters','**','*.rb')
+  Padrino.dependency_paths << presenters_path unless Padrino.dependency_paths.include?(presenters_path)
 end
 
 ##
 # Add your after (RE)load hooks here
 #
 Padrino.after_load do
+  #require File.dirname(__FILE__)+'/../patches/application.rb'
 end
+
 
 Padrino.load!
