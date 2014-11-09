@@ -1,7 +1,14 @@
+%h2
+  Plugin Management
+  =link_to "Reload All Plugins", url_for(:plugins,:index, reload: true), :class=>'btn btn-primary pull-right'
+
 -#%ul.nav.nav-tabs
   %li.active=link_to tag_icon(:list, pat(:list)), url(:plugins, :index)
   %li=link_to tag_icon(:plus, pat(:new)), url(:plugins, :new)
-%p The following is a list of installed plugins.
+
+%p
+  The following is a list of installed plugins. You can activate and deactivate them here.
+
 .tabs-content
   %table#list.table.table-striped.table-hover.table-condensed
     %thead
@@ -64,5 +71,7 @@
                   =link_to tag_icon(:ok), :rel => :tooltip, :title => "#{pat(:new)} plugin", :class => 'list-row-action-new list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
                   =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
 
-
-
+%h3 Dependency Paths
+%ul
+  - Padrino.dependency_paths.each do |path|
+    %li= path

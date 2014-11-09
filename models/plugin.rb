@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: plugins
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  priority    :integer
+#  plugin_type :string(255)
+#  file_name   :string(255)
+#  line_number :integer
+#  class_name  :string(255)
+#  method_name :string(255)
+#  hook_name   :string(255)
+#  num_args    :integer
+#  options     :text
+#  active      :boolean
+#  created_at  :datetime
+#  updated_at  :datetime
+#  context     :string(255)      default("*")
+#
+
 # The Plugin class holds information about a plugin and allows other objects
 # to call plugin methods
 class Plugin < ActiveRecord::Base
@@ -18,8 +39,16 @@ class Plugin < ActiveRecord::Base
     where(active: true)
   end
 
+  def activate!
+    update_attributes(active: true)
+  end
+
   def self.inactive
     where(active: false)
+  end
+
+  def deactivate!
+    update_attributes(active: false)
   end
 
   def self.by_install_date
@@ -42,7 +71,8 @@ class Plugin < ActiveRecord::Base
     by_install_date.order(:priority)
   end
 
-  def self.reload_plugins
+  def self.reload_plugins!
+    clean_plugins!
     load_plugins('plugins', ENV['MIGRATIONS'])
   end
 

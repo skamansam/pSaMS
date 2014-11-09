@@ -3,6 +3,9 @@ PSaMs::Admin.controllers :plugins do
   get :index do
     @title = "Plugins"
     @plugins = Plugin.all
+    if params[:reload]
+      Plugin.reload_plugins!
+    end
     render 'plugins/index'
   end
 
