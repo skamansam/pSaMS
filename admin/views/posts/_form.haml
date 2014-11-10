@@ -11,10 +11,26 @@
   .controls
     =f.text_field :path, :class => 'form-control input-large input-with-feedback', :autofocus => true
     %span.help-inline=error ? f.error_message_on(:path, :class => 'text-error') : pat(:example)
+- editors = {}
+- i = 0
+- Plugin.apply_action('add_editor','admin.posts.edit',self,f,@post.errors.include?(:body) ? f.error_message_on(:body, :class => 'text-error') : nil) do |result|
+  - name = result.has_key?(:name) ? result[:name] : "editor_#{i}"
+  - editors[name] = result.has_key?(:body) ? result[:body] : ""
+  -#%h4.editor_name= result[:name] if result.has_key?(:name)
+    .editor= result[:body] if result.has_key?(:body)
 
-= Plugin.apply_action('add_editor','admin.posts.edit',self,f,@post.errors.include?(:body) ? f.error_message_on(:body, :class => 'text-error') : nil) do |name,editor|
-  %h4.editor_name= name
-  .editor= editor
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :body, :class => 'control-label'
+  .controls
+    .col-xs-2.pull-right
+      = label_tag "post_editor_select", caption: "Editor: ", class: ''
+      = select_tag "post_editor_select", options: editors.keys, id: 'post_editor_select', class: 'form-control pull-right'
+    %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
+    - show=true
+    - editors.each do |name,body|
+      %div{name: name, class: 'post_editor'+(show ? '' : ' hidden')}
+        =body
+      - show=false
 
 -# error = @post.errors.include?(:body)
   %fieldset.control-group{:class => error ? 'has-error' : ''}

@@ -45,14 +45,20 @@ module Action::Publisher
   end
   module PublisherMethods
     def apply_action(hook_name,context='*', *data, &block)
-      #data = ''
       return data if (actions = Plugin.actions.by_priority.for_hook(hook_name).with_context(context)).blank?
+      results = []
       actions.each do |action|
         logger.info "Applying action #{action.hook_name} for #{context}"
         the_obj = action.class_name.constantize.new
-        data = the_obj.send(action.method_name, *data)
+        results << the_obj.send(action.method_name, *data)
       end
-      yield data if block_given?
+      if block_given?
+        results.each do |result|
+          yield result
+        end
+      else
+        results
+      end
     end
   end
 end
@@ -88,5 +94,3 @@ end
   alias :action_exist? :action_exists?
 
 =end
-
-

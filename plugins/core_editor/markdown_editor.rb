@@ -18,7 +18,9 @@ class MarkdownEditor
   end
 
   def get_post_editor(context,form,error)
-    context.partial "simple_editor/html/post_editor.haml", locals: {f: form, error: error}
+    { name: 'Markdown',
+      body: context.partial("core_editor/html/post_editor.haml", locals: {f: form, error: error})
+    }
   end
 
   def get_css
