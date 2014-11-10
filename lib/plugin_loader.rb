@@ -31,6 +31,7 @@ module PluginLoader
     end
 
     def clean_plugins!
+      Padrino.reload!
       Plugin.all.each do |plugin|
         plugin.active = false unless is_loaded?(plugin.class_name)
         plugin_class = plugin.class_name.constantize
