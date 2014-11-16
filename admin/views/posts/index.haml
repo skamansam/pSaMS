@@ -37,12 +37,13 @@
 
     %tbody
       -@posts.each do |post|
+        - body_short = strip_tags(post.body)[0..29]
         %tr.list-row
           %td.list-column.list-selectable
             =check_box_tag 'post_ids[]', :value => post.id, :class => 'list-selectable-checkbox'
           %td.list-column=post.id
           %td.list-column=post.title
-          %td.list-column=post.body
+          %td.list-column=body_short + (body_short.size > 27 ? '...' : '')
           %td.list-column=time_ago_in_words post.created_at
           %td.list-column=time_ago_in_words post.updated_at
           %td.list-column=post.account.full_name
