@@ -7,7 +7,7 @@ module PSaMs
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
     register Padrino::Sprockets
-    sprockets
+    sprockets paths: ['assets','../plugins']
 
     ##
     # Application configuration options
