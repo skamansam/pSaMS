@@ -19,14 +19,14 @@ class MarkdownEditor
 
   def get_post_editor(context,form,error)
     { name: 'Markdown',
-      body: context.partial("core_editor/html/post_editor.haml", locals: {f: form, error: error})
+      body: context.partial("core_editor/html/markdown_editor.haml", locals: {f: form, error: error})
     }
   end
 
   def get_css
-    "<!-- SimpleEditor CSS goes here -->".html_safe
+    "<!-- MarkdownEditor CSS goes here -->".html_safe
   end
   def get_js
-    "<!-- SimpleEditor JS goes here -->".html_safe
+    "<!-- MarkdownEditor JS goes here -->".html_safe
   end
 end

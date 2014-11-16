@@ -19,7 +19,7 @@ class HtmlEditor
 
   def get_post_editor(context,form,error)
     { name: 'HTML',
-      body: context.partial("core_editor/html/post_editor.haml", locals: {f: form, error: error})
+      body: context.partial("core_editor/html/html_editor.haml", locals: {f: form, error: error})
     }
   end
 
