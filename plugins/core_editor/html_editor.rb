@@ -24,9 +24,10 @@ class HtmlEditor
   end
 
   def get_css
-    "<!-- SimpleEditor CSS goes here -->".html_safe
+    "<!-- HTMLEditor CSS goes here -->".html_safe
   end
   def get_js
-    "<!-- SimpleEditor JS goes here -->".html_safe
+    '<script type="text/javascript" src="/admin/assets/core_editor/js/jquery.hotkeys.js"></script>'.html_safe
+    '<script type="text/javascript" src="/admin/assets/core_editor/js/bootstrap-wysiwyg.js"></script>'.html_safe
   end
 end
