@@ -19,7 +19,7 @@ class PlainEditor
 
   def get_post_editor(context,form,error)
     { name: 'Plain Text',
-      body: context.partial("core_editor/html/post_editor.haml", locals: {f: form, error: error})
+      body: context.partial("core_editor/html/plain_editor.haml", locals: {f: form, error: error})
     }
   end
 
