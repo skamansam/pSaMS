@@ -13,6 +13,8 @@ module PSaMs
     include ActsAsTaggableOn
     register ActsAsTaggableOn
 
+    include Version
+
     ##
     # Caching support.
     #
