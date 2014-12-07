@@ -104,7 +104,7 @@ footer p {
 /*     padding: 10px 20px !important; */
 /*   } */
 /*   .login-controls { */
-/*     margin-left: 0px; */ 
+/*     margin-left: 0px; */
 /*   } */
 /* } */
 @media (-webkit-device-pixel-ratio: 2) and (orientation:portrait) {
@@ -119,7 +119,7 @@ footer p {
     padding: 10px 20px !important;
   }
   .login-controls {
-    margin-left: 0px; 
+    margin-left: 0px;
   }
 }
 /* -- End Login -- */
@@ -130,7 +130,7 @@ footer p {
   font-size: 1.5em;
   width: 500px;
   margin: 100px auto 0;
-  text-transform: lowercase; 
+  text-transform: lowercase;
 }
 .custom-error-body {
   border-top: 1px solid #e5e5e5;
@@ -306,13 +306,19 @@ footer p {
 .base-text {
   font-family: 'Varela', sans-serif;
   width: 730px;
-  margin: 40px auto 0;
+  margin: 0px auto 0;
   font-size: 1.45em;
   line-height: 1.8em;
+}
+.base-text em{
+  text-decoration: underline;
+  font-weight: bold;
+  font-style: normal;
 }
 .base-icons {
   text-align: center;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 .base-icons .btn {
   float: left;

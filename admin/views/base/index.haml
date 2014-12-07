@@ -1,12 +1,23 @@
 .base-text
-  %p Padrino is a ruby framework built upon the Sinatra web library.
-  %p It was created to make it fun and easy to code more advanced web applications while still adhering to the spirit that makes Sinatra great!
-  %p Padrino comes shipped with a slick and beautiful Admin Interface, with the following features:
+  -#.login-header.modal-header
+  .login-logo=image_tag('/admin/assets/admin_logo.gif', :alt => "pSaMs logo", :height => 250, :width => 250)
+  -#%p
+    pSaMS is a re-write of SaMS (<em>Sa</em>m's <em>M</em>anagement <em>S</em>ystem), using the
+    Padrino framework. You can extend pSaMS using plugins to easily achieve all manner of customizations.
 
 .base-icons
   .btn-group
-    .btn.btn-primary{:title => "Adapters for datamapper, sequel, activerecord, minirecord, mongomapper, mongoid, couchrest"}=tag_icon("cogs icon-2x", "Orm Agnostic")
-    .btn.btn-success{:title => "User Authentication Support, User Authorization Management"}=tag_icon("group icon-2x", "Authentication")
-    .btn.btn-info{:title => "Erb, Haml, Slim Rendering Support"}=tag_icon("tasks icon-2x", "Template Agnostic")
-    .btn.btn-warning{:title => "English, German, Russian, Danish, French, Brazilian and Italian localizations and many more!.."}=tag_icon("flag icon-2x", "Multi Language")
-    .btn.btn-danger{:title => "You can create a new 'admin interface' by providing a single Model"}=tag_icon("magic icon-2x", "Scaffold")
+    .btn.btn-primary{:title => "Adapters for datamapper, sequel, activerecord, minirecord, mongomapper, mongoid, couchrest"}
+      =tag_icon("comments icon-2x", "Blog")
+    .btn.btn-success{:title => "User Authentication Support, User Authorization Management"}
+      =tag_icon("tags icon-2x", "Tags")
+    .btn.btn-info{:title => "Erb, Haml, Slim Rendering Support"}
+      =tag_icon("th icon-2x", "Widgets")
+    .btn.btn-warning{:title => "English, German, Russian, Danish, French, Brazilian and Italian localizations and many more!.."}
+      =tag_icon("cloud-download icon-2x", "Plugins")
+    .btn.btn-danger{:title => "You can create a new 'admin interface' by providing a single Model"}
+      =tag_icon("tint icon-2x", "Themes")
+    .btn.btn-default{:title => "You can create a new 'admin interface' by providing a single Model"}
+      =tag_icon("plus icon-2x", "Apps")
+
+
