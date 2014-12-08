@@ -24,10 +24,11 @@ class HtmlEditor
   end
 
   def get_css
-    "<!-- HTMLEditor CSS goes here -->".html_safe
+    '<<link rel="stylesheet" href="/admin/assets/core_editor/css/html-editor.js"></script>'.html_safe
   end
   def get_js
-    '<script type="text/javascript" src="/admin/assets/core_editor/js/jquery.hotkeys.js"></script>'.html_safe
-    '<script type="text/javascript" src="/admin/assets/core_editor/js/bootstrap-wysiwyg.js"></script>'.html_safe
+    '<script type="text/javascript" src="/admin/assets/core_editor/js/jquery.hotkeys.js"></script>' +
+    '<script type="text/javascript" src="/admin/assets/core_editor/js/bootstrap-wysiwyg.js"></script>' +
+    '<script type="text/javascript" src="/admin/assets/core_editor/js/html-editor.js"></script>'.html_safe
   end
 end
