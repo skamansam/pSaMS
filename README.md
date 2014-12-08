@@ -53,47 +53,43 @@ All italicized items have been started, but not finished. All emboldened items a
 	-	[Switcher for editor](github.com/skamansam/pSaMS/issues/1)
 	-	[HTML Validator for all pages (javascript/link)](github.com/skamansam/pSaMS/issues/5)
 	-	Add View shortcuts (helpers), for use with themes:
-	-	[**Tag Cloud**](github.com/skamansam/pSaMS/issues/6)
-	-	[Category Cloud](github.com/skamansam/pSaMS/issues/12)
+		-	[**Tag Cloud**](github.com/skamansam/pSaMS/issues/6)
+		-	[Category Cloud](github.com/skamansam/pSaMS/issues/12)
 	-	[**Category Menu**](github.com/skamansam/pSaMS/issues/13)
 	-	[Widget helper](github.com/skamansam/pSaMS/issues/16)
 	-	[**Add a category as an external link**](github.com/skamansam/pSaMS/issues/15)
 	-	[**Sort Categories by sort_by field**](github.com/skamansam/pSaMS/issues/17)
 	-	**Enable Tagging**
-	-	**Tag Cloud Widget on sidebar**
+		-	**Tag Cloud Widget on sidebar**
 	-	**configure Menu based on Categories**
 	-	**Enable basic theme support** (see Themes section)
 	-	**Base theme is RBE "Bubbly Blue" theme**
-	-	Add several js libraries, with on-demand support, via require.js:
-	-	**jquery (no module loading support)**
-	-	jquery-ui (module loading of components)
-	-	**bootstrap** (comes with padrino-admin)
-	-	angular (on-demand module loading of components)
-	-	Modernizr support (in case you REALLY want to break the interwebs)
-	-	**Plugin API Base**mar
-	-	*Filter Plugin Base API*
-	-	Editor Plugin Base API
+	-	**Plugin API Base**
+	-	**Filter Plugin Base API**
+	-	**Editor Plugin Base API**
 
 -	Release 0.5 "MV5"
 
-	-	**Source Map Support in development mode**
+	-	*Source Map Support in development mode*
 	-	Better Themeability
-	-	Three themes: basic, clean and RBE "Bubbly Blue" theme
+	-	Three themes:
+		-	basic
+		-	clean
+		-	**RBE "Bubbly Blue"**
 	-	Two Sub-apps:
-	-	Downloads
-	-	Photos
+		-	Downloads
+		-	Photos
 	-	Filestore backend capabilities:
-	-	Amazon S3 File Store
-	-	Google Drive
+		-	Amazon S3 File Store
+		-	Google Drive
 	-	Panel Editor (which panels have which widgets and in what order)
 	-	Theme can specify how many panels and attributes thereof
-	-	Drag 'n Drop Category Order Editor
+	-	*Drag 'n Drop Category Order Editor*
 
 -	Release 1.0 "Marcelis"
 
 	-	Package as a gem for ease of installation
 	-	Create plugin generator for ease of installation
-	-	extract HTML,Markdown, etc. editors into Plugins
 	-	i18n editor in admin panel (with https://github.com/svenfuchs/i18n-active_record ?)
 	-	Minimal Wordpress Plugin API Implementation (see API.md)
 
@@ -106,12 +102,16 @@ All italicized items have been started, but not finished. All emboldened items a
 	-	More sub-apps:
 	-	Image GeoCaching
 
-	-	Release 2.0 "ZedsDead"
+-	Release 2.0 "ZedsDead"
 
+	-	Add several js libraries, with on-demand support, via require.js:
+		-	**jquery (no module loading support)**
+		-	jquery-ui (module loading of components)
+		-	**bootstrap** (comes with padrino-admin)
+		-	angular (for single-page theme support)
+		-	Modernizr support (in case you REALLY want to break the interwebs)
 	-	Theme API (with isolated filepath and namespace)
-
 	-	Ability to import/export themes via admin console
-
 	-	Domain-Specific Language (DSL) for content
 
 -	Release 2.5 "2ed5Dead"
@@ -126,8 +126,8 @@ All italicized items have been started, but not finished. All emboldened items a
 		-	Wizard interface (show about, then ingredients, then m.o.p. step by step)
 		-	print card-size and full-page
 	-	More filestore backend capabilities:
-	-	SkyDrive
-	-	SugarSync
+		-	SkyDrive
+		-	SugarSync
 
 -	Release 3.0 ""
 
