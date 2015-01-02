@@ -1,6 +1,6 @@
 class HtmlEditor
   include Haml
-
+ do
   def self.info
     ["Core Editor: HTML v1.0","Adds an HTML editor for posts."]
   end
@@ -12,9 +12,12 @@ class HtmlEditor
   def self.migrate ; end
 
   def self.setup
-    Plugin.add_action('add_editor', 'admin.posts.edit', "HtmlEditor", 'get_post_editor',0)
-    Plugin.add_action('add_css', 'admin.posts.edit', "HtmlEditor", 'get_css',0)
-    Plugin.add_action('add_js', 'admin.posts.edit', "HtmlEditor", 'get_js',0)
+    Plugin.add_action('add_editor', 'admin.posts', "HtmlEditor", 'get_post_editor',0)
+    Plugin.add_action('add_css', 'admin.posts', "HtmlEditor", 'get_css',0)
+    Plugin.add_action('add_js', 'admin.posts', "HtmlEditor", 'get_js',0)
+    Plugin.add_action('add_editor', 'admin.posts.new', "HtmlEditor", 'get_post_editor',0)
+    Plugin.add_action('add_css', 'admin.posts.new', "HtmlEditor", 'get_css',0)
+    Plugin.add_action('add_js', 'admin.posts.new', "HtmlEditor", 'get_js',0)
   end
 
   def get_post_editor(context,form,error)
@@ -24,11 +27,11 @@ class HtmlEditor
   end
 
   def get_css
-    '<<link rel="stylesheet" href="/admin/assets/core_editor/css/html-editor.js"></script>'.html_safe
+    '<link rel="stylesheet" href="/assets/core_editor/css/html-editor.css"></script>'.html_safe
   end
   def get_js
-    '<script type="text/javascript" src="/admin/assets/core_editor/js/jquery.hotkeys.js"></script>' +
-    '<script type="text/javascript" src="/admin/assets/core_editor/js/bootstrap-wysiwyg.js"></script>' +
-    '<script type="text/javascript" src="/admin/assets/core_editor/js/html-editor.js"></script>'.html_safe
+    '<script type="text/javascript" src="/assets/core_editor/js/jquery.hotkeys.js"></script>' +
+    '<script type="text/javascript" src="/assets/core_editor/js/bootstrap-wysiwyg.js"></script>' +
+    '<script type="text/javascript" src="/assets/core_editor/js/html-editor.js"></script>'.html_safe
   end
 end

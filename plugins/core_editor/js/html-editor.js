@@ -64,9 +64,10 @@ $(function() {
 
   $('#wysiwyg-editor').parents('form').first().submit(function(event) {
     //make sure data is there
-    console.log(event);
-    $(this).children().first().before("<textarea name='" + $('#wysiwyg-editor').attr('name') + "'></textarea>").innerHTML = $('#wysiwyg-editor').innerHtml
-    return false;
+    //console.log(event);
+    debugger;
+    $(this).find('textarea[name="post[body]"]').innerHTML = this.innerHtml;
+    //return false;
   });
 
 });
