@@ -1,4 +1,9 @@
 module PluginLoader
+  @@errors = {}
+
+  def self.errors
+    @@errors
+  end
 
   def self.included(base)
     logger.info "#{base} is a PluginLoader"
@@ -68,14 +73,23 @@ module PluginLoader
         cname = $1.camelize
       end
       return if self.is_a?(Class) && is_loaded?(cname) && !force #already loaded
-      set_load_paths(path)
-      yield path, '::'+cname if block_given?
+      if set_load_paths(path)
+        yield path, '::'+cname if block_given?
+        true
+      end
+      false
     end
 
     def set_load_paths(path)
-      Padrino.load_paths << path
-      Padrino.dependency_paths << path
-      Padrino.require_dependencies(path)
+      begin
+        Padrino.load_paths << path
+        Padrino.dependency_paths << path
+        Padrino.require_dependencies(path)
+        true
+      rescue SyntaxError => err
+        PluginLoader::errors[path] = err
+        false
+      end
     end
   end
 end
