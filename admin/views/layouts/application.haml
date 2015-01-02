@@ -11,8 +11,8 @@
     =favicon_tag 'favicon.ico'
     %link{:href => 'http://fonts.googleapis.com/css?family=Varela', :rel => :stylesheet}
     =stylesheet_link_tag 'bootstrap', 'application', 'bootstrap-tagsinput', 'prism-dev'
-    - @plugin_context = "admin.#{request.route_obj.controller}.#{request.route_obj.action}"
-    = Plugin.apply_action('add_css',@plugin_context).join("\n").html_safe
+    - @plugin_context ||= "admin.#{request.route_obj.controller}.#{request.route_obj.action}"
+    = Plugin.apply_action('add_css',['*','admin',"admin.#{request.route_obj.controller}",@plugin_context]).join("\n").html_safe
 
   %body
     %a{href: "https://github.com/skamansam/psams"}
@@ -53,4 +53,4 @@
           %li= link_to tag_icon(:twitter, 'twitter'), 'http://twitter.com/padrinorb', :target => :_blank, :class => 'footer-links-link'
 
     =javascript_include_tag 'jquery-1.9.0.min','jquery-ui-1.10.3.custom', 'typeahead.min', 'prism-dev', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab bootstrap/bootstrap-tagsinput]), :application
-    = Plugin.apply_action('add_js',@plugin_context).join("\n").html_safe
+    = Plugin.apply_action('add_js',['*','admin',"admin.#{request.route_obj.controller}",@plugin_context]).join("\n").html_safe
