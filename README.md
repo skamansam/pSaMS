@@ -22,128 +22,133 @@ pSaMS Features
 
 You can add your own theme assets, under app/assets/*/theme/theme_name/ and use the
 
-### Two themes to get started
+### Themes to get you started
 
-pSaMS comes with two thems, one which uses Bootstrap, and one which uses jQuery-UI
+pSaMS comes with several themes. One theme, "Bubbly Blue," is the design for my old site. One theme is not really a theme, but a basic template (not finished). The last theme is a clean and simple grayscale theme.
 
-### Javascript Source Map support
+### Developer Support
+
+
+Javascript Source Map support
 
 For javascript development, pSaMS is preconfigured to generate a custom source map with each javascript file, only in development mode. Production mode does not generate source maps, and uses the closure compiler.
 
 ### Sub-App Support
 
-Since pSaMS is built using padrino, you can create your own sub-apps easily. See the [Padrino](http://www.padrinorb.com/guides/generators#sub-app-generator) site for more. There are two apps included: * A download app, for tracking and uploading files for sharing * A photo app, for showing the world your amazing adventures
+Since pSaMS is built using padrino, you can create your own sub-apps easily. See the [Padrino](http://www.padrinorb.com/guides/generators#sub-app-generator) site for more. There are two apps included:* A download app, for tracking and uploading files for sharing* A photo app, for showing the world your amazing adventures
+
+### Roadmap
+See [pSaMS.wiki]() folder for the full roadmap.
 
 Roadmap/Features
 ----------------
 
 This is a tentative release schedule. My personal challenge is to hit a release or mid-release every 6 months, so that means version 0.5 should be finished sometime in June 2014 and version 4.0 should come out January 2018.
 
-NOTE: I will not support non-free or non-cross-platform APIs or data sources, such as iCloud, which is iOS only. If you need support for such services, consider becoming a contributer to pSaMS!
+NOTE: I will not support non-free or platform-specific APIs or data sources, such as iCloud, which is iOS only. If you need support for such services, consider becoming a contributer to pSaMS!
 
 All italicized items have been started, but not finished. All emboldened items are finished! All others are features that have not been started.
 
 -	Release 0.1 "MV" ("Minimal Viable")
-
-	-	*Manage posts*
-	-	*Can be authored in several formats*:
-		-	**Plain text**
-		-	[Markdown](github.com/skamansam/pSaMS/issues/2)
-		-	[HTML](github.com/skamansam/pSaMS/issues/3)
-	-	[Switcher for editor](github.com/skamansam/pSaMS/issues/1)
-	-	[HTML Validator for all pages (javascript/link)](github.com/skamansam/pSaMS/issues/5)
-	-	Add View shortcuts (helpers), for use with themes:
-		-	[**Tag Cloud**](github.com/skamansam/pSaMS/issues/6)
-		-	[Category Cloud](github.com/skamansam/pSaMS/issues/12)
-	-	[**Category Menu**](github.com/skamansam/pSaMS/issues/13)
-	-	[Widget helper](github.com/skamansam/pSaMS/issues/16)
-	-	[**Add a category as an external link**](github.com/skamansam/pSaMS/issues/15)
-	-	[**Sort Categories by sort_by field**](github.com/skamansam/pSaMS/issues/17)
-	-	**Enable Tagging**
-		-	**Tag Cloud Widget on sidebar**
-	-	**configure Menu based on Categories**
-	-	**Enable basic theme support** (see Themes section)
-	-	**Base theme is RBE "Bubbly Blue" theme**
-	-	**Plugin API Base**
-	-	**Filter Plugin Base API**
-	-	**Editor Plugin Base API**
+  -	*Manage posts*
+  -	*Can be authored in several formats*:
+    -	**Plain text**
+    -	[Markdown](github.com/skamansam/pSaMS/issues/2)
+    -	[HTML](github.com/skamansam/pSaMS/issues/3)
+  -	[Switcher for editor](github.com/skamansam/pSaMS/issues/1)
+  -	[HTML Validator for all pages (javascript/link)](github.com/skamansam/pSaMS/issues/5)
+  -	Add View shortcuts (helpers), for use with themes:
+    -	[**Tag Cloud**](github.com/skamansam/pSaMS/issues/6)
+    -	[Category Cloud](github.com/skamansam/pSaMS/issues/12)
+  -	[**Category Menu**](github.com/skamansam/pSaMS/issues/13)
+  -	[Widget helper](github.com/skamansam/pSaMS/issues/16)
+  -	[**Add a category as an external link**](github.com/skamansam/pSaMS/issues/15)
+  -	[**Sort Categories by sort_by field**](github.com/skamansam/pSaMS/issues/17)
+  -	**Enable Tagging**
+    -	**Tag Cloud Widget on sidebar**
+  -	**configure Menu based on Categories**
+  -	**Enable basic theme support** (see Themes section)
+  -	**Base theme is RBE "Bubbly Blue" theme**
+  -	**Plugin API Base**
+  -	**Filter Plugin Base API**
+  -	**Editor Plugin Base API**
 
 -	Release 0.5 "MV5"
 
-	-	*Source Map Support in development mode*
-	-	Better Themeability
-	-	Three themes:
-		-	basic
-		-	clean
-		-	**RBE "Bubbly Blue"**
-	-	Two Sub-apps:
-		-	Downloads
-		-	Photos
-	-	Filestore backend capabilities:
-		-	Amazon S3 File Store
-		-	Google Drive
-	-	Panel Editor (which panels have which widgets and in what order)
-	-	Theme can specify how many panels and attributes thereof
-	-	*Drag 'n Drop Category Order Editor*
+  -	*Source Map Support in development mode*
+  -	Better Themeability
+  -	Three themes:
+    -	basic
+    -	clean
+    -	**RBE "Bubbly Blue"**
+  -	Two Sub-apps:
+    -	Downloads
+    -	Photos
+  -	Filestore backend capabilities:
+    -	Amazon S3 File Store
+    -	Google Drive
+  -	Panel Editor (which panels have which widgets and in what order)
+  -	Theme can specify how many panels and attributes thereof
+  -	*Drag 'n Drop Category Order Editor*
 
 -	Release 1.0 "Marcelis"
 
-	-	Package as a gem for ease of installation
-	-	Create plugin generator for ease of installation
-	-	i18n editor in admin panel (with https://github.com/svenfuchs/i18n-active_record ?)
-	-	Minimal Wordpress Plugin API Implementation (see API.md)
+  -	Package as a gem for ease of installation
+  -	Create plugin generator for ease of installation
+  -	i18n editor in admin panel (with https://github.com/svenfuchs/i18n-active_record ?)
+  -	Minimal Wordpress Plugin API Implementation (see API.md)
 
 -	Release 1.5 "Marcel15"
 
-	-	More filestore backend capabilities:
-	-	Box.net
-	-	DropBox
-	-	ownCloud
-	-	More sub-apps:
-	-	Image GeoCaching
+  -	More filestore backend capabilities:
+  -	Box.net
+  -	DropBox
+  -	ownCloud
+  -	More sub-apps:
+  -	Image GeoCaching
 
 -	Release 2.0 "ZedsDead"
 
-	-	Add several js libraries, with on-demand support, via require.js:
-		-	**jquery (no module loading support)**
-		-	jquery-ui (module loading of components)
-		-	**bootstrap** (comes with padrino-admin)
-		-	angular (for single-page theme support)
-		-	Modernizr support (in case you REALLY want to break the interwebs)
-	-	Theme API (with isolated filepath and namespace)
-	-	Ability to import/export themes via admin console
-	-	Domain-Specific Language (DSL) for content
+  -	Add several js libraries, with on-demand support, via require.js:
+    -	**jquery (no module loading support)**
+    -	jquery-ui (module loading of components)
+    -	**bootstrap** (comes with padrino-admin)
+    -	angular (for single-page theme support)
+    -	Modernizr support (in case you REALLY want to break the interwebs)
+  -	Theme API (with isolated filepath and namespace)
+  -	Ability to import/export themes via admin console
+  -	Domain-Specific Language (DSL) for content
 
 -	Release 2.5 "2ed5Dead"
 
-	-	More sub-apps:
-	-	recipe management
-		-	kitchen inventory management
-		-	conversion of units
-		-	ingredient quantity change based on a single ingredient (i.e "I only have one egg, and I need two...[recipe adjusts to suit]")
-		-	MOP Checklist/wizard
-		-	Item checklist
-		-	Wizard interface (show about, then ingredients, then m.o.p. step by step)
-		-	print card-size and full-page
-	-	More filestore backend capabilities:
-		-	SkyDrive
-		-	SugarSync
+  -	More sub-apps:
+  -	recipe management
+    -	kitchen inventory management
+    -	conversion of units
+    -	ingredient quantity change based on a single ingredient (i.e "I only have one egg, and I need two...[recipe adjusts to suit]")
+    -	MOP Checklist/wizard
+    -	Item checklist
+    -	Wizard interface (show about, then ingredients, then m.o.p. step by step)
+    -	print card-size and full-page
+  -	More filestore backend capabilities:
+    -	SkyDrive
+    -	SugarSync
 
 -	Release 3.0 ""
 
-	-	Theme Packaging for redistribution
-	-	DSL for page creation/templates
+  -	Theme Packaging for redistribution
+  -	DSL for page creation/templates
 
 -	Release 3.5
 
-	-	More filestore backend capabilities:
-	-	SpiderOak
-	-	SugarSync
+  -	More filestore backend capabilities:
+  -	SpiderOak
+  -	SugarSync
 
 -	Release 4.0
 
-	-	Edit site layouts/templates via admin console
-	-	Package sub-apps as gems with "psams" namespace (i.e. 'psams-photos') for easy in/exclusion  
+  -	Edit site layouts/templates via admin console
+  -	Package sub-apps as gems with "psams" namespace (i.e. 'psams-photos') for easy in/exclusion  
 
 Getting Started
 ---------------
