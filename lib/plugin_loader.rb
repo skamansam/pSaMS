@@ -5,6 +5,16 @@ module PluginLoader
     @@errors
   end
 
+  def self.add_error(key,error)
+    if @@errors.has_key?(key)
+      unless @@errors[key].detect{|e| error.message == e.message}
+        @@errors[key] << error
+      end
+    else
+      @@errors[key] = [error]
+    end
+  end
+
   def self.included(base)
     logger.info "#{base} is a PluginLoader"
     base.extend ClassMethods
@@ -87,7 +97,9 @@ module PluginLoader
         Padrino.require_dependencies(path)
         true
       rescue SyntaxError => err
-        PluginLoader::errors[path] = err
+        Padrino.load_paths.delete path
+        Padrino.dependency_paths.delete path
+        PluginLoader::add_error(path, err)
         false
       end
     end
