@@ -228,9 +228,11 @@
     $('select#post_editor_select')
       .on('change', function() {
         var selected = $(this).val();
-        var editor_pane = $('.post-editors .post-editor[name="' + selected + '"]');
+        var editor_pane = $('.post-editors .post-editor[name="' +
+          selected + '"]');
         $('.post-editors .post-editor').addClass('hidden')
-        $('.post-editors .post-editor :input').attr('disabled', 'disabled');
+        $('.post-editors .post-editor :input').attr('disabled',
+          'disabled');
         editor_pane.removeClass('hidden');
         editor_pane.find(':input').removeAttr('disabled')
       });
