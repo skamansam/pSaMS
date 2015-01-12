@@ -28,17 +28,8 @@
 
     var listCheckboxesSelector = '.list-selectable-checkbox',
       list = $('#list'),
-      alertTimeout = 4000,
       listCheckboxes, listCheckboxesLength;
 
-    // Automatically close alerts if there was any present.
-    if ($('.alert')
-      .length > 0) {
-      setTimeout(function() {
-        $('.alert')
-          .alert('close');
-      }, alertTimeout);
-    }
 
     // Only process list-related JavaScript if there's a list!
     if (list.length > 0) {

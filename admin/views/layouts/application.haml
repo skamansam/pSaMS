@@ -10,7 +10,7 @@
     %title= @title.present? ? "#{@title} | Padrino Admin" : "Padrino Admin"
     =favicon_tag 'favicon.ico'
     %link{:href => 'http://fonts.googleapis.com/css?family=Varela', :rel => :stylesheet}
-    =stylesheet_link_tag 'bootstrap', 'application', 'bootstrap-tagsinput', 'prism-dev'
+    =stylesheet_link_tag 'application'
     - @plugin_context ||= "admin.#{request.route_obj.controller}.#{request.route_obj.action}"
     = Plugin.apply_action('add_css',['*','admin',"admin.#{request.route_obj.controller}",@plugin_context]).join("\n").html_safe
 
