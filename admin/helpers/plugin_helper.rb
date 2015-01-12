@@ -4,7 +4,7 @@ module PSaMs
   class Admin
     module PluginHelper
       def error_check
-        if (errors = PluginLoader::errors).present?
+        if (errors = ErrorHandler.errors).present?
           errors.map do |plugin_path, err|
             plugin_relative_path = Pathname.new(plugin_path).relative_path_from(Pathname.new(Padrino.root))
             "There #{err.size > 1 ? "were #{err.size} errors": 'was an error'} with the file #{plugin_relative_path}:<br/> <ul><li>#{err.map(&:message).join('</li><li>')}</li></ul>"

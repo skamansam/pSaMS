@@ -1,19 +1,4 @@
 module PluginLoader
-  @@errors = {}
-
-  def self.errors
-    @@errors
-  end
-
-  def self.add_error(key,error)
-    if @@errors.has_key?(key)
-      unless @@errors[key].detect{|e| error.message == e.message}
-        @@errors[key] << error
-      end
-    else
-      @@errors[key] = [error]
-    end
-  end
 
   def self.included(base)
     logger.info "#{base} is a PluginLoader"
@@ -48,10 +33,15 @@ module PluginLoader
     def clean_plugins!
       Padrino.reload!
       Plugin.all.each do |plugin|
+        plugin_class = nil
         plugin.active = false unless is_loaded?(plugin.class_name)
-        plugin_class = plugin.class_name.constantize
-        plugin.active = false unless plugin_class.new.respond_to?(plugin.method_name)
-        plugin.name = plugin_class.info[0]
+        begin
+          plugin_class = plugin.class_name.constantize
+          plugin.active = false unless plugin_class.new.respond_to?(plugin.method_name)
+          plugin.name = plugin_class.info[0]
+        rescue NameError=>e
+          ErrorHandler.add_error plugin.file_name, e
+        end
         plugin.save
       end
     end
@@ -96,10 +86,10 @@ module PluginLoader
         Padrino.dependency_paths << path
         Padrino.require_dependencies(path)
         true
-      rescue SyntaxError => err
+      rescue Exception => err
         Padrino.load_paths.delete path
         Padrino.dependency_paths.delete path
-        PluginLoader::add_error(path, err)
+        ErrorHandler::add_error(path, err)
         false
       end
     end

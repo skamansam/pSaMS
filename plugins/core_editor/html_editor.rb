@@ -1,6 +1,6 @@
 class HtmlEditor
   include Haml
- do
+
   def self.info
     ["Core Editor: HTML v1.0","Adds an HTML editor for posts."]
   end

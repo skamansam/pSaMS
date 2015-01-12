@@ -48,17 +48,20 @@ module Action::Publisher
       return data if (actions = Plugin.actions.by_priority.for_hook(hook_name).with_context(context)).blank?
       results = []
       actions.each do |action|
-        logger.info "Applying action #{action.hook_name} for #{context}"
-        the_obj = action.class_name.constantize.new
-        results << the_obj.send(action.method_name, *data)
+        begin
+          logger.info "Applying action #{action.hook_name} for #{context}"
+          the_obj = action.class_name.constantize.new
+          results << the_obj.send(action.method_name, *data)
+        rescue Exception=>e
+          ErrorHandler.add_error(action.file_name,e)
+        end
       end
       if block_given?
         results.each do |result|
           yield result
         end
-      else
-        results
       end
+      results
     end
   end
 end

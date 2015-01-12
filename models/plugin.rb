@@ -22,6 +22,7 @@
 # The Plugin class holds information about a plugin and allows other objects
 # to call plugin methods
 class Plugin < ActiveRecord::Base
+  include ErrorHandler
   include PluginLoader
   include Filter
   include Filter::Publisher
