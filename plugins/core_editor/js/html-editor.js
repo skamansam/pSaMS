@@ -62,12 +62,11 @@ $(function() {
   });
   window.prettyPrint && prettyPrint();
 
-  $('#wysiwyg-editor').parents('form').first().submit(function(event) {
-    //make sure data is there
-    //console.log(event);
-    debugger;
-    $(this).find('textarea[name="post[body]"]').innerHTML = this.innerHtml;
-    //return false;
-  });
+  $('#wysiwyg-editor').parents('form').first().on('submit',
+    function(event, x, yu, z) {
+      $(this).find('textarea[name="post[body]"]').html(
+        $(this).find('#wysiwyg-editor').first().html()
+      );
+    });
 
 });
