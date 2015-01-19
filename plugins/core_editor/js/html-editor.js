@@ -56,6 +56,7 @@ $(function() {
       '<strong>File upload error</strong> ' + msg + ' </div>').prependTo(
       '#alerts');
   };
+  //$('#wysiwyg-editor').html($(this).find('textarea[name="post[body]"]').val());
   initToolbarBootstrapBindings();
   $('#wysiwyg-editor').wysiwyg({
     fileUploadError: showErrorAlert
