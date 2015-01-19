@@ -50,6 +50,8 @@ group :development do
   gem 'pry-coolline'
   gem 'pry-stack_explorer' #not for 2.0 yet!
   gem 'pry-macro'
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
 
 # Or Individual Gems

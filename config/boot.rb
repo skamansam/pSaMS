@@ -51,5 +51,13 @@ Padrino.after_load do
   #require File.dirname(__FILE__)+'/../patches/application.rb'
 end
 
+# Setup better_errors
+if Padrino.env == :development
+  require 'better_errors'
+  Padrino::Application.use BetterErrors::Middleware
+  BetterErrors.application_root = PADRINO_ROOT
+  BetterErrors.logger = Padrino.logger
+end
+
 
 Padrino.load!
