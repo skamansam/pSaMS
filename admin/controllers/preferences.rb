@@ -1,6 +1,6 @@
 PSaMs::Admin.controllers :preferences do
   layout 'application.haml'
-  get :index, provides: [:js] do
+  get :index, provides: [:json] do
     @prefs = Preference.all
     json prefs: [:one,:two]
   end

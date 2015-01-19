@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 16) do
+ActiveRecord::Schema.define(version: 17) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 16) do
     t.integer  "category_id"
     t.string   "path"
     t.boolean  "is_news",     default: false
+  end
+
+  create_table "preferences", force: true do |t|
+    t.integer  "user_id"
+    t.string   "context",    default: "*"
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: true do |t|
