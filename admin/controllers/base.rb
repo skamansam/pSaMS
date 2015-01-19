@@ -4,4 +4,8 @@ PSaMs::Admin.controllers :base do
     flash[:error] = error_check
     render "base/index"
   end
+  get :plugin do
+    flash[:error] = error_check
+    render "base/index"
+  end
 end
