@@ -225,7 +225,13 @@
         $('.post-editors .post-editor :input').attr('disabled',
           'disabled');
         editor_pane.removeClass('hidden');
-        editor_pane.find(':input').removeAttr('disabled')
+        editor_pane.find(':input').removeAttr('disabled');
+        $.post('/admin/preference.json', {
+          context: 'admin.posts.editor',
+          value: selected
+        }, function(data) {
+          console.info('Successfully updated preference: ', data)
+        })
       });
     $('.post-editors .post-editor :input').attr('disabled', 'disabled');
     $('select#post_editor_select').change();
