@@ -9,6 +9,8 @@ module PSaMs
     register Padrino::Sprockets
     sprockets paths: ['assets','../plugins']
 
+    helpers Sinatra::JSON
+
     ##
     # Application configuration options
     #

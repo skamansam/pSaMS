@@ -9,6 +9,7 @@ module PSaMs
 
     register Padrino::Sprockets
     sprockets paths: ['assets','../plugins']
+    helpers Sinatra::JSON
     enable :sessions
     include ActsAsTaggableOn
     register ActsAsTaggableOn

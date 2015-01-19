@@ -57,6 +57,8 @@ end
 #   gem 'padrino-' + g, '0.11.4'
 # end
 
+gem 'sinatra-contrib'
+
 gem 'padrino-sprockets', :require => "padrino/sprockets" #, :path=>"/home/sam/workspace/padrino-sprockets" #:git=>https://github.com/skamansam/padrino-sprockets.git
 
 gem 'therubyracer'
@@ -71,7 +73,7 @@ gem 'less'
 
 #gems for extensibility
 #gem 'actionview'
-#gem 'acts-as-taggable-on', '2.4.1'
+gem 'acts-as-taggable-on' #, '2.4.1'
 gem 'rdiscount'  #for markdown processing
 
 # for caching.
@@ -82,7 +84,7 @@ gem 'rdiscount'  #for markdown processing
 gem 'method_source'
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.2' #0.12.3 is broked
+gem 'padrino' #, '0.12.2' #0.12.3+ is broked for acts as taggable on
 
 # Or Padrino Edge
 #gem 'padrino', :github => 'padrino/padrino-framework'
