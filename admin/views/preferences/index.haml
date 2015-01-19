@@ -1,0 +1,60 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:preferences, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:preferences, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:preferences, :destroy_many), :method => :delete do
+                      =hidden_field_tag :preference_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:preference, :id)
+        %th.header= mat(:preference, :user_id)
+        %th.header= mat(:preference, :context)
+        %th.header= mat(:preference, :key)
+        %th.header= mat(:preference, :value)
+        %th.header= mat(:preference, :created_at)
+        %th.header= mat(:preference, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@preferences.each do |preference|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'preference_ids[]', :value => preference.id, :class => 'list-selectable-checkbox'
+          %td.list-column=preference.id
+          %td.list-column=preference.user_id
+          %td.list-column=preference.context
+          %td.list-column=preference.key
+          %td.list-column=preference.value
+          %td.list-column=time_ago_in_words preference.created_at
+          %td.list-column=time_ago_in_words preference.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:preferences, :edit, :id => preference.id), :rel => :tooltip, :title => "#{pat(:edit)} preference", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} preference", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "preference")
+                .popover-content
+                  = form_tag url(:preferences, :destroy, :id => preference.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

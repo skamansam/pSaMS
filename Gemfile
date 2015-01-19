@@ -77,6 +77,7 @@ gem 'less'
 #gem 'actionview'
 gem 'acts-as-taggable-on' #, '2.4.1'
 gem 'rdiscount'  #for markdown processing
+gem 'bh'
 
 # for caching.
 #gem 'memcached' #disabled for Openshift

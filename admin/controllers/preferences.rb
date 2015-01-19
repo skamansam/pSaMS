@@ -1,70 +1,88 @@
 PSaMs::Admin.controllers :preferences do
-  layout 'application.haml'
-  get :index, provides: [:json] do
-    @prefs = Preference.all
-    json prefs: [:one,:two]
+  get :index do
+    @title = "Preferences"
+    @preferences = Preference.all
+    render 'preferences/index'
   end
 
-  post :create, provides: [:json] do
-    @pref = Preference.new(params[:preference])
-    if @pref.save
+  get :new do
+    @title = pat(:new_title, :model => 'preference')
+    @preference = Preference.new
+    render 'preferences/new'
+  end
+
+  post :create do
+    @preference = Preference.new(params[:preference])
+    if @preference.save
+      @title = pat(:create_title, :model => "preference #{@preference.id}")
       flash[:success] = pat(:create_success, :model => 'Preference')
-      params[:save_and_continue] ? redirect(url(:categories, :index)) : redirect(url(:categories, :edit, :id => @category.id))
+      params[:save_and_continue] ? redirect(url(:preferences, :index)) : redirect(url(:preferences, :edit, :id => @preference.id))
     else
-      @title = pat(:create_title, :model => 'category')
-      flash.now[:error] = pat(:create_error, :model => 'category')
-      render 'categories/new'
+      @title = pat(:create_title, :model => 'preference')
+      flash.now[:error] = pat(:create_error, :model => 'preference')
+      render 'preferences/new'
     end
   end
 
-  put :update, :with => :id, provides: [:json] do
-    @title = pat(:update_title, :model => "category #{params[:id]}")
-    @category = Category.find(params[:id])
-    if @category
-      if @category.update_attributes(params[:category])
-        flash[:success] = pat(:update_success, :model => 'Category', :id =>  "#{params[:id]}")
+  get :edit, :with => :id do
+    @title = pat(:edit_title, :model => "preference #{params[:id]}")
+    @preference = Preference.find(params[:id])
+    if @preference
+      render 'preferences/edit'
+    else
+      flash[:warning] = pat(:create_error, :model => 'preference', :id => "#{params[:id]}")
+      halt 404
+    end
+  end
+
+  put :update, :with => :id do
+    @title = pat(:update_title, :model => "preference #{params[:id]}")
+    @preference = Preference.find(params[:id])
+    if @preference
+      if @preference.update_attributes(params[:preference])
+        flash[:success] = pat(:update_success, :model => 'Preference', :id =>  "#{params[:id]}")
         params[:save_and_continue] ?
-        redirect(url(:categories, :index)) :
-        redirect(url(:categories, :edit, :id => @category.id))
+          redirect(url(:preferences, :index)) :
+          redirect(url(:preferences, :edit, :id => @preference.id))
       else
-        flash.now[:error] = pat(:update_error, :model => 'category')
-        render 'categories/edit'
+        flash.now[:error] = pat(:update_error, :model => 'preference')
+        render 'preferences/edit'
       end
     else
-      flash[:warning] = pat(:update_warning, :model => 'category', :id => "#{params[:id]}")
+      flash[:warning] = pat(:update_warning, :model => 'preference', :id => "#{params[:id]}")
       halt 404
     end
   end
 
-  delete :destroy, :with => :id, provides: [:json] do
-    @title = "Categories"
-    category = Category.find(params[:id])
-    if category
-      if category.destroy
-        flash[:success] = pat(:delete_success, :model => 'Category', :id => "#{params[:id]}")
+  delete :destroy, :with => :id do
+    @title = "Preferences"
+    preference = Preference.find(params[:id])
+    if preference
+      if preference.destroy
+        flash[:success] = pat(:delete_success, :model => 'Preference', :id => "#{params[:id]}")
       else
-        flash[:error] = pat(:delete_error, :model => 'category')
+        flash[:error] = pat(:delete_error, :model => 'preference')
       end
-      redirect url(:categories, :index)
+      redirect url(:preferences, :index)
     else
-      flash[:warning] = pat(:delete_warning, :model => 'category', :id => "#{params[:id]}")
+      flash[:warning] = pat(:delete_warning, :model => 'preference', :id => "#{params[:id]}")
       halt 404
     end
   end
 
-  delete :destroy_many, provides: [:json] do
-    @title = "Categories"
-    unless params[:category_ids]
-      flash[:error] = pat(:destroy_many_error, :model => 'category')
-      redirect(url(:categories, :index))
+  delete :destroy_many do
+    @title = "Preferences"
+    unless params[:preference_ids]
+      flash[:error] = pat(:destroy_many_error, :model => 'preference')
+      redirect(url(:preferences, :index))
     end
-    ids = params[:category_ids].split(',').map(&:strip)
-    categories = Category.find(ids)
-
-    if Category.destroy categories
-
-      flash[:success] = pat(:destroy_many_success, :model => 'Categories', :ids => "#{ids.to_sentence}")
+    ids = params[:preference_ids].split(',').map(&:strip)
+    preferences = Preference.find(ids)
+    
+    if Preference.destroy preferences
+    
+      flash[:success] = pat(:destroy_many_success, :model => 'Preferences', :ids => "#{ids.to_sentence}")
     end
-    redirect url(:categories, :index)
+    redirect url(:preferences, :index)
   end
 end

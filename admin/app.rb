@@ -7,6 +7,8 @@ module PSaMs
     register Padrino::Helpers
     register Padrino::Admin::AccessControl
     register Padrino::Sprockets
+    register Bh #bootstrap helpers
+
     sprockets paths: ['assets','../plugins']
 
     helpers Sinatra::JSON
@@ -39,6 +41,7 @@ module PSaMs
     end
 
     access_control.roles_for :admin do |role|
+      role.project_module :preferences, '/preferences'
       role.project_module :plugins, '/plugins'
       role.project_module :categories, '/categories'
       role.project_module :posts, '/posts'
