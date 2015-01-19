@@ -27,8 +27,8 @@
 #
 Padrino.configure_apps do
   # Use better_errors
-  set :protect_from_csrf, except: %r{/__better_errors/\\w+/\\w+\\z} if Padrino.env == :development
-  
+  #set :protect_from_csrf, except: %r{/__better_errors/\\w+/\\w+\\z} if Padrino.env == :development
+
   # enable :sessions
   set :session_secret, 'e84b0cbc25010d6765acfee1c99934c74eb686cc184ca5b24f5be5313ff0a580'
   set :protection, true

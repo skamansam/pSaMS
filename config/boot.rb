@@ -1,5 +1,5 @@
 # Defines our constants
-PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'development'  unless defined?(PADRINO_ENV)
+RACK_ENV = PADRINO_ENV  = ENV['PADRINO_ENV'] ||= ENV['RACK_ENV'] ||= 'development'  unless defined?(PADRINO_ENV)
 PADRINO_ROOT = File.expand_path('../..', __FILE__) unless defined?(PADRINO_ROOT)
 
 # Load our dependencies
@@ -52,12 +52,13 @@ Padrino.after_load do
 end
 
 # Setup better_errors
+=begin
 if Padrino.env == :development
   require 'better_errors'
   Padrino::Application.use BetterErrors::Middleware
   BetterErrors.application_root = PADRINO_ROOT
   BetterErrors.logger = Padrino.logger
 end
-
+=end
 
 Padrino.load!

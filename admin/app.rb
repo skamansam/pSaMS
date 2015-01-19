@@ -1,6 +1,6 @@
 module PSaMs
   class Admin < Padrino::Application
-    use ActiveRecord::ConnectionAdapters::ConnectionManagement
+    use ConnectionPoolManagement
     register Padrino::Rendering
     require File.dirname(__FILE__)+'/../patches/application.rb' #needs to be right after Padrino::Rendering
     register Padrino::Mailer

@@ -16,8 +16,10 @@
 # SQLite Configurtion
 ActiveRecord::Base.configurations[:development] = {
   :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'pSaMS_development.db')
-
+  :database => Padrino.root('db', 'pSaMS_development.db'),
+  #:wait_timeout => 10,
+  #:timeout => 250,
+  :pool => 3
 }
 
 =begin # MongoDB configuration
