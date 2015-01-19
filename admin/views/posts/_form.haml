@@ -6,11 +6,6 @@
     %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
 
 - error = @post.errors.include?(:path)
--#%fieldset.control-group{:class => error ? 'has-error' : ''}
-  =f.label :path, :class => 'control-label'
-  .controls
-    =f.text_field :path, :class => 'form-control input-large input-with-feedback', :autofocus => true
-    %span.help-inline=error ? f.error_message_on(:path, :class => 'text-error') : pat(:example)
 
 - editors = {}
 - i = 0
@@ -21,7 +16,7 @@
 %fieldset.control-group
   .controls
     = label_tag "post_editor_select", caption: "Editor: ", class: ''
-    = select_tag "post_editor_select", options: editors.keys, id: 'post_editor_select', class: 'form-control'
+    = select_tag "post_editor_select", options: editors.keys, selected: Preference.get('admin.posts.editor','active_post_editor'), id: 'post_editor_select', class: 'form-control'
 
 %fieldset.control-group.post-editors{:class => error ? 'has-error' : ''}
   - show=true

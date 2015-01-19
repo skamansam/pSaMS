@@ -16,7 +16,7 @@
 
   %body
     %a{href: "https://github.com/skamansam/psams"}
-      %img.fixed-top{style: "position: fixed; top: 0px; left: 0; border: 0; z-index: 1100; max-width: 135px", src: "https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67", alt: "Fork me on GitHub", data: { canonical: {src: "https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"}}}
+      %img.fixed-top{style: "position: fixed; top: 0px; right: 0; border: 0; z-index: 1100; max-width: 135px", src: "https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67", alt: "Fork me on GitHub", data: { canonical: {src: "https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"}}}
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
@@ -46,10 +46,10 @@
           =Time.now.year
           Rude Boy Enterprises - Powered by Padrino v.#{Padrino.version} and pSaMS v.#{PSaMs::App::PSAMS_VERSION} (on git branch '#{PSaMs::App::GIT_BRANCH}'' at #{PSaMs::App::GIT_HASH.first(6)})
         %ul.pull-right.footer-links
-          %li= link_to tag_icon(:home, 'web'), 'http://www.padrinorb.com', :target => :_blank, :class => 'footer-links-link'
-          %li= link_to tag_icon(:heart, 'blog'), 'http://www.padrinorb.com/blog', :target => :_blank, :class => 'footer-links-link'
-          %li= link_to tag_icon(:github, 'code'), 'https://github.com/padrino/padrino-framework', :target => :_blank, :class => 'footer-links-link'
-          %li= link_to tag_icon(:twitter, 'twitter'), 'http://twitter.com/padrinorb', :target => :_blank, :class => 'footer-links-link'
+          %li= link_to tag_icon(:home, 'web'), 'http://www-rbe.rhcloud.com', :target => :_blank, :class => 'footer-links-link'
+          %li= link_to tag_icon(:heart, 'blog'), 'http://www-rbe.rhcloud.com', :target => :_blank, :class => 'footer-links-link'
+          %li= link_to tag_icon(:github, 'code'), 'https://github.com/skamansam', :target => :_blank, :class => 'footer-links-link'
+          %li= link_to tag_icon(:twitter, 'twitter'), 'http://twitter.com/psams_blog', :target => :_blank, :class => 'footer-links-link'
 
-    =javascript_include_tag 'jquery-1.9.0.min','jquery-ui-1.10.3.custom', 'typeahead.min', 'prism-dev', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab bootstrap/bootstrap-tagsinput]), :application
+    =javascript_include_tag 'jquery-1.11.0.min','jquery-ui-1.10.3.custom', 'typeahead.min', 'prism-dev', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab bootstrap/bootstrap-tagsinput]), :application
     = Plugin.apply_action('add_js',['*','admin',"admin.#{request.route_obj.controller}",@plugin_context]).join("\n").html_safe

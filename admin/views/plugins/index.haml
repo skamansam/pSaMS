@@ -57,20 +57,20 @@
           %td.list-column=plugin.context
           %td.list-column=plugin.class_name
           %td.list-column=plugin.method_name
-          %td.list-column= plugin.active ? tag_icon(:ok) : tag_icon(:remove)
+          %td.list-column= plugin.active ? tag_icon(:check) : tag_icon(:times)
           %td.list-column=time_ago_in_words plugin.created_at
           %td.list-column=time_ago_in_words plugin.updated_at
           %td.list-column.list-row-action
             .list-row-action-wrapper
               - if plugin.active
                 = form_tag url(:plugins, :destroy, :id => plugin.id), :method => :delete do
-                  =link_to tag_icon(:remove), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
+                  =link_to tag_icon(:times), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
                   =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
               - else
                 = form_tag url(:plugins, :create, :id => plugin.id), :method => :post do
-                  =link_to tag_icon(:ok), :rel => :tooltip, :title => "#{pat(:new)} plugin", :class => 'list-row-action-new list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
+                  =link_to tag_icon(:check), :rel => :tooltip, :title => "#{pat(:new)} plugin", :class => 'list-row-action-new list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
+                  =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
                   =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
-
 %h3 Dependency Paths
 %ul
   - Padrino.dependency_paths.each do |path|
