@@ -31,7 +31,7 @@ class Plugin < ActiveRecord::Base
 
   load_plugins('plugins', ENV['MIGRATIONS'])
 
-  validate :plugin_type, :method_name, :class_name, :hook_name, presence: true
+  validates :plugin_type, :method_name, :class_name, :hook_name, presence: true
 
   serialize :options, Hash
   serialize :features, Array
