@@ -69,7 +69,7 @@
               - else
                 = form_tag url(:plugins, :create, :id => plugin.id), :method => :post do
                   =link_to tag_icon(:check), :rel => :tooltip, :title => "#{pat(:new)} plugin", :class => 'list-row-action-new list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
-                  =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
+                  =link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
                   =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
 %h3 Dependency Paths
 %ul

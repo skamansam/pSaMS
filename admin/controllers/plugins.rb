@@ -74,7 +74,8 @@ PSaMs::Admin.controllers :plugins do
     plugin = Plugin.find(params[:id])
     logger.info "Deactivating Plugin #{plugin.present? ? plugin.name : params[:id]}"
     if plugin
-      if plugin.update_attributes(:active=>false)
+      if (plugin.active && plugin.update_attributes(:active=>false)) ||
+         (!plugin.active && plugin.delete)
         flash[:success] = pat(:delete_success, :model => 'Plugin', :id => "#{params[:id]}")
       else
         flash[:error] = pat(:delete_error, :model => 'plugin')

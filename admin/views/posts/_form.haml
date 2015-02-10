@@ -16,7 +16,7 @@
 %fieldset.control-group
   .controls
     = label_tag "post_editor_select", caption: "Editor: ", class: ''
-    = select_tag "post_editor_select", options: editors.keys, selected: Preference.get('admin.posts.editor','active_post_editor'), id: 'post_editor_select', class: 'form-control'
+    = select_tag "post_editor_select", options: editors.keys, selected: get_pref('admin.posts.editor','active_post_editor'), id: 'post_editor_select', class: 'form-control'
 
 %fieldset.control-group.post-editors{:class => error ? 'has-error' : ''}
   - show=true

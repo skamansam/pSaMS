@@ -1,4 +1,5 @@
 PSaMs::Admin.controllers :preferences do
+  layout 'application.haml'
   get :index do
     @title = "Preferences"
     @preferences = Preference.all
@@ -78,9 +79,9 @@ PSaMs::Admin.controllers :preferences do
     end
     ids = params[:preference_ids].split(',').map(&:strip)
     preferences = Preference.find(ids)
-    
+
     if Preference.destroy preferences
-    
+
       flash[:success] = pat(:destroy_many_success, :model => 'Preferences', :ids => "#{ids.to_sentence}")
     end
     redirect url(:preferences, :index)
