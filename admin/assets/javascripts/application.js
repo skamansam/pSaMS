@@ -2,6 +2,14 @@
   'use strict';
 
   $(function() {
+    // For CSRF
+    function with_csrf(h){
+//      var csrf_name = $('meta[name=csrf-param]').attr('content');
+//      var csrf_value = $('meta[name=csrf-token]').attr('content');
+//      h[csrf_name] = csrf_value;
+      return h
+    }
+
     function toggleAction(selector, disabled) {
         var method = disabled ? 'addClass' : 'removeClass';
         $(selector)[method]('list-menu-link-disabled')
@@ -226,12 +234,15 @@
           'disabled');
         editor_pane.removeClass('hidden');
         editor_pane.find(':input').removeAttr('disabled');
-        $.post('/admin/preference.json', {
-          context: 'admin.posts.editor',
-          value: selected
-        }, function(data) {
-          console.info('Successfully updated preference: ', data)
-        })
+        $.post('/admin/preferences/create.json', 
+          {
+            context: 'admin.posts.editor',
+            value: selected
+          },
+          function(data) {
+            console.info('Successfully updated preference: ', data)
+          }
+        );
       });
     $('.post-editors .post-editor :input').attr('disabled', 'disabled');
     $('select#post_editor_select').change();
