@@ -1,8 +1,9 @@
 PSaMs::Admin.controllers :preferences do
   layout 'application.haml'
-  get :index do
+  get :index, provides: [:json, :html] do
     @title = "Preferences"
     @preferences = Preference.all
+
     render 'preferences/index'
   end
 
@@ -12,16 +13,24 @@ PSaMs::Admin.controllers :preferences do
     render 'preferences/new'
   end
 
-  post :create do
-    @preference = Preference.new(params[:preference])
-    if @preference.save
-      @title = pat(:create_title, :model => "preference #{@preference.id}")
-      flash[:success] = pat(:create_success, :model => 'Preference')
-      params[:save_and_continue] ? redirect(url(:preferences, :index)) : redirect(url(:preferences, :edit, :id => @preference.id))
+  post :create, provides: [:json, :html] do
+    i = PreferencesInteractor::CreateOrUpdate.perform(current_account,params[:key],params[:value],params[:context])
+    if i.succeeded?
+      if request_format.json?
+        {message: 'saved preference'}
+      else
+        @title = pat(:create_title, :model => "preference #{@preference.id}")
+        flash[:success] = pat(:create_success, :model => 'Preference')
+        params[:save_and_continue] ? redirect(url(:preferences, :index)) : redirect(url(:preferences, :edit, :id => @preference.id))
+      end
     else
-      @title = pat(:create_title, :model => 'preference')
-      flash.now[:error] = pat(:create_error, :model => 'preference')
-      render 'preferences/new'
+      if request_format.json?
+        {message: i.errors.join('. ')}
+      else
+        @title = pat(:create_title, :model => 'preference')
+        flash.now[:error] = pat(:create_error, :model => 'preference')
+        render 'preferences/new'
+      end
     end
   end
 
