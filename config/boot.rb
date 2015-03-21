@@ -43,7 +43,7 @@ Padrino.before_load do
   presenters_path = Padrino.root('app','presenters','**','*.rb')
   interactors_path = Padrino.root('admin','interactors','**','*.rb')
   Padrino.dependency_paths << presenters_path unless Padrino.dependency_paths.include?(presenters_path)
-  Padrino.dependency_paths << interactors_path unless Padrino.dependency_paths.include?(presenters_path)
+  Padrino.dependency_paths << interactors_path unless Padrino.dependency_paths.include?(interactors_path)
 end
 
 ##

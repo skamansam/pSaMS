@@ -234,9 +234,10 @@
           'disabled');
         editor_pane.removeClass('hidden');
         editor_pane.find(':input').removeAttr('disabled');
-        $.post('/admin/preferences/create.json', 
+        $.post('/admin/preferences/create.json',
           {
             context: 'admin.posts.editor',
+            key: 'active_post_editor',
             value: selected
           },
           function(data) {

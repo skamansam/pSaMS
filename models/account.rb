@@ -15,6 +15,8 @@
 class Account < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
 
+  has_many :preferences
+
   # Validations
   validates_presence_of     :email, :role
   validates_presence_of     :password,                   :if => :password_required
@@ -37,12 +39,20 @@ class Account < ActiveRecord::Base
     account && account.has_password?(password) ? account : nil
   end
 
+  def full_name
+    "#{name} #{surname}"
+  end
+
   def has_password?(password)
     ::BCrypt::Password.new(crypted_password) == password
   end
-  
+
   def full_name
     "#{name} #{surname}"
+  end
+
+  def create_preference(opts)
+    Preference.create!(opts.merge(account_id: self.id))
   end
 
   private

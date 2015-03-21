@@ -1,4 +1,4 @@
 class Preference < ActiveRecord::Base
-  belongs_to :user
-  validates :key, :value, :user, presence: true
+  belongs_to :account, validate: true
+  validates :key, :value, :account, presence: true
 end

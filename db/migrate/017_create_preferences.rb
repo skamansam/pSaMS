@@ -1,7 +1,7 @@
 class CreatePreferences < ActiveRecord::Migration
   def self.up
     create_table :preferences do |t|
-      t.integer :user_id
+      t.integer :account_id
       t.string :context, default: '*'
       t.string :key
       t.text :value

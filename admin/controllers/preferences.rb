@@ -14,8 +14,8 @@ PSaMs::Admin.controllers :preferences do
   end
 
   post :create, provides: [:json, :html] do
-    i = PreferencesInteractor::CreateOrUpdate.perform(current_account,params[:key],params[:value],params[:context])
-    if i.succeeded?
+    i = PreferencesInteractor::CreateOrUpdate.new(current_account,params[:key],params[:value],params[:context])
+    if i.perform
       if request_format.json?
         {message: 'saved preference'}
       else
@@ -25,7 +25,7 @@ PSaMs::Admin.controllers :preferences do
       end
     else
       if request_format.json?
-        {message: i.errors.join('. ')}
+        {message: i.errors}
       else
         @title = pat(:create_title, :model => 'preference')
         flash.now[:error] = pat(:create_error, :model => 'preference')

@@ -41,7 +41,7 @@
           %td.list-column.list-selectable
             =check_box_tag 'preference_ids[]', :value => preference.id, :class => 'list-selectable-checkbox'
           %td.list-column=preference.id
-          %td.list-column=preference.user_id
+          %td.list-column=preference.account.full_name
           %td.list-column=preference.context
           %td.list-column=preference.key
           %td.list-column=preference.value
