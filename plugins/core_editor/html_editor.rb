@@ -12,15 +12,16 @@ class HtmlEditor
   def self.migrate ; end
 
   def self.setup
-    Plugin.add_action('add_editor', 'admin.posts', "HtmlEditor", 'get_post_editor',0)
-    Plugin.add_action('add_css', 'admin.posts', "HtmlEditor", 'get_css',0)
-    Plugin.add_action('add_js', 'admin.posts', "HtmlEditor", 'get_js',0)
+    Plugin.add_action('add_editor', 'admin.posts.edit', "HtmlEditor", 'get_post_editor',0)
+    Plugin.add_action('add_css', 'admin.posts.edit', "HtmlEditor", 'get_css',0)
+    Plugin.add_action('add_js', 'admin.posts.edit', "HtmlEditor", 'get_js',0)
     Plugin.add_action('add_editor', 'admin.posts.new', "HtmlEditor", 'get_post_editor',0)
     Plugin.add_action('add_css', 'admin.posts.new', "HtmlEditor", 'get_css',0)
     Plugin.add_action('add_js', 'admin.posts.new', "HtmlEditor", 'get_js',0)
   end
 
   def get_post_editor(context,form,error)
+    logger.info "applying editor"
     { name: 'HTML',
       body: context.partial("core_editor/html/html_editor.haml", locals: {f: form, error: error})
     }
