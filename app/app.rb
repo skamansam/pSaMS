@@ -16,6 +16,11 @@ module PSaMs
 
     include Version
 
+    after do
+     logger.info "clearing active connection for this thread"
+     ActiveRecord::Base.connection.close
+    end
+
     ##
     # Caching support.
     #
