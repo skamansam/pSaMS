@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 17) do
+ActiveRecord::Schema.define(version: 18) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name",             limit: 255
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 17) do
     t.integer  "category_id"
     t.string   "path",        limit: 255
     t.boolean  "is_news",                 default: false
+    t.boolean  "published",               default: false
   end
 
   create_table "preferences", force: :cascade do |t|

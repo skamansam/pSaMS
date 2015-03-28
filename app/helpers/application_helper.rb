@@ -71,7 +71,7 @@ PSaMs::App.helpers do
 
   def news_posts_for(category = Category.first, num = 5)
     category = Category.first if category.blank?
-    category.posts.for_news.limit(num)
+    category.posts.publised.for_news.limit(num)
   end
 
   def render_from_file(path, *opts, &block)

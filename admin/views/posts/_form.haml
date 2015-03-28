@@ -1,4 +1,12 @@
 - error = @post.errors.include?(:title)
+
+.form-actions.fixed
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:posts, :index), :class => 'btn btn-default'
+
 %fieldset.control-group{:class => error ? 'has-error' : ''}
   =f.label :title, :class => 'control-label'
   .controls
@@ -61,6 +69,14 @@
   .controls
     =f.text_field :tag_list, :class => 'form-control input-large input-with-feedback tag-list-for-post', 'data-role' => 'tagsinput'
     %span.help-inline=error ? f.error_message_on(:tag_list , :class => 'text-error') : pat(:example)
+
+- error = @post.errors.include?(:published)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  .controls
+    =f.check_box :published, :class => 'input-large input-with-feedback'
+    =f.label :published, :caption=>"Is this post published (publicly visible)?", :class => 'control-label'
+    %br/
+    %span.help-inline=error ? f.error_message_on(:published, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

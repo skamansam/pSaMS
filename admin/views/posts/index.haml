@@ -3,7 +3,7 @@
   %li=link_to tag_icon(:plus, pat(:new)), url(:posts, :new)
 
 .tabs-content
-  %table#list.table.table-striped.table-hover.table-condensed
+  %table#list.table.table-striped.table-hover.table-condensed.post-index
     %thead
       %tr
         %th.header.list-menu
@@ -38,7 +38,7 @@
     %tbody
       -@posts.each do |post|
         - body_short = strip_tags(post.body)[0..29]
-        %tr.list-row
+        %tr.list-row{class: "#{'success' if post.published?}"}
           %td.list-column.list-selectable
             =check_box_tag 'post_ids[]', :value => post.id, :class => 'list-selectable-checkbox'
           %td.list-column=post.id

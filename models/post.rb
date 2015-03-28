@@ -24,6 +24,10 @@ class Post < ActiveRecord::Base
 
   before_save :apply_before_save_filters
 
+  def self.published
+    where(published: true)
+  end
+
   def self.tag_cloud
   end
 
@@ -41,15 +45,15 @@ class Post < ActiveRecord::Base
       cur_category = Category.find_by_name(s) unless cur_category.nil
     end if path.size > 1
 
-    return cur_category.posts
+    return cur_category.posts.published
   end
 
   def self.for_news
-    where(is_news: true)
+    published.where(is_news: true)
   end
 
   def self.without_news
-    where(is_news: false)
+    published.where(is_news: false)
   end
 
   def to_date

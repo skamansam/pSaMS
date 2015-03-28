@@ -36,3 +36,6 @@
   .dropdown-menu a {
     cursor: pointer;
   }
+  input.insert-image{
+    display: none;
+  }

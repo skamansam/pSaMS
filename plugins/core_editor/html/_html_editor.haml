@@ -1,13 +1,14 @@
 #bootstrap-wysiyg-alert
+// see http://www-archive.mozilla.org/editor/midas-spec.html fr the specs on this
 .btn-toolbar{data: {role: "editor-toolbar", target: "#wysiwyg-editor"}}
   .btn-group
     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :title => "Font"}
-      %i.icon-font
+      %i.fa.fa-font
       %b.caret
     %ul.dropdown-menu
   .btn-group
     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :title => "Font Size"}
-      %i.icon-text-height>
+      %i.fa.fa-text-height>
       \&nbsp;
       %b.caret
     %ul.dropdown-menu
@@ -21,49 +22,103 @@
         %a{"data-edit" => "fontSize 1"}
           %font{:size => "1"} Small
   .btn-group
+    %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :title => "Header"}
+      %i.fa.fa-header>
+      \&nbsp;
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        %a{"data-edit" => "formatblock <h1>"}
+          %h1 Header 1
+      %li
+        %a{"data-edit" => "formatblock <h2>"}
+          %h2 Header 2
+      %li
+        %a{"data-edit" => "formatblock <h3>"}
+          %h3 Header 3
+      %li
+        %a{"data-edit" => "formatblock <h4>"}
+          %h4 Header 4
+      %li
+        %a{"data-edit" => "formatblock <h5>"}
+          %h5 Header 5
+      %li
+        %a{"data-edit" => "formatblock <h6>"}
+          %h6 Header 6
+
+  .btn-group
+    %a.btn{"data-edit" => "formatblock <p>", :title => "Paragraph"}
+      %i.fa.fa-paragraph
+    %a.btn{"data-edit" => "formatblock <pre>", :title => "Preformatted Text"}
+      %i.fa.fa-eraser
+    %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :title => "Code"}
+      %i.fa.fa-terminal>
+      \&nbsp;
+      %b.caret
+    %ul.dropdown-menu
+      %li
+        %a{"data-edit" => "formatblock <pre class='language-css'>"} CSS
+      %li
+        %a{"data-edit" => "formatblock <pre class='language-html'>"} HTML
+      %li
+        %a{"data-edit" => "formatblock <pre class='language-ruby'>"} Ruby
+      %li
+        %a{"data-edit" => "formatblock <pre class='language-haml'>"} HAML
+      %li
+        %a{"data-edit" => "formatblock <pre class='language-cpp'>"} C/C++
+      %li
+        %a{"data-edit" => "formatblock <pre class='language-perl'>"} Perl
+  .btn-group
     %a.btn{"data-edit" => "bold", :title => "Bold (Ctrl/Cmd+B)"}
-      %i.icon-bold
+      %i.fa.fa-bold
     %a.btn{"data-edit" => "italic", :title => "Italic (Ctrl/Cmd+I)"}
-      %i.icon-italic
+      %i.fa.fa-italic
     %a.btn{"data-edit" => "strikethrough", :title => "Strikethrough"}
-      %i.icon-strikethrough
+      %i.fa.fa-strikethrough
     %a.btn{"data-edit" => "underline", :title => "Underline (Ctrl/Cmd+U)"}
-      %i.icon-underline
+      %i.fa.fa-underline
+    %a.btn{"data-edit" => "superscript", :title => "Superscript"}
+      %i.fa.fa-superscript
+    %a.btn{"data-edit" => "subscript", :title => "Subscript"}
+      %i.fa.fa-subscript
   .btn-group
     %a.btn{"data-edit" => "insertunorderedlist", :title => "Bullet list"}
-      %i.icon-list-ul
+      %i.fa.fa-list-ul
     %a.btn{"data-edit" => "insertorderedlist", :title => "Number list"}
-      %i.icon-list-ol
-    %a.btn{"data-edit" => "outdent", :title => "Reduce indent (Shift+Tab)"}
-      %i.icon-indent-left
+      %i.fa.fa-list-ol
     %a.btn{"data-edit" => "indent", :title => "Indent (Tab)"}
-      %i.icon-indent-right
+      %i.fa.fa-indent
+    %a.btn{"data-edit" => "outdent", :title => "Reduce indent (Shift+Tab)"}
+      %i.fa.fa-outdent
   .btn-group
     %a.btn{"data-edit" => "justifyleft", :title => "Align Left (Ctrl/Cmd+L)"}
-      %i.icon-align-left
+      %i.fa.fa-align-left
     %a.btn{"data-edit" => "justifycenter", :title => "Center (Ctrl/Cmd+E)"}
-      %i.icon-align-center
+      %i.fa.fa-align-center
     %a.btn{"data-edit" => "justifyright", :title => "Align Right (Ctrl/Cmd+R)"}
-      %i.icon-align-right
+      %i.fa.fa-align-right
     %a.btn{"data-edit" => "justifyfull", :title => "Justify (Ctrl/Cmd+J)"}
-      %i.icon-align-justify
+      %i.fa.fa-align-justify
   .btn-group
     %a.btn.dropdown-toggle{"data-toggle" => "dropdown", :title => "Hyperlink"}
-      %i.icon-link
+      %i.fa.fa-link
     .dropdown-menu.input-append
       %input.span2{"data-edit" => "createLink", :placeholder => "URL", :type => "text"}/
       %button.btn{:type => "button"} Add
     %a.btn{"data-edit" => "unlink", :title => "Remove Hyperlink"}
-      %i.icon-cut
+      %i.fa.fa-unlink
   .btn-group
     %a#pictureBtn.btn{:title => "Insert picture (or just drag & drop)"}
-      %i.icon-picture
-    %input{"data-edit" => "insertImage", "data-role" => "magic-overlay", "data-target" => "#pictureBtn", :type => "file"}/
+      %i.fa.fa-image
+    %input.insert-image{"data-edit" => "insertImage", "data-role" => "magic-overlay", "data-target" => "#pictureBtn", :type => "file"}/
   .btn-group
     %a.btn{"data-edit" => "undo", :title => "Undo (Ctrl/Cmd+Z)"}
-      %i.icon-undo
+      %i.fa.fa-undo
     %a.btn{"data-edit" => "redo", :title => "Redo (Ctrl/Cmd+Y)"}
-      %i.icon-repeat
+      %i.fa.fa-repeat
+  .btn-group
+    %a#view-source.btn{"data-edit" => "undo", :title => "View Source"}
+      %i.fa.fa-code
   %input#voiceBtn{"data-edit" => "inserttext", :type => "text", "x-webkit-speech" => ""}/
 
 %fieldset.control-group{:class => error ? 'has-error' : ''}
