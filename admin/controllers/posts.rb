@@ -3,18 +3,21 @@ PSaMs::Admin.controllers :posts do
   get :index do
     @title = "Posts"
     @posts = Post.all
+    flash[:error] = error_check
     render 'posts/index'
   end
 
   get :new do
     @title = pat(:new_title, :model => 'post')
     @post = Post.new
+    flash[:error] = error_check
     render 'posts/new'
   end
 
   post :create do
     @post = Post.new(params[:post])
     @plugin_context = 'admin.posts.new'
+    flash[:error] = error_check
     if @post.save
       @title = pat(:create_title, :model => "post #{@post.id}")
       flash[:success] = pat(:create_success, :model => 'Post')
@@ -29,6 +32,7 @@ PSaMs::Admin.controllers :posts do
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "post #{params[:id]}")
     @post = Post.find(params[:id])
+    flash[:error] = error_check
     if @post
       render 'posts/edit'
     else
@@ -40,6 +44,7 @@ PSaMs::Admin.controllers :posts do
   put :update, :with => :id do
     @title = pat(:update_title, :model => "post #{params[:id]}")
     @post = Post.find(params[:id])
+    flash[:error] = error_check
     if @post
       if @post.update_attributes(params[:post])
         flash[:success] = pat(:update_success, :model => 'Post', :id =>  "#{params[:id]}")
@@ -59,6 +64,7 @@ PSaMs::Admin.controllers :posts do
   delete :destroy, :with => :id do
     @title = "Posts"
     post = Post.find(params[:id])
+    flash[:error] = error_check
     if post
       if post.destroy
         flash[:success] = pat(:delete_success, :model => 'Post', :id => "#{params[:id]}")
@@ -74,6 +80,7 @@ PSaMs::Admin.controllers :posts do
 
   delete :destroy_many do
     @title = "Posts"
+    flash[:error] = error_check
     unless params[:post_ids]
       flash[:error] = pat(:destroy_many_error, :model => 'post')
       redirect(url(:posts, :index))

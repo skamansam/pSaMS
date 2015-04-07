@@ -3,17 +3,20 @@ PSaMs::Admin.controllers :accounts do
   get :index do
     @title = "Accounts"
     @accounts = Account.all
+    flash[:error] = error_check
     render 'accounts/index'
   end
 
   get :new do
     @title = pat(:new_title, :model => 'account')
     @account = Account.new
+    flash[:error] = error_check
     render 'accounts/new'
   end
 
   post :create do
     @account = Account.new(params[:account])
+    flash[:error] = error_check
     if @account.save
       @title = pat(:create_title, :model => "account #{@account.id}")
       flash[:success] = pat(:create_success, :model => 'Account')

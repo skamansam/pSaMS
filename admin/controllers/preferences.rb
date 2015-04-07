@@ -3,18 +3,20 @@ PSaMs::Admin.controllers :preferences do
   get :index, provides: [:json, :html] do
     @title = "Preferences"
     @preferences = Preference.all
-
+    flash[:error] = error_check
     render 'preferences/index'
   end
 
   get :new do
     @title = pat(:new_title, :model => 'preference')
     @preference = Preference.new
+    flash[:error] = error_check
     render 'preferences/new'
   end
 
   post :create, provides: [:json, :html] do
     i = PreferencesInteractor::CreateOrUpdate.new(current_account,params[:key],params[:value],params[:context])
+    flash[:error] = error_check
     if i.perform
       if request_format.json?
         {message: 'saved preference'}
@@ -36,6 +38,7 @@ PSaMs::Admin.controllers :preferences do
 
   get :edit, :with => :id do
     @title = pat(:edit_title, :model => "preference #{params[:id]}")
+    flash[:error] = error_check
     @preference = Preference.find(params[:id])
     if @preference
       render 'preferences/edit'
@@ -46,6 +49,7 @@ PSaMs::Admin.controllers :preferences do
   end
 
   put :update, :with => :id do
+    flash[:error] = error_check
     @title = pat(:update_title, :model => "preference #{params[:id]}")
     @preference = Preference.find(params[:id])
     if @preference
@@ -65,6 +69,7 @@ PSaMs::Admin.controllers :preferences do
   end
 
   delete :destroy, :with => :id do
+    flash[:error] = error_check
     @title = "Preferences"
     preference = Preference.find(params[:id])
     if preference
@@ -81,6 +86,7 @@ PSaMs::Admin.controllers :preferences do
   end
 
   delete :destroy_many do
+    flash[:error] = error_check
     @title = "Preferences"
     unless params[:preference_ids]
       flash[:error] = pat(:destroy_many_error, :model => 'preference')

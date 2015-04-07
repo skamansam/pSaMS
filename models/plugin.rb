@@ -79,14 +79,29 @@ class Plugin < ActiveRecord::Base
 
   def plugin_object
     @plugin_object ||= class_name.constantize
+  rescue NameError => e
+      ErrorHandler.add_error class_name, e 
+      return false
   end
 
   def actions
     Plugin.where(class_name: class_name)
   end
 
-  def info
-    plugin_object.info
+  def class_method(sym, *args, &block)
+    begin
+      self.class_name.constantize.send(sym,args,block)
+    catch(e)
+      throw MethodMissingError
+    end
+  end
+
+  def call_method(sym, *args, &block)
+    begin
+      self.class_name.constantize.new.send(sym,args,block)
+    catch(e)
+      throw MethodMissingError
+    end
   end
 
 end

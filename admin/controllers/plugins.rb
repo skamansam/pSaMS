@@ -1,8 +1,10 @@
 PSaMs::Admin.controllers :plugins do
   layout 'application.haml'
   get :index do
+    flash[:error] = error_check
     @title = "Plugins"
-    @plugins = Plugin.all
+    #@plugins = Plugin.select('plugins.*,count(name) as plugin_count').group(:name).order(:name)
+    @plugins = Plugin.select('*,count(name) as cnt').group(:name).order(:name)
     if params[:reload]
       Plugin.reload_plugins!
     end
@@ -10,19 +12,23 @@ PSaMs::Admin.controllers :plugins do
   end
 
   get :new do
+    flash[:error] = error_check
     @title = pat(:new_title, :model => 'plugin')
     @plugin = Plugin.new
     render 'plugins/new'
   end
 
   get :show, :with=> :id do
+    flash[:error] = error_check
     @title = pat(:show_title, :model => 'plugin')
     @plugin = Plugin.find(params[:id])
+    @plugin_methods = Plugin.where(name: @plugin.name).order([:plugin_type,:class_name])
     @plugin_object = @plugin.plugin_object
     render 'plugins/show'
   end
 
   post :create, :with=> :id do
+    flash[:error] = error_check
     @title = "Plugins"
     plugin = Plugin.find(params[:id])
     logger.info "Deactivating Plugin #{plugin.present? ? plugin.name : params[:id]}"
@@ -40,6 +46,7 @@ PSaMs::Admin.controllers :plugins do
   end
 
   get :edit, :with => :id do
+    flash[:error] = error_check
     @title = pat(:edit_title, :model => "plugin #{params[:id]}")
     @plugin = Plugin.find(params[:id])
     if @plugin
@@ -51,6 +58,7 @@ PSaMs::Admin.controllers :plugins do
   end
 
   put :update, :with => :id do
+    flash[:error] = error_check
     @title = pat(:update_title, :model => "plugin #{params[:id]}")
     @plugin = Plugin.find(params[:id])
     if @plugin
@@ -70,6 +78,7 @@ PSaMs::Admin.controllers :plugins do
   end
 
   delete :destroy, :with => :id do
+    flash[:error] = error_check
     @title = "Plugins"
     plugin = Plugin.find(params[:id])
     logger.info "Deactivating Plugin #{plugin.present? ? plugin.name : params[:id]}"
@@ -88,6 +97,7 @@ PSaMs::Admin.controllers :plugins do
   end
 
   delete :destroy_many do
+    flash[:error] = error_check
     @title = "Plugins"
     unless params[:plugin_ids]
       flash[:error] = pat(:destroy_many_error, :model => 'plugin')
