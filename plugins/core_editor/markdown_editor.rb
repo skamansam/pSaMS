@@ -5,6 +5,10 @@ class MarkdownEditor
     ["Core Editor: Markdown v1.0","Adds a plain-text editor, a markdown editor, and an HTML editor for posts."]
   end
 
+  def self.name
+    "Core Editor: Markdown v1.0"
+  end
+
   def initialize
     logger.info "Initializing CoreEditor::Markdown"
   end

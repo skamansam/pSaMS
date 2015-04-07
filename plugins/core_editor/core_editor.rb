@@ -4,7 +4,7 @@ require_relative 'html_editor.rb'
 
 class CoreEditor
 
-  def self.info
+  def info
     ["Core Editor v1.0","Adds a plain-text editor, a markdown editor, and an HTML editor for posts."]
   end
 

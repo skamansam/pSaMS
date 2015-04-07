@@ -5,6 +5,14 @@ class HtmlEditor
     ["Core Editor: HTML v1.0","Adds an HTML editor for posts."]
   end
 
+  def self.name
+    "Core Editor: HTML v1.0"
+  end
+
+  def self.description
+    "Adds a bootstrap wysiwyg editor to the list of post editors"
+  end
+
   def initialize
     logger.info "Initializing CoreEditor::Html"
   end

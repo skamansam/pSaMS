@@ -1,7 +1,6 @@
-%ul.nav.nav-tabs
-  %li=link_to tag_icon(:list, pat(:list)), url(:plugins, :index)
-  -#%li=link_to tag_icon(:edit, pat(:edit)), url(:plugins, :edit, :id => @plugin.id)
-  %li.active=link_to tag_icon(:info, pat(:show)), url(:plugins, :show, :id => @plugin.id)
+%ol.breadcrumb
+  %li=link_to "Plugins", url(:plugins, :index)
+  %li.active #{@plugin.name}
 .tabs-content
   .page-header
     %h2
@@ -9,15 +8,5 @@
       %small
         =@plugin.plugin_type
     %p= @plugin.info[1]
-  - @plugin.actions.each do |plugin|
-    .panel.panel-default
-      .panel-heading
-        #{plugin.method_name} (filters
-        %em #{plugin.hook_name}
-        )
-      .panel-body
-        %pre{class: 'language-ruby'}
-          %code{class: 'language-ruby'}
-            = preserve @plugin_object.new.method(plugin.method_name.to_sym).comment
-            = preserve @plugin_object.new.method(plugin.method_name.to_sym).source
-
+  - @plugin_methods.each do |plugin|
+    = partial "plugins/#{plugin.plugin_type.downcase}", locals: {plugin: plugin}

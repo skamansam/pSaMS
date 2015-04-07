@@ -2,75 +2,22 @@
   Plugin Management
   =link_to "Reload All Plugins", url_for(:plugins,:index, reload: true), :class=>'btn btn-primary pull-right'
 
--#%ul.nav.nav-tabs
-  %li.active=link_to tag_icon(:list, pat(:list)), url(:plugins, :index)
-  %li=link_to tag_icon(:plus, pat(:new)), url(:plugins, :new)
-
-%p
-  The following is a list of installed plugins. You can activate and deactivate them here.
-
 .tabs-content
-  %table#list.table.table-striped.table-hover.table-condensed
-    %thead
-      %tr
-        %th.header.list-menu
-          .dropdown
-            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
-              =tag_icon :magic
-              %span.caret
-            %ul.list-menu.dropdown-menu{:role => :menu}
-              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
-              %li.list-menu-wrapper.list-menu-wrapper-disabled
-                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
-              %li.list-menu-divider.divider
-              %li.list-menu-wrapper.list-menu-wrapper-disabled
-                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
-                .list-menu-popover-delete-selected.popover.right
-                  .arrow
-                  %h3.popover-title=pat(:delete_selected_title)
-                  .popover-content
-                    = form_tag url(:plugins, :destroy_many), :method => :delete do
-                      =hidden_field_tag :plugin_ids, :'data-delete-many-ids' => true
-                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
-                      .btn.btn-default.btn-small.cancel=pat(:cancel)
-        %th.header= mat(:plugin, :id)
-        %th.header= mat(:plugin, :name)
-        %th.header= mat(:plugin, :plugin_type)
-        %th.header= mat(:plugin, :hook_name)
-        %th.header= mat(:plugin, :context)
-        %th.header= mat(:plugin, :class_name)
-        %th.header= mat(:plugin, :method_name)
-        %th.header= mat(:plugin, :active)
-        %th.header= mat(:plugin, :created_at)
-        %th.header= mat(:plugin, :updated_at)
-        %th.header.list-row-action-header
+  %ul.list-group
+    - @plugins.each do |plugin|
+      %li.list-group-item{class: ('disabled' unless plugin.active?)}
+        = link_to plugin.name, "##{plugin.id}"
+        %span.badge= plugin.cnt
 
-    %tbody
-      -@plugins.each do |plugin|
-        %tr.list-row
-          %td.list-column.list-selectable
-            =check_box_tag 'plugin_ids[]', :value => plugin.id, :class => 'list-selectable-checkbox'
-          %td.list-column=plugin.id
-          %td.list-column=link_to plugin.name, url(:plugins, :show, id: plugin.id)
-          %td.list-column=plugin.plugin_type
-          %td.list-column=plugin.hook_name
-          %td.list-column=plugin.context
-          %td.list-column=plugin.class_name
-          %td.list-column=plugin.method_name
-          %td.list-column= plugin.active ? tag_icon(:check) : tag_icon(:times)
-          %td.list-column=time_ago_in_words plugin.created_at
-          %td.list-column=time_ago_in_words plugin.updated_at
-          %td.list-column.list-row-action
-            .list-row-action-wrapper
-              - if plugin.active
-                = form_tag url(:plugins, :destroy, :id => plugin.id), :method => :delete do
-                  =link_to tag_icon(:times), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
-                  =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
-              - else
-                = form_tag url(:plugins, :create, :id => plugin.id), :method => :post do
-                  =link_to tag_icon(:check), :rel => :tooltip, :title => "#{pat(:new)} plugin", :class => 'list-row-action-new list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
-                  =link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
-                  =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
+  -@plugins.each do |plugin|
+    .panel{id: plugin.id}
+      .panel-heading
+        = plugin.name
+        %span.badge= plugin.cnt
+        .span.pull-right= plugin.plugin_type
+      .panel-body
+        = plugin.plugin_object.try(:description)
+
 %h3 Dependency Paths
 %ul
   - Padrino.dependency_paths.each do |path|

@@ -38,7 +38,7 @@ module PluginLoader
         begin
           plugin_class = plugin.class_name.constantize
           plugin.active = false unless plugin_class.new.respond_to?(plugin.method_name)
-          plugin.name = plugin_class.info[0]
+          plugin.name = plugin_class.name
         rescue NameError=>e
           ErrorHandler.add_error plugin.file_name, e
         end

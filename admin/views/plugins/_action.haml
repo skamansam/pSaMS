@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-heading
+    #{plugin.method_name} (action
+    %em #{plugin.hook_name}
+    )
+  .panel-body
+    %pre{class: 'language-ruby'}
+      %code{class: 'language-ruby'}
+        = preserve @plugin_object.new.method(plugin.method_name.to_sym).comment
+        = preserve @plugin_object.new.method(plugin.method_name.to_sym).source
