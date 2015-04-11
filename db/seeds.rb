@@ -10,7 +10,7 @@ password  = shell.ask "Tell me the password to use:"
 
 shell.say ""
 
-account = Account.create(:email => email, :name => "Foo", :surname => "Bar", :password => password, :password_confirmation => password, :role => "admin")
+account = Account.create(:email => email, :name => "Default", :surname => "User", :password => password, :password_confirmation => password, :role => "admin")
 
 if account.valid?
   shell.say "================================================================="
@@ -28,4 +28,4 @@ end
 shell.say "\nNow we need a first post to get started."
 title = shell.ask "What is the title of your first post?"
 body = shell.ask "Now give me some content for the first post:"
-post = Post.create(:title=>title,:body=>body, :category=>Category.create!(name: 'home_page'))
+post = Post.create!(:title=>title,:body=>body, :account_id => account.id, :category=>Category.create!(name: 'home_page'))
