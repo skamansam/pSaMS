@@ -9,12 +9,22 @@
         = link_to plugin.name, "##{plugin.id}"
         %span.badge= plugin.cnt
 
-  -@plugins.each do |plugin|
-    .panel{id: plugin.id}
+  - @plugins.each do |plugin|
+    .panel.panel-default{id: plugin.id}
       .panel-heading
         = plugin.name
-        %span.badge= plugin.cnt
-        .span.pull-right= plugin.plugin_type
+        -if plugin.active
+          = form_tag url(:plugins, :destroy, :id => plugin.id), :method => :delete do
+            =link_to tag_icon(:remove), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'list-row-action-delete-one list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
+            =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
+        - else
+          = form_tag url(:plugins, :create, :id => plugin.id), :method => :post do
+            =link_to tag_icon(:ok), :rel => :tooltip, :title => "#{pat(:new)} plugin", :class => 'list-row-action-new list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
+            =link_to tag_icon(:info), :href => url(:plugins, :show, :id => plugin.id), :rel => :tooltip, :title => "#{pat(:edit)} plugin", :class => 'list-row-action-wrapper-link'
+        .span.pull-right
+          %span.badge.info Hooks: #{plugin.cnt}
+          %span.badge.danger Errors: #{plugin.error_count}
+          %span.badge.warning Warnings: #{plugin.warning_count}
       .panel-body
         = plugin.plugin_object.try(:description)
 
