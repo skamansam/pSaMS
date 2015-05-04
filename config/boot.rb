@@ -30,6 +30,9 @@ I18n.default_locale = :en
 #   include Padrino::Helpers::TranslationHelpers
 # end
 
+# uncomment if you get TypeErrors. it may be carrierwave
+#CarrierWave.root = File.join(Padrino.root, "public")
+
 ##
 # Add your before (RE)load hooks here
 #

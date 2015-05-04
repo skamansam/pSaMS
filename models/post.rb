@@ -18,6 +18,8 @@ class Post < ActiveRecord::Base
   include ActsAsTaggableOn
   belongs_to :account
   belongs_to :category
+  has_many :attachments
+
   validates_presence_of :title
   validates_presence_of :body
   acts_as_taggable

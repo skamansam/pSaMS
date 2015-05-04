@@ -20,6 +20,17 @@ then
     exit 5
 fi
 
+#copy non-volatile data to data directory and make sure it's symlinked properly
+for $nv_path in '/private'
+do
+  if [ -d ${OPENSHIFT_REPO_DIR}${$nv_path} ]
+  then
+    cp -r ${OPENSHIFT_REPO_DIR}${$nv_path} ${OPENSHIFT_DATA_DIR}${$nv_path}
+    rm -rf ${OPENSHIFT_REPO_DIR}${$nv_path}
+    ln -s  ${OPENSHIFT_DATA_DIR}${$nv_path} ${OPENSHIFT_REPO_DIR}${$nv_path}
+  fi
+done
+
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 bundle exec rake ar:migrate RACK_ENV="production"
 popd > /dev/null

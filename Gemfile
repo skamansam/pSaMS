@@ -19,10 +19,15 @@ gem 'rake'
 gem 'bcrypt'
 gem 'will_paginate', '~>3.0'
 gem 'bcrypt-ruby', :require => 'bcrypt'
+
+# for assets
 gem 'sass'
 gem 'haml'
 gem 'coffee-script'
+
 gem 'activerecord' #, '4.1.2', :require => 'active_record'
+
+#choose wisely!
 gem 'sqlite3', :group=>['development','test']
 #gem 'mongodb', :group=>['development','test']
 gem 'pg', :group=>'production'
@@ -77,7 +82,10 @@ gem 'less'
 #gem 'actionview'
 gem 'acts-as-taggable-on' #, '2.4.1'
 gem 'rdiscount'  #for markdown processing
-gem 'bh'
+gem 'bh' # bootstrap helpers
+
+#for handling attachments
+gem 'carrierwave', :require => %w(carrierwave carrierwave/orm/activerecord)
 
 # for caching.
 #gem 'memcached' #disabled for Openshift
