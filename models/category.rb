@@ -3,13 +3,13 @@
 # Table name: categories
 #
 #  id          :integer          not null, primary key
-#  name        :string(255)
+#  name        :string
 #  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #  item_order  :integer
 #  parent_id   :integer
-#  link        :string(255)
+#  link        :string
 #
 
 class Category < ActiveRecord::Base

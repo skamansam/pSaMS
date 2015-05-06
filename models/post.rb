@@ -3,14 +3,15 @@
 # Table name: posts
 #
 #  id          :integer          not null, primary key
-#  title       :string(255)
+#  title       :string
 #  body        :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #  account_id  :integer
 #  category_id :integer
-#  path        :string(255)
-#  is_news     :boolean          default(FALSE)
+#  path        :string
+#  is_news     :boolean          default("f")
+#  published   :boolean          default("f")
 #
 
 #require ActsAsTaggableOn
@@ -19,6 +20,7 @@ class Post < ActiveRecord::Base
   belongs_to :account
   belongs_to :category
   has_many :attachments
+  has_many :comments, as: :comment_for
 
   validates_presence_of :title
   validates_presence_of :body

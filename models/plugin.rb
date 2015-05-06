@@ -3,20 +3,20 @@
 # Table name: plugins
 #
 #  id          :integer          not null, primary key
-#  name        :string(255)
+#  name        :string
 #  priority    :integer
-#  plugin_type :string(255)
-#  file_name   :string(255)
+#  plugin_type :string
+#  file_name   :string
 #  line_number :integer
-#  class_name  :string(255)
-#  method_name :string(255)
-#  hook_name   :string(255)
+#  class_name  :string
+#  method_name :string
+#  hook_name   :string
 #  num_args    :integer
 #  options     :text
 #  active      :boolean
 #  created_at  :datetime
 #  updated_at  :datetime
-#  context     :string(255)      default("*")
+#  context     :string           default("*")
 #
 
 # The Plugin class holds information about a plugin and allows other objects

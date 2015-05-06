@@ -3,11 +3,11 @@
 # Table name: accounts
 #
 #  id               :integer          not null, primary key
-#  name             :string(255)
-#  surname          :string(255)
-#  email            :string(255)
-#  crypted_password :string(255)
-#  role             :string(255)
+#  name             :string
+#  surname          :string
+#  email            :string
+#  crypted_password :string
+#  role             :string
 #  created_at       :datetime
 #  updated_at       :datetime
 #

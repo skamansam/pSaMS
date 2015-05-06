@@ -3,14 +3,15 @@
 # Table name: posts
 #
 #  id          :integer          not null, primary key
-#  title       :string(255)
+#  title       :string
 #  body        :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #  account_id  :integer
 #  category_id :integer
-#  path        :string(255)
-#  is_news     :boolean          default(FALSE)
+#  path        :string
+#  is_news     :boolean          default("f")
+#  published   :boolean          default("f")
 #
 
 FactoryGirl.define do
