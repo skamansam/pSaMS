@@ -1,0 +1,14 @@
+.comment
+  .head
+    .title 
+      #{link_to comment.title, url_for(:comments, :show, :id=>comment.id)} 
+    .post_date 
+      Posted #{post.created_at.time_ago_in_words} ago
+      %span.author by #{account_link(comment.email)}
+  .body
+    .avatar
+	    = avatar_for comment.email, type: :gravatar
+    = post.body.html_safe
+    .tags
+      - if post.tags.present?
+        tagged with: #{post_tag_cloud(post.tags)}

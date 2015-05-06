@@ -46,6 +46,7 @@ module PSaMs
       role.project_module :categories, '/categories'
       role.project_module :posts, '/posts'
       role.project_module :accounts, '/accounts'
+      role.project_module :comments, '/comments'
     end
 
     # Custom error management
