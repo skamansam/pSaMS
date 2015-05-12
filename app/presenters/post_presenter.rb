@@ -1,5 +1,7 @@
 class PostPresenter
-  attr_reader :body, :title, :post_date, :author_string, :body_class, :title_class, :post, :id, :updated_at, :created_at, :tags, :account
+  attr_reader :body, :title, :post_date, :author_string,
+              :body_class, :title_class, :post, :id, :updated_at,
+              :created_at, :tags, :account, :comments
   def initialize(post)
     puts post.inspect
     @post = post
@@ -12,6 +14,7 @@ class PostPresenter
     @created_at = Plugin.apply_filter('the_created_at', post.created_at,post.freeze)
     @id = Plugin.apply_filter('the_id', post.id,post.freeze)
     @tags = Plugin.apply_filter('the_tags', post.tags,post.freeze)
-    @account = Plugin.apply_filter('the_accounr', post.account,post.freeze)
+    @account = Plugin.apply_filter('the_account', post.account,post.freeze)
+    @comments = CommentsPresenter.new(post.comments)
   end
 end

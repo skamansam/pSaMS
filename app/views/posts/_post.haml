@@ -1,8 +1,8 @@
 .post
   .head
-    .title 
-      #{link_to post.title, url_for(:posts, :show, :id=>post.id)} 
-    .modified 
+    .title
+      #{link_to post.title, url_for(:posts, :show, id: post.id)}
+    .modified
       -#Last Modified #{(post.updated_at || DateTime.now) #time_ago_in_words } ago
       %span.author by #{account_link(post.post.account)}
   .body
@@ -10,3 +10,9 @@
     .tags
       - if post.tags.present?
         tagged with: #{post_tag_cloud(post.tags)}
+  .comment-form
+    = form_for :comment, url(:comment, :create, post_id: post.id), :method => :create do |f|
+      = partial 'comments/form', :locals => { f: f, comment: Comment.new }
+
+  .comments
+    = partial "comments/comment", collection: post.comments.comments

@@ -1,0 +1,43 @@
+- error = @comment.errors.include?(:body)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :body, :class => 'control-label'
+  .controls
+    ~f.text_area :body, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:body, :class => 'text-error') : pat(:example)
+- error = @comment.errors.include?(:title)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :title, :class => 'control-label'
+  .controls
+    =f.text_field :title, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:title, :class => 'text-error') : pat(:example)
+- error = @comment.errors.include?(:user_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :user_id, :class => 'control-label'
+  .controls
+    =f.text_field :user_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:user_id, :class => 'text-error') : pat(:example)
+- error = @comment.errors.include?(:email)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :email, :class => 'control-label'
+  .controls
+    =f.text_field :email, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:email, :class => 'text-error') : pat(:example)
+- error = @comment.errors.include?(:comment_for_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :comment_for_id, :class => 'control-label'
+  .controls
+    =f.text_field :comment_for_id, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:comment_for_id, :class => 'text-error') : pat(:example)
+- error = @comment.errors.include?(:comment_for_type)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :comment_for_type, :class => 'control-label'
+  .controls
+    =f.text_field :comment_for_type, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:comment_for_type, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:comments, :index), :class => 'btn btn-default'
