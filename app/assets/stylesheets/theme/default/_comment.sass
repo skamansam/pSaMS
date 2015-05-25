@@ -1,0 +1,64 @@
+.posts
+  .comments
+    display: none
+
+.post
+  .comments
+    .comment-form
+      width: 100%
+      float: right
+      input,textarea
+        &::-webkit-input-placeholder
+          color: #0f61b3
+        &::-moz-placeholder
+          color: #0f61b3
+        &:-moz-placeholder
+          color: #0f61b3
+        &:-ms-input-placeholder
+          color: #0f61b3
+        &:placeholder-shown
+          color: #0f61b3
+        &::input-placeholder
+          color: #0f61b3
+      .header
+        font-size: 1em
+        font-weight: bold
+        text-align: right
+        width: 90%
+      .body, .email, .title
+        text-align: right
+        width: 100%
+        padding: 0px
+        background: none
+        border: none
+      label
+        display: none
+      input
+        width: 75%
+        background: #74b1ef url(ui-bg_white-lines_65_74b1ef_40x100.png) repeat scroll 50% 50%
+        border: 1px solid #000
+        color: #000
+        margin-bottom: 3px
+      textarea
+        width: 75%
+        height: 3.5em
+        padding: 0px
+        background: #74b1ef url(ui-bg_white-lines_65_74b1ef_40x100.png) repeat scroll 50% 50%
+        border: 1px solid #000
+      .form-actions
+        text-align: right
+        float: right
+        width: 50%
+        input, a
+          width: 45%
+          background: #74b1ef url(ui-bg_white-lines_65_74b1ef_40x100.png) repeat scroll 50% 50%
+          border: 1px solid #000
+          color: #000
+          display: inline-block
+          text-align: center
+          font-size: 12px
+          text-decoration: none
+          &:hover
+            background: #0f61b3
+            color: #74b1ef
+            cursor: pointer

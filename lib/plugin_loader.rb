@@ -72,7 +72,7 @@ module PluginLoader
         logger.info "Found class #{$1.camelize}"
         cname = $1.camelize
       end
-      return if self.is_a?(Class) && is_loaded?(cname) && !force #already loaded
+      return if (self.is_a?(Class) || is_loaded?(cname)) && !force #already loaded
       if set_load_paths(path)
         yield path, '::'+cname if block_given?
         true

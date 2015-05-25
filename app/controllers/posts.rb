@@ -20,12 +20,11 @@ PSaMs::App.controllers :posts do
   end
 
   get :show, map: "/posts/:id" do
-    @post = Post.find_by_id(params[:id]) #|| Post.find_by_path(params[:id])
-    @presenter = PostPresenter.new(@post)
+    @post = PostPresenter.new(Post.find_by_id(params[:id]))
     load_category
     render "show"
   end
-  get :category, with: :id do 
+  get :category, with: :id do
     load_category(params[:id])
     logger.info params.inspect
     logger.info @category.inspect
@@ -38,7 +37,7 @@ PSaMs::App.controllers :posts do
     load_category
     render params.inspect
   end
-  
+
   get :tags, with: :tag_name do
     load_category
     render params.inspect

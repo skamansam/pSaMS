@@ -1,21 +1,20 @@
-PSaMs::App.controllers :comment do
+PSaMs::App.controllers :comments do
 
-   get :index, map: '/posts/:post_id/comments', params: [:post_id] do
+   get :index, params: [:post_id] do
      render 'index'
    end
 
-   # maps to /comments/#{id}
-   get :show, map: '/posts/:post_id/comments/:id', params: [:post_id, :id] do
-     @comment = Post.find_by_id(params[:post_id]).try(Comment.find_by_id(params[:id]))
+   get :show, params: [:id] do
+     @comment = CommentPresenter.new(Comment.find_by_id(params[:id]))
      render 'show'
    end
 
-   post :create, map: '/posts/:post_id/comments', provides: [:json], params: [:post_id, :post] do
-     i = CommentInteractor::Create.new(params[:post_id],params[:post])
+   post :create, provides: [:json], params: [:comment, :post_id] do
+     i = CommentInteractor::Create.new(params[:comment])
      if i.perform
-       {message: 'saved comment'}
+       { message: 'saved comment', html: (partial('comments/comment', object: CommentPresenter.new(i.comment)))}.to_json
      else
-       {message: i.errors}
+       { message: i.errors }.to_json
      end
    end
 

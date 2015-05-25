@@ -17,12 +17,12 @@
 # can be for anyother object (via polymorphic association).
 class Comment < ActiveRecord::Base
   belongs_to :comment_for, polymorphic: true
+  has_many :comments, as: :comment_for
+
+  alias_method :children, :comments
 
   def parent
     comment_for
   end
 
-  def children
-    Comment.where(comment_for_type: 'Comment', comment_for_id: id)
-  end
 end

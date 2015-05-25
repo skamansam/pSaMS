@@ -1,11 +1,11 @@
 - if @comment.blank?
   .comment
     .head
-      .title 
+      .title
         There is no Comment
     .body.bold
       %h4 Do not try and read this comment. That's impossible. Instead... only try to realize the truth:
       %h4 There is no Comment.
       %h4 Then you'll see, that it is not the comment that reads, it is only yourself.
 -else
-  =partial "comments/comment",:object=>@comment, :locals=>{:post=>@comment}
+  =partial "comments/comment",:object=>@comment
