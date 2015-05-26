@@ -4,9 +4,41 @@
 
 .post
   .comments
+    //float: right
+    margin-top: 2em
+    width: 75%
+    .comment
+      margin-bottom: 1em
+      font-size: 75%
+      .head
+        margin-top: 1em
+        //border: #000 1px solid
+        //border-bottom: none
+        background-image: none
+        //width: 96%
+        .title
+        .post-date
+          display: block
+          float: right
+          padding: 3px
+          font-size: 71%
+      .body
+        //border: #000 1px solid
+        //border-top: none
+        float: left
+        width: 96%
+        background-image: none
+        //width: 96%
+        .avatar
+          float: left
+          height: 50px
+
     .comment-form
       width: 100%
-      float: right
+      //float: right
+      margin-bottom: 1em
+      .comment
+        border: none
       input,textarea
         &::-webkit-input-placeholder
           color: #0f61b3
@@ -23,7 +55,7 @@
       .header
         font-size: 1em
         font-weight: bold
-        text-align: right
+        text-align: left
         width: 90%
       .body, .email, .title
         text-align: right
@@ -34,23 +66,23 @@
       label
         display: none
       input
-        width: 75%
+        width: 100%
         background: #74b1ef url(ui-bg_white-lines_65_74b1ef_40x100.png) repeat scroll 50% 50%
         border: 1px solid #000
         color: #000
         margin-bottom: 3px
       textarea
-        width: 75%
+        width: 100%
         height: 3.5em
         padding: 0px
         background: #74b1ef url(ui-bg_white-lines_65_74b1ef_40x100.png) repeat scroll 50% 50%
         border: 1px solid #000
       .form-actions
         text-align: right
-        float: right
-        width: 50%
+        //float: right
+        width: 100%
         input, a
-          width: 45%
+          width: 49.5%
           background: #74b1ef url(ui-bg_white-lines_65_74b1ef_40x100.png) repeat scroll 50% 50%
           border: 1px solid #000
           color: #000

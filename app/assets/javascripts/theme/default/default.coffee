@@ -12,8 +12,8 @@ $ ->
     the_form = $(this).parents('form').first()
     form_data = the_form.serialize()
     $.post(the_form.prop('action'), form_data, (data)->
-      debugger
       $('.comments').append(data.html)
+      $(this).closest('form').find("input[type=text], textarea").val("");
       console.info data
     )
   )

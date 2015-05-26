@@ -2,7 +2,7 @@
   .head
     .title
       = link_to comment.title, url_for(:comments, :show, id: comment.id)
-    .post_date
+    .post-date
       Posted #{comment.created_at}
       %span.author by #{comment.name}
   .body

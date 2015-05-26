@@ -5,22 +5,21 @@
 
   - error = comment.errors.include?(:body)
   .body{class: error ? 'has-error' : ''}
-    =f.label :body, class: 'control-label'
-    ~f.text_area :body, autofocus: true, placeholder: "Leave a comment (required)"
+    = f.label :body, class: 'control-label'
+    ~ f.text_area :body, autofocus: true, placeholder: "Leave a comment (required)"
     %span.help-inline=error ? f.error_message_on(:body, class: 'text-error') : ""
   - error = comment.errors.include?(:email)
 
   .email{class: error ? 'has-error' : ''}
-    =f.label :email
-    =f.text_field :email, type: :email, placeholder: "email (required - will not be shared!)"
+    = f.label :email
+    = f.text_field :email, type: :email, placeholder: "email (required - will not be shared!)"
     %span.help-inline=error ? f.error_message_on(:email, class: 'text-error') : ""
 
   - error = comment.errors.include?(:title)
   .title{class: error ? 'has-error' : ''}
-    =f.label :title
-    =f.text_field :title, placeholder: "comment title (not required)"
+    = f.label :title
+    = f.text_field :title, placeholder: "comment title (not required)"
     %span.help-inline=error ? f.error_message_on(:title, class: 'text-error') : ""
 
   .form-actions
-    =link_to "Cancel", class: 'form-reset'
-    =f.submit "Submit", class: 'comment-form-submit'
+    = f.submit "Submit", class: 'comment-form-submit'
