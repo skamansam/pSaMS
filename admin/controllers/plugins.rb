@@ -22,7 +22,7 @@ PSaMs::Admin.controllers :plugins do
     flash[:error] = error_check
     @title = pat(:show_title, :model => 'plugin')
     @plugin = Plugin.find(params[:id])
-    @plugin_methods = Plugin.where(name: @plugin.name).order([:plugin_type,:class_name])
+    @plugin_methods = @plugin.all_methods
     @plugin_object = @plugin.plugin_object
     render 'plugins/show'
   end
