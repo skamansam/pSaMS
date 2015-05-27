@@ -271,7 +271,7 @@ DEPENDENCIES
   haml
   i18n
   less
-  method_source
+  method_source (>= 0.8.2)
   mysql2
   padrino
   padrino-sprockets

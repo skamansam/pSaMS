@@ -92,7 +92,7 @@ gem 'carrierwave', :require => %w(carrierwave carrierwave/orm/activerecord)
 #gem 'redis'
 
 #for displaying a method's source, the legacy way
-gem 'method_source'
+gem 'method_source', '>=0.8.2'
 
 # Padrino Stable Gem
 gem 'padrino' #, '0.12.2' #0.12.3+ is broked for acts as taggable on
