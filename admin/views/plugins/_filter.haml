@@ -1,10 +1,15 @@
-.panel.panel-default
+.panel.panel-default{id: plugin.method_name }
   .panel-heading
+    = tag_icon(:filter)
     #{plugin.method_name} (filters
     %em #{plugin.hook_name}
     )
+    .action-links.pull-right
+      = partial 'plugins/action_links', locals: {plugin: plugin}
+
   .panel-body
+    %pre
+      = preserve @plugin_object.instance_method(plugin.method_name.to_sym).comment
     %pre{class: 'language-ruby'}
       %code{class: 'language-ruby'}
-        = preserve @plugin_object.new.method(plugin.method_name.to_sym).comment
-        = preserve @plugin_object.new.method(plugin.method_name.to_sym).source
+        = preserve @plugin_object.instance_method(plugin.method_name.to_sym).source

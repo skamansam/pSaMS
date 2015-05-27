@@ -1,12 +1,11 @@
 %ol.breadcrumb
   %li=link_to "Plugins", url(:plugins, :index)
   %li.active #{@plugin.name}
-.tabs-content
-  .page-header
-    %h2
-      =@plugin.name
-      %small
-        =@plugin.plugin_type
-    %p= @plugin.info[1]
-  - @plugin_methods.each do |plugin|
-    = partial "plugins/#{plugin.plugin_type.downcase}", locals: {plugin: plugin}
+.page-header
+  %h2
+    =@plugin.name
+    %small
+      =@plugin.plugin_type
+  %p= @plugin.class_name.constantize.info[1]
+- @plugin_methods.each do |plugin|
+  = partial "plugins/#{plugin.plugin_type.downcase}", locals: {plugin: plugin}

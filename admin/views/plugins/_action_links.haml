@@ -1,0 +1,6 @@
+-if plugin.active
+  = form_tag url(:plugins, :destroy, id: plugin.id), method: :delete do
+    =link_to tag_icon('times','Deactivate'), rel: :tooltip, title: "#{pat(:delete)} plugin",  onclick: "$(this).parents('form').first().submit()"
+- else
+  = form_tag url(:plugins, :create, id: plugin.id), method: :post do
+    =link_to tag_icon('check', 'activate'), rel: :tooltip, title: "#{pat(:new)} plugin", class: '', onclick: "$(this).parents('form').first().submit()"

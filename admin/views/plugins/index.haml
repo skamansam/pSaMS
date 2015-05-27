@@ -10,20 +10,11 @@
         %span.badge= plugin.cnt
 
   - @plugins.each do |plugin|
-    .panel.panel-default{id: plugin.id}
+    .panel.panel-default.plugin-panel{id: plugin.id}
       .panel-heading
         %h3.panel-title
-          = plugin.name
-          -if plugin.active
-            = form_tag url(:plugins, :destroy, id: plugin.id), method: :delete, style: 'padding-left: 3em;display: inline-block' do
-              =link_to 'Deactivate', rel: :tooltip, title: "#{pat(:delete)} plugin",  onclick: "$(this).parents('form').first().submit()"
-              \|
-              =link_to 'More...', href: url(:plugins, :show, id: plugin.id), rel: :tooltip, title: "#{pat(:edit)} plugin"
-          - else
-            = form_tag url(:plugins, :create, id: plugin.id), method: :post do
-              =link_to tag_icon(:ok), rel: :tooltip, title: "#{pat(:new)} plugin", class: 'list-row-action-new list-row-action-wrapper-link', onclick: "$(this).parents('form').first().submit()"
-              =link_to tag_icon(:info), href: url(:plugins, :show, id: plugin.id), rel: :tooltip, title: "#{pat(:edit)} plugin", class: 'list-row-action-wrapper-link'
-          .pull-right
+          = link_to plugin.name, url(:plugins, :show, id: plugin.id)
+          .badges
             %button.btn.btn-sm.btn-primary{type: :button}
               Hooks
               %span.badge=plugin.cnt
@@ -35,6 +26,13 @@
               %span.badge=plugin.warning_count
       .panel-body
         = plugin.plugin_object.try(:description)
+        %ul.list-group
+          - plugin.all_methods.each do |meth|
+            %li.list-group-item{class: ('disabled' unless meth.active?)}
+              = tag_icon(:cogs)
+              = link_to meth.method_name, url(:plugins, :show, id: plugin.id, anchor: meth.method_name)
+              .action-links.pull-right
+                = partial 'plugins/action_links', locals: {plugin: meth}
 
 %h3 Dependency Paths
 %ul

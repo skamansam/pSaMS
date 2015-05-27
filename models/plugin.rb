@@ -80,8 +80,12 @@ class Plugin < ActiveRecord::Base
   def plugin_object
     @plugin_object ||= class_name.constantize
   rescue NameError => e
-      ErrorHandler.add_error class_name, e 
+      ErrorHandler.add_error class_name, e
       return false
+  end
+
+  def all_methods
+    Plugin.where(name: name).order([:plugin_type,:class_name])
   end
 
   def actions
