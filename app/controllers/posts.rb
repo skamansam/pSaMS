@@ -24,6 +24,7 @@ PSaMs::App.controllers :posts do
     load_category
     render "show"
   end
+  
   get :category, with: :id do
     load_category(params[:id])
     logger.info params.inspect

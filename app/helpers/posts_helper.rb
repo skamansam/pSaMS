@@ -16,4 +16,19 @@ PSaMs::App.helpers do
     out.join(separator).html_safe
   end
 
+  def post_category_cloud(counts = Category.post_counts, separator = " | ")
+    return [] if counts.empty?
+    out = []
+
+    classes = %w(cloud1 cloud2 cloud3 cloud4)
+    max_count = counts.values.max
+
+    counts.each do |name,cnt|
+      index = ((cnt / max_count) * (classes.size - 1))
+      out << link_to(name,  url_for(:posts, :category, id: name) , class: classes[index == Float::NAN ? 0 : index.round] )
+    end
+
+    out.join(separator).html_safe
+  end
+
 end
