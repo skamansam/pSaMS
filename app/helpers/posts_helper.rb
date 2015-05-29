@@ -5,7 +5,7 @@ PSaMs::App.helpers do
 
   def account_link(account)
     return "Unknown" unless account
-    link_to account.name+' '+account.surname, 'mailto:'+account.email
+    link_to account.name+' '+account.surname, "/posts/author/#{account.id}", title: "See more posts by #{account.name+' '+account.surname}"
   end
 
   def post_tag_cloud(tags = Post.tag_counts_on(:tags), separator = " | ")

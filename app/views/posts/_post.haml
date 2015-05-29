@@ -10,9 +10,10 @@
     .tags
       - if post.tags.present?
         tagged with: #{post_tag_cloud(post.tags)}
-  .comments
-    .comment-form
-      = form_for :comment, url(:comments, :create, post_id: post.id), method: :create do |f|
-        = partial 'comments/form', locals: { f: f, comment: Comment.new, post: post }
+  - unless @posts.present?
+    .comments
+      .comment-form
+        = form_for :comment, url(:comments, :create, post_id: post.id), method: :create do |f|
+          = partial 'comments/form', locals: { f: f, comment: Comment.new, post: post }
 
-    = partial "comments/comment", collection: post.comments.comments
+      = partial "comments/comment", collection: post.comments.comments

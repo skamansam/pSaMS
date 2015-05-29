@@ -38,6 +38,13 @@ PSaMs::App.controllers :posts do
     render params.inspect
   end
 
+  get :author, with: :account_id do
+    @posts = Post.without_news.by_author(params[:account_id]).order('updated_at desc')
+    @presenter = PostsPresenter.new(@posts)
+    load_category
+    render "posts/index" #, :layout=>theme_layout_path
+  end
+
   get :tags, with: :tag_name do
     load_category
     render params.inspect

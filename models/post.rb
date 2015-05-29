@@ -35,6 +35,10 @@ class Post < ActiveRecord::Base
   def self.tag_cloud
   end
 
+  def self.by_author(account_id)
+    where account_id: account_id
+  end
+
   # finds all posts according to category path
   # Examples:
   # <code>
