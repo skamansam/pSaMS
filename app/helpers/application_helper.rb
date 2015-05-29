@@ -63,6 +63,9 @@ PSaMs::App.helpers do
 
   def load_category(category_id = nil)
     @category = Category.find_by_id(category_id || params[:category_id] || params[:id]) || Category.first
+    unless @category.present?
+      @category = Category.find_by_name(category_id || params[:category_id] || params[:id]) || Category.first
+    end
   end
 
   def link_for_category(category)
