@@ -5,7 +5,7 @@ module Attempt
       if block_given?
         yield(self)
       elsif the_method
-        the_method.to_proc.try(self)
+        the_method.to_proc.call(self)
       else
         self
       end
