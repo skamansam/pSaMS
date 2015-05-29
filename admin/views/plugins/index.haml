@@ -25,11 +25,12 @@
               Warnings
               %span.badge=plugin.warning_count
       .panel-body
-        = plugin.plugin_object.try(:description)
+        %p
+          = plugin.plugin_object.try(:description) || plugin.plugin_object.info[1]
         %ul.list-group
           - plugin.all_methods.each do |meth|
             %li.list-group-item{class: ('disabled' unless meth.active?)}
-              = tag_icon(:cogs)
+              = tag_icon(plugin.plugin_type.downcase == 'filter' ? :filter : :cogs)
               = link_to meth.method_name, url(:plugins, :show, id: plugin.id, anchor: meth.method_name)
               .action-links.pull-right
                 = partial 'plugins/action_links', locals: {plugin: meth}
