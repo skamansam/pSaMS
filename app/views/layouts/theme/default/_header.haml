@@ -23,4 +23,8 @@
 =theme_css "jquery-ui/jquery.ui.all.css"
 /[if IE 7]
   =theme_css "ie7"
+
+- @plugin_context ||= "#{request.route_obj.controller}.#{request.route_obj.action}"
+= Plugin.apply_action('add_css',['*',"#{request.route_obj.controller}",@plugin_context]).join("\n").html_safe
+
 /END Theme Header
