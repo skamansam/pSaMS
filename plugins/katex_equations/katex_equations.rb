@@ -14,7 +14,7 @@ class KatexEquations
     Plugin.add_action('add_css', 'posts', "KatexEquations", 'get_css',0)
     Plugin.add_action('add_js', 'posts', "KatexEquations", 'get_js',0)
     Plugin.add_filter('post_body_class', "KatexEquations", 'add_katex_class')
-    Plugin.add_filter('post_body_class', "KatexEquations", 'make_equations')
+    Plugin.add_filter('post_content', "KatexEquations", 'make_equations')
   end
 
   def get_css
@@ -24,15 +24,27 @@ class KatexEquations
   def get_js
     '<script type="text/javascript" src="'+katex_path+'katex.min.js"></script>' +
     '<script type="text/javascript" src="'+katex_path+'bootstrap-wysiwyg.js"></script>' +
-    '<script type="text/javascript" src="'+katex_path+'contrib/auto-render.min.js"></script>'.html_safe
+    '<script type="text/javascript" src="'+katex_path+'contrib/auto-render.min.js"></script>' +
+    '<script type="text/javascript" src="/assets/katex_equations/katex_equations.js"></script>'.html_safe
   end
 
   def add_katex_class(body_class, post)
     "#{body_class} katex"
   end
 
-  def make_equations(body_text)
-
+  def make_equations(body_text, post)
+    #binding.pry
+    ret = body_text
+    #{
+    #  inline_equation: [ /\\\([^\!](.*?)[^\!]\\\)/, /\$\$[^\!](.*?)[^\!]\$\$/ ],
+    #  single_line_equation: [ /\\\[[^\!](.*?)[^\!]\\\]/, /\$\$\!(.*?)\$\$/ ],
+    #  #show_latex_source: [ /\\\((.*?)\!\\\)/ ]
+    #}.each do |class_name, rgxes|
+    #  rgxes.each do |rgx|
+    #    ret.gsub! rgx, "<span class='#{class_name}'>\\1</span>"
+    #  end
+    #end
+    ret
   end
 
   private
