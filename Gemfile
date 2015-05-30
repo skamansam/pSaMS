@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Distribute your app as a gem
 # gemspec
 
+#gem 'rack', '~> 1.5.0'
+
 # Server requirements
 gem 'thin' # or mongrel
 # gem 'trinidad', :platform => 'jruby'
@@ -25,7 +27,7 @@ gem 'sass'
 gem 'haml'
 gem 'coffee-script'
 
-gem 'activerecord' #, '4.1.2', :require => 'active_record'
+gem 'activerecord' #, '4.1.2' #, :require => 'active_record'
 
 #choose wisely!
 gem 'sqlite3', :group=>['development','test']
@@ -95,7 +97,7 @@ gem 'carrierwave', :require => %w(carrierwave carrierwave/orm/activerecord)
 gem 'method_source', '>=0.8.2'
 
 # Padrino Stable Gem
-gem 'padrino' #, '0.12.2' #0.12.3+ is broked for acts as taggable on
+gem 'padrino', '0.12.5' #, '0.12.2' #0.12.3+ is broked for acts as taggable on
 
 # Or Padrino Edge
 #gem 'padrino', :github => 'padrino/padrino-framework'
