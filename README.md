@@ -13,18 +13,20 @@ In 1997, all I had available for my website was very limited hosting via an Eart
 About MeApps
 ------------
 
-A little while after creating SaMS, I heard about a new trend called "web logs," or just "blogging." I could not find any good free blogging software, so I wrote my own, called "MeBlog." MeBlog used a flat-file backend as a database, so it could be used on any basic web server with only Perl support. The added advantage is you could read the entries without the need for any special software.
+A little while after creating SaMS, I heard about a new trend called "web logs," or just "blogs." I could not find any good free blogging software, so I wrote my own, called "MeBlog." MeBlog used a flat-file backend as a database, so it could be used on any basic web server with only Perl support. The added advantage is you could read the entries without the need for any special software.
 
-MeBlog led to more adventurous apps, including MeStart, a fully customizable start page in the vein of Google Home. All these and more can be found
+MeBlog led to more adventurous apps, including MeStart, a fully customizable start page in the vein of Google Home. All these and more [can be found here](http://rbe.homeip.net/content/projects/MeApps/).
 
 pSaMS Features
 --------------
 
 ### Theme API
 
-You can add your own theme assets, under app/assets/*/theme/theme_name/ and use the
+For now, you can add your own theme assets, under app/assets/*/theme/theme_name/ and use the
 
 ### Themes to get you started
+
+*These themes have not bwwn implemented yet.*
 
 pSaMS comes with several themes. One theme, "Bubbly Blue," is the design for my old site. One theme is not really a theme, but a basic template (not finished). The last theme is a clean and simple grayscale theme.
 
