@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Distribute your app as a gem
 # gemspec
 
-gem 'rack', '~> 1.5.3'
+gem 'rack', '1.5.2'
 
 # Server requirements
 gem 'thin' # or mongrel
