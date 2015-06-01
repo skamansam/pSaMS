@@ -26,7 +26,7 @@
               %span.badge=plugin.warning_count
       .panel-body
         %p
-          = plugin.plugin_object.try(:description) || plugin.plugin_object.info[1]
+          = plugin.plugin_object.try(:description) || plugin.plugin_object.try(:info).try(:[],1)
         %ul.list-group
           - plugin.all_methods.each do |meth|
             %li.list-group-item{class: ('disabled' unless meth.active?)}
