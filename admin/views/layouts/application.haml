@@ -52,5 +52,5 @@
           %li= link_to tag_icon(:github, 'code'), 'https://github.com/skamansam', :target => :_blank, :class => 'footer-links-link'
           %li= link_to tag_icon(:twitter, 'twitter'), 'http://twitter.com/psams_blog', :target => :_blank, :class => 'footer-links-link'
 
-    =javascript_include_tag 'jquery-1.11.0.min','jquery-ui-1.10.3.custom', '/assets/jquery-ujs', 'typeahead.min', 'prism-dev', (Padrino.env == :production ? 'bootstrap/bootstrap.min' : %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab bootstrap/bootstrap-tagsinput]), :application
+    =javascript_include_tag 'jquery-1.11.0.min','jquery-ui-1.10.3.custom', '/assets/jquery-ujs', 'typeahead.min', 'prism-dev', %w[bootstrap/affix bootstrap/alert bootstrap/button bootstrap/carousel bootstrap/collapse bootstrap/dropdown  bootstrap/tooltip bootstrap/transition  bootstrap/modal bootstrap/popover bootstrap/scrollspy bootstrap/tab bootstrap/bootstrap-tagsinput], :application
     = Plugin.apply_action('add_js',['*','admin',"admin.#{request.route_obj.controller}",@plugin_context]).join("\n").html_safe
