@@ -45,7 +45,7 @@
         %p.pull-left
           Copyright &copy;
           =Time.now.year
-          Rude Boy Enterprises - Powered by Padrino v.#{Padrino.version} and pSaMS v.#{PSaMs::App::PSAMS_VERSION} (on git branch '#{PSaMs::App::GIT_BRANCH}'' at #{PSaMs::App::GIT_HASH.first(6)})
+          Rude Boy Enterprises - Powered by Padrino v.#{Padrino.version} and pSaMS v.#{PSaMs::App::PSAMS_VERSION} (on git branch '#{PSaMs::App::GIT_BRANCH}'' at #{PSaMs::App::GIT_HASH.try(:first,6) || ??????})
         %ul.pull-right.footer-links
           %li= link_to tag_icon(:home, 'web'), 'http://www-rbe.rhcloud.com', :target => :_blank, :class => 'footer-links-link'
           %li= link_to tag_icon(:heart, 'blog'), 'http://www-rbe.rhcloud.com', :target => :_blank, :class => 'footer-links-link'
