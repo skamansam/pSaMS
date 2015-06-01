@@ -32,5 +32,5 @@ do
 done
 
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-bundle exec rake ar:migrate RACK_ENV="production"
+bundle exec rake ar:migrate RACK_ENV="production" MIGRATIONS=true
 popd > /dev/null
