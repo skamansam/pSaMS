@@ -258,6 +258,7 @@ DEPENDENCIES
   pry-macro
   pry-rescue
   pry-stack_explorer
+  rack (~> 1.5.3)
   rack-test
   rake
   rdiscount
