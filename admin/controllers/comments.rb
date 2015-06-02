@@ -1,4 +1,5 @@
 PSaMs::Admin.controllers :comments do
+  layout 'application.haml'
   get :index do
     @title = "Comments"
     @comments = Comment.all
