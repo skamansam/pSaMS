@@ -9,8 +9,8 @@ class CommentPresenter
     @avatar = Plugin.apply_filter('comment_avatar', comment.email, comment.freeze)
     @body_class = Plugin.apply_filter('comment_body_class', "comment.body",comment.freeze)
     @title_class = Plugin.apply_filter('comment_title_class', "comment.title",comment.freeze)
-    @updated_at = Plugin.apply_filter('comment_updated_at', comment.updated_at,comment.freeze)
-    @created_at = Plugin.apply_filter('comment_created_at', comment.created_at,comment.freeze)
+    @updated_at = Plugin.apply_filter('comment_updated_at', comment.updated_at.localtime, comment.freeze)
+    @created_at = Plugin.apply_filter('comment_created_at', comment.created_at.localtime,comment.freeze)
     @id = Plugin.apply_filter('comment_id', comment.id,comment.freeze)
     @comments = CommentsPresenter.new(comment.comments)
   end

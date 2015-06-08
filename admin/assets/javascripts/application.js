@@ -210,9 +210,9 @@
     $(".reorderable")
       .disableSelection();
 
-
     //the following is for tagsinput typeahead
-    $('.tag-list-for-post')
+    if( $('.tag-list-for-post').size > 0){
+      $('.tag-list-for-post')
       .tagsinput('input')
       .typeahead({
         prefetch: '/posts/tags.json'
@@ -222,7 +222,7 @@
         this.tagsinput('input')
           .typeahead('setQuery', '');
       }, $('input')));
-
+    };
 
     $('select#post_editor_select')
       .on('change', function() {

@@ -9,7 +9,7 @@
     %meta{:content => 'text/html; charset=utf-8', 'http-equiv' => 'Content-Type'}
     %meta{:name => :viewport, :content => 'width=device-width,initial-scale=1'}
     %title= @title.present? ? "#{@title} | pSaMS Admin" : "pSaMS Admin"
-    =favicon_tag 'favicon.ico'
+    =favicon_tag '../assets/images/favicon.ico'
     %link{:href => 'http://fonts.googleapis.com/css?family=Varela', :rel => :stylesheet}
     =stylesheet_link_tag 'application'
     - @plugin_context ||= "admin.#{request.route_obj.controller}.#{request.route_obj.action}"
