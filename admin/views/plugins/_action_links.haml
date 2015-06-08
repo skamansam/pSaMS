@@ -3,4 +3,18 @@
     =link_to tag_icon('times','Deactivate'), rel: :tooltip, title: "#{pat(:delete)} plugin",  onclick: "$(this).parents('form').first().submit()"
 - else
   = form_tag url(:plugins, :create, id: plugin.id), method: :post do
-    =link_to tag_icon('check', 'activate'), rel: :tooltip, title: "#{pat(:new)} plugin", class: '', onclick: "$(this).parents('form').first().submit()"
+    = link_to tag_icon('check', 'activate'), rel: :tooltip, title: "#{pat(:new)} plugin", class: '', onclick: "$(this).parents('form').first().submit()"
+  = link_to tag_icon('trash-o', 'delete'), :rel => :tooltip, :title => "#{pat(:delete)} plugin", :class => 'pull-left', data: {toggle: "modal",target:"#delete_plugin_#{plugin.id}"}
+  .modal.fade{id: "delete_plugin_#{plugin.id}", role: 'dialog', aria: {hidden: 'true'}}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+            %span(aria-hidden="true")= '&times;'.html_safe
+          %h4(class="modal-title" id="myModalLabel")=pat(:delete, :model => "plugin")
+        .modal-body
+          %p Are you sure you want to delete the plugin #{plugin.name} ?
+        .modal-footer
+          = form_tag url(:plugins, :destroy, id: plugin.id), :method => :delete do
+            .btn.btn-default.btn-small.cancel(data-duismiss='modal')=pat(:cancel)
+            =submit_tag pat(:delete), :class =>'btn btn-danger'
