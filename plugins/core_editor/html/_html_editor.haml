@@ -125,6 +125,6 @@
   =f.label :body, :class => 'control-label'
   .controls
     #wysiwyg-editor{style: "width: 100%;height: 30em", class: 'form-control input-large input-with-feedback'}
-      = f.object.body.html_safe
+      = f.object.body.try(:html_safe)
     ~f.text_area :body, class: 'hidden'
     %span.help-inline=error ? f.error_message_on(:body, :class => 'text-error') : pat(:example)

@@ -1,5 +1,5 @@
+# PluginLoader handles the loading and unloading of pSaMS plugins
 module PluginLoader
-
   def self.included(base)
     logger.info "#{base} is a PluginLoader"
     base.extend ClassMethods
@@ -34,12 +34,12 @@ module PluginLoader
       Padrino.reload!
       Plugin.all.each do |plugin|
         plugin_class = nil
-        plugin.active = false unless is_loaded?(plugin.class_name)
+        plugin.active = false unless loaded?(plugin.class_name)
         begin
           plugin_class = plugin.class_name.constantize
           plugin.active = false unless plugin_class.new.respond_to?(plugin.method_name)
           plugin.name = plugin_class.name
-        rescue NameError=>e
+        rescue NameError => e
           ErrorHandler.add_error plugin.file_name, e
         end
         plugin.save
@@ -55,13 +55,11 @@ module PluginLoader
       end
     end
 
-    def is_loaded?(class_name)
-      begin
-        Module.const_get(class_name)
-        return true
-      rescue NameError
-        return false
-      end
+    def loaded?(class_name)
+      Module.const_get(class_name)
+      return true
+    rescue NameError
+      return false
     end
 
     def reload_plugin(path, force=false)
@@ -69,29 +67,24 @@ module PluginLoader
       path = "#{path}/#{File.basename(path)}.rb" if File.directory?(path)
 
       if File.basename(path) =~ /(.*)\.rb$/
-        logger.info "Found class #{$1.camelize}"
-        cname = $1.camelize
+        logger.info "Found class #{Regexp.last_match[1].camelize}"
+        cname = Regexp.last_match[1].camelize
       end
-      return if (self.is_a?(Class) && is_loaded?(cname)) && !force #already loaded
+      return if (self.is_a?(Class) && loaded?(cname)) && !force # already loaded
       if set_load_paths(path)
-        yield path, '::'+cname if block_given?
+        yield path, '::' + cname if block_given?
         true
       end
       false
     end
 
     def set_load_paths(path)
-      begin
-        Padrino.load_paths << path
-        Padrino.dependency_paths << path
-        Padrino.require_dependencies(path)
-        true
-      rescue Exception => err
-        Padrino.load_paths.delete path
-        Padrino.dependency_paths.delete path
-        ErrorHandler::add_error(path, err)
-        false
-      end
+      Padrino.require_dependencies(path)
+      true
+    rescue StandardError => err
+      Padrino.dependency_paths.delete path
+      ErrorHandler.add_error(path, err)
+      false
     end
   end
 end

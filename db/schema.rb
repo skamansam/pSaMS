@@ -14,19 +14,19 @@
 ActiveRecord::Schema.define(version: 22) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "surname"
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "role"
+    t.string   "name",             limit: 255
+    t.string   "surname",          limit: 255
+    t.string   "email",            limit: 255
+    t.string   "crypted_password", limit: 255
+    t.string   "role",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "albums", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",       limit: 255
     t.text     "description"
-    t.string   "location"
+    t.string   "location",    limit: 255
     t.integer  "parent"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -41,20 +41,20 @@ ActiveRecord::Schema.define(version: 22) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_order"
     t.integer  "parent_id"
-    t.string   "link"
+    t.string   "link",        limit: 255
   end
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
-    t.string   "title"
+    t.string   "title",            limit: 255
     t.integer  "user_id"
-    t.string   "email"
+    t.string   "email",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "comment_for_id"
@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(version: 22) do
   end
 
   create_table "file_uploads", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        limit: 255
     t.text     "description"
-    t.string   "location"
-    t.string   "size_small"
-    t.string   "size_medium"
+    t.string   "location",    limit: 255
+    t.string   "size_small",  limit: 255
+    t.string   "size_medium", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,42 +74,43 @@ ActiveRecord::Schema.define(version: 22) do
   create_table "photos", force: :cascade do |t|
     t.text     "exif_info"
     t.text     "about"
-    t.string   "location"
-    t.string   "title"
-    t.string   "thumbnail_location"
+    t.string   "location",           limit: 255
+    t.string   "title",              limit: 255
+    t.string   "thumbnail_location", limit: 255
     t.integer  "album_id"
-    t.string   "filename"
+    t.string   "filename",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "plugins", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",          limit: 255
     t.integer  "priority"
-    t.string   "plugin_type"
-    t.string   "file_name"
+    t.string   "plugin_type",   limit: 255
+    t.string   "file_name",     limit: 255
     t.integer  "line_number"
-    t.string   "class_name"
-    t.string   "method_name"
-    t.string   "hook_name"
+    t.string   "class_name",    limit: 255
+    t.string   "method_name",   limit: 255
+    t.string   "hook_name",     limit: 255
     t.integer  "num_args"
     t.text     "options"
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "context",     default: "*"
+    t.string   "hook_location", limit: 255, default: "*"
+    t.string   "context",                   default: "*"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",       limit: 255
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
     t.integer  "category_id"
-    t.string   "path"
-    t.boolean  "is_news",     default: false
-    t.boolean  "published",   default: false
+    t.string   "path",        limit: 255
+    t.boolean  "is_news",                 default: false
+    t.boolean  "published",               default: false
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -124,9 +125,9 @@ ActiveRecord::Schema.define(version: 22) do
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type"
+    t.string   "taggable_type", limit: 255
     t.integer  "tagger_id"
-    t.string   "tagger_type"
+    t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -135,8 +136,8 @@ ActiveRecord::Schema.define(version: 22) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string  "name",           limit: 255
+    t.integer "taggings_count",             default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true

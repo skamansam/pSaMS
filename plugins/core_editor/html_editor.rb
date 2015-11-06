@@ -17,7 +17,7 @@ class HtmlEditor
     logger.info "Initializing CoreEditor::Html"
   end
 
-  def self.migrate ; end
+  def self.migrate; end
 
   def self.setup
     Plugin.add_action('add_editor', 'admin.posts.edit', "HtmlEditor", 'get_post_editor',0)
@@ -39,8 +39,8 @@ class HtmlEditor
     '<link rel="stylesheet" href="/assets/core_editor/css/html-editor.css"></script>'.html_safe
   end
   def get_js
-    '<script type="text/javascript" src="/assets/core_editor/js/jquery.hotkeys.js"></script>' +
+    ('<script type="text/javascript" src="/assets/core_editor/js/jquery.hotkeys.js"></script>' +
     '<script type="text/javascript" src="/assets/core_editor/js/bootstrap-wysiwyg.js"></script>' +
-    '<script type="text/javascript" src="/assets/core_editor/js/html-editor.js"></script>'.html_safe
+    '<script type="text/javascript" src="/assets/core_editor/js/html-editor.js"></script>').html_safe
   end
 end
