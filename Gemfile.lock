@@ -245,7 +245,7 @@ DEPENDENCIES
   less
   method_source (>= 0.8.2)
   mysql2
-  padrino
+  padrino (>= 0.13.0)
   padrino-sprockets
   pry
   pry-byebug
