@@ -97,7 +97,7 @@ gem 'carrierwave', :require => %w(carrierwave carrierwave/orm/activerecord)
 gem 'method_source', '>=0.8.2'
 
 # Padrino Stable Gem
-gem 'padrino', '>=0.13.0'
+gem 'padrino', '>=0.13.1'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'
