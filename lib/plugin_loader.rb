@@ -11,7 +11,7 @@ module PluginLoader
   end
 
   module ClassMethods
-    def load_plugins(path,run_migrations)
+    def load_plugins(path, run_migrations)
       logger.info "Loading Plugins..."
       process_files(path) do |filename, classname|
         logger.info "Initializing plugin #{classname} in #{filename}"
@@ -21,17 +21,23 @@ module PluginLoader
         else
           if classname.to_s.instance_of?(Module)
             logger.info "Loading  #{classname} from #{filename}..."
-            include cname.constantize
+            begin
+              include cname.constantize
+            rescue StandardError => err
+              logger.info "ERROR: Cannot load  #{classname}: #{err}"
+            rescue Exception => err
+              logger.info "ERROR: Cannot load  #{classname}: #{err}"
+            end
           else
             logger.info "Creating new #{classname} from #{filename}..."
-            classname.constantize.setup
+            classname.constantize.try(:setup)
           end
         end
       end
     end
 
     def clean_plugins!
-      Padrino.reload!
+      #Padrino.reload!
       Plugin.all.each do |plugin|
         plugin_class = nil
         plugin.active = false unless loaded?(plugin.class_name)
@@ -80,8 +86,15 @@ module PluginLoader
 
     def set_load_paths(path)
       Padrino.require_dependencies(path)
+      $LOAD_PATH.concat([path]) unless $LOAD_PATH.include?(path)
       true
+    rescue Exception => err
+      logger.error "There was a catastrophic error in #{path}.\n\t#{err.message}"
+      Padrino.dependency_paths.delete path
+      ErrorHandler.add_error(path, err)
+      false
     rescue StandardError => err
+      logger.error "There was an error in #{path}. #{err.message}"
       Padrino.dependency_paths.delete path
       ErrorHandler.add_error(path, err)
       false
