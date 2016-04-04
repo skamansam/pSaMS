@@ -5,7 +5,7 @@
 #   name = shell.ask("What's your name?")
 #   shell.say name
 #
-if RACK_ENV == 'testing'
+if RACK_ENV =~ /test/
   email = 'admin@nowhere.org'
   password = 'test123'
 else
@@ -38,6 +38,17 @@ else
 end
 
 shell.say "\nNow we need a first post to get started."
-title = shell.ask 'What is the title of your first post?'
-body = shell.ask 'Now give me some content for the first post:'
-Post.create!(title: title, body: body, account_id: account.id, category: Category.create!(name: 'home_page'))
+if RACK_ENV =~ /test/
+  title = 'Welcome to my Site!'
+  body = 'This is the default post'
+else
+  title = shell.ask 'What is the title of your first post?'
+  body = shell.ask 'Now give me some content for the first post:'
+end
+
+Post.create!(
+  title: title,
+  body: body,
+  account_id: account.id,
+  category: Category.create!(name: 'home_page')
+)
