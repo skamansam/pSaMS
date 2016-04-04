@@ -1,6 +1,2 @@
---colour
---drb
---format documentation
+--color
 --require spec_helper
-
---tag ~redis_required

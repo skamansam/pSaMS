@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'PreferencesInteractor::CreateOrUpdate' do
+RSpec.describe 'PreferencesInteractor::CreateOrUpdate' do
 
   context 'when creating a new preference' do
     let(:current_account){FactoryGirl.build :admin}

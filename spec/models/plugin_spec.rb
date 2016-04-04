@@ -21,5 +21,5 @@
 
 require 'spec_helper'
 
-describe Plugin do
+RSpec.describe Plugin do
 end

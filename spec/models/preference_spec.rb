@@ -13,5 +13,5 @@
 
 require 'spec_helper'
 
-describe Preference do
+RSpec.describe Preference do
 end
