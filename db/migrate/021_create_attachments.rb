@@ -4,7 +4,7 @@ class CreateAttachments < ActiveRecord::Migration
       t.string      :attachment_for_type
       t.integer     :attachment_for_id
       t.string      :file
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

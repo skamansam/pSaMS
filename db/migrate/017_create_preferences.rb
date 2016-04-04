@@ -5,7 +5,7 @@ class CreatePreferences < ActiveRecord::Migration
       t.string :context, default: '*'
       t.string :key
       t.text :value
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

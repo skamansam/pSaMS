@@ -8,7 +8,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :thumbnail_location
       t.integer :album_id
       t.string :filename
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

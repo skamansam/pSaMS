@@ -3,7 +3,7 @@ class CreateCategories < ActiveRecord::Migration
     create_table :categories do |t|
       t.string :name
       t.text :description
-      t.timestamps
+      t.timestamps null: false
     end
     add_column :posts, :category_id, :integer
   end

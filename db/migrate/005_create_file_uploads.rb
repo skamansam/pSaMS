@@ -6,7 +6,7 @@ class CreateFileUploads < ActiveRecord::Migration
       t.string :location
       t.string :size_small
       t.string :size_medium
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

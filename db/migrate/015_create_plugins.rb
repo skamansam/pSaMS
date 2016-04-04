@@ -12,7 +12,7 @@ class CreatePlugins < ActiveRecord::Migration
       t.integer :num_args
       t.text :options
       t.boolean :active
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

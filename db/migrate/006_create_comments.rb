@@ -6,7 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.integer :user_id
       t.string :email
       t.datetime :created_at
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

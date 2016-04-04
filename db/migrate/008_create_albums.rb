@@ -5,7 +5,7 @@ class CreateAlbums < ActiveRecord::Migration
       t.text :description
       t.string :location
       t.integer :parent
-      t.timestamps
+      t.timestamps null: false
     end
   end
 
