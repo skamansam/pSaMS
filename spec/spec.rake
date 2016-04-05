@@ -1,7 +1,7 @@
 begin
   require 'rspec/core/rake_task'
 
-	spec_tasks = ['admin','app','models']
+  spec_tasks = %w(admin app models)
   # Dir['spec/*/'].inject([]) do |result, d|
   #  result << File.basename(d) unless Dir["#{d}*"].empty?
   #  result
@@ -14,8 +14,8 @@ begin
     end
   end
 
-  desc "Run complete application spec suite"
+  desc 'Run complete application spec suite'
   task 'spec' => spec_tasks.map { |f| "spec:#{f}" }
 rescue LoadError
-  puts "RSpec is not part of this bundle, skip specs."
+  puts 'RSpec is not part of this bundle, skip specs.'
 end

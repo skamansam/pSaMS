@@ -8,8 +8,8 @@
 #  email            :string
 #  crypted_password :string
 #  role             :string
-#  created_at       :datetime
-#  updated_at       :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 require File.expand_path(File.dirname(__FILE__) + '/../../test_config.rb')

@@ -7,8 +7,8 @@
 #  context    :string           default("*")
 #  key        :string
 #  value      :text
-#  created_at :datetime
-#  updated_at :datetime
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Preference < ActiveRecord::Base

@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id          :integer          not null, primary key
+#  title       :string
+#  body        :text
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  account_id  :integer
+#  category_id :integer
+#  path        :string
+#  is_news     :boolean          default(FALSE)
+#  published   :boolean          default(FALSE)
+#
+
 # Helper methods defined here can be accessed in any controller or view in the application
 
 PSaMs::App.helpers do

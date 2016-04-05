@@ -7,8 +7,8 @@
 #  title            :string
 #  user_id          :integer
 #  email            :string
-#  created_at       :datetime
-#  updated_at       :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #  comment_for_id   :integer
 #  comment_for_type :string
 #

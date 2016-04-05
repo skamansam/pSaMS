@@ -20,7 +20,7 @@ gem 'rake'
 # Component requirements
 gem 'bcrypt'
 gem 'will_paginate', '~>3.0'
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt-ruby', require: 'bcrypt'
 
 # for assets
 gem 'sass'
@@ -30,10 +30,10 @@ gem 'coffee-script'
 gem 'activerecord' # , '4.1.2' #, :require => 'active_record'
 
 # choose wisely!
-gem 'sqlite3', :group => %w(development test)
+gem 'sqlite3', group: %w(development test)
 # gem 'mongodb', group: %w(development test)
 # gem 'pg', group: 'production'
-gem 'mysql2', :group=> 'production'
+gem 'mysql2', group: 'production'
 
 # adds annotations to the model files
 gem 'annotate'
@@ -46,7 +46,7 @@ group :test do
   gem 'factory_girl'
   gem 'capybara'
   gem 'cucumber'
-  gem 'rack-test', :require => 'rack/test'
+  gem 'rack-test', require: 'rack/test'
   gem 'database_cleaner'
 end
 
@@ -68,13 +68,13 @@ end
 
 gem 'sinatra-contrib'
 
-gem 'padrino-sprockets', :require => 'padrino/sprockets' # , :path=>"/home/sam/workspace/padrino-sprockets" #:git=>https://github.com/skamansam/padrino-sprockets.git
+gem 'padrino-sprockets', require: 'padrino/sprockets'
 
 gem 'therubyracer'
 
 # enable js minification
 gem 'uglifier'
-gem 'closure-compiler', :group => 'production'
+gem 'closure-compiler', group: 'production'
 
 # enable css compression
 gem 'yui-compressor'
@@ -87,7 +87,7 @@ gem 'rdiscount' # for markdown processing
 gem 'bh' # bootstrap helpers
 
 # for handling attachments
-gem 'carrierwave', :require => %w(carrierwave carrierwave/orm/activerecord)
+gem 'carrierwave', require: %w(carrierwave carrierwave/orm/activerecord)
 
 # for caching.
 # gem 'memcached' #disabled for Openshift

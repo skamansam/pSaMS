@@ -14,8 +14,8 @@
 #  num_args    :integer
 #  options     :text
 #  active      :boolean
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #  context     :string           default("*")
 #
 

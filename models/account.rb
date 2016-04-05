@@ -8,8 +8,8 @@
 #  email            :string
 #  crypted_password :string
 #  role             :string
-#  created_at       :datetime
-#  updated_at       :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 class Account < ActiveRecord::Base

@@ -18,7 +18,7 @@ ENV['RACK_ENV'] = 'test' unless defined?(RACK_ENV)
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
+require File.expand_path(File.dirname(__FILE__) + '/../config/boot')
 
 require 'forgery'
 require 'factory_girl'
@@ -102,9 +102,9 @@ RSpec.configure do |config|
 end
 
 FactoryGirl.definition_file_paths = [
-    File.join(Padrino.root, 'factories'),
-    File.join(Padrino.root, 'test', 'factories'),
-    File.join(Padrino.root, 'spec', 'factories')
+  File.join(Padrino.root, 'factories'),
+  File.join(Padrino.root, 'test', 'factories'),
+  File.join(Padrino.root, 'spec', 'factories')
 ]
 FactoryGirl.find_definitions
 

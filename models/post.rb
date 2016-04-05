@@ -5,16 +5,16 @@
 #  id          :integer          not null, primary key
 #  title       :string
 #  body        :text
-#  created_at  :datetime
-#  updated_at  :datetime
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #  account_id  :integer
 #  category_id :integer
 #  path        :string
-#  is_news     :boolean          default("f")
-#  published   :boolean          default("f")
+#  is_news     :boolean          default(FALSE)
+#  published   :boolean          default(FALSE)
 #
 
-#require ActsAsTaggableOn
+# require ActsAsTaggableOn
 class Post < ActiveRecord::Base
   include ActsAsTaggableOn
   belongs_to :account
@@ -53,7 +53,7 @@ class Post < ActiveRecord::Base
       cur_category = Category.find_by_name(s) unless cur_category.nil
     end if path.size > 1
 
-    return cur_category.posts.published
+    cur_category.posts.published
   end
 
   def self.for_news
@@ -65,11 +65,11 @@ class Post < ActiveRecord::Base
   end
 
   def to_date
-    (self.updated_at || self.created_at).to_date.to_formatted_s :rfc822
+    (updated_at || created_at).to_date.to_formatted_s :rfc822
   end
 
   private
+
   def apply_before_save_filters
   end
-
 end
