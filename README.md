@@ -2,7 +2,10 @@ padrino Sam's Management System
 ===============================
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/skamansam/pSaMS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://semaphoreci.com/api/v1/skamansam/psams/branches/develop/badge.svg)](https://semaphoreci.com/skamansam/psams)
+
+develop: [![Build Status](https://semaphoreci.com/api/v1/skamansam/psams/branches/develop/badge.svg)](https://semaphoreci.com/skamansam/psams)
+
+master: [![Build Status](https://semaphoreci.com/api/v1/skamansam/psams/branches/master/badge.svg)](https://semaphoreci.com/skamansam/psams)
 
 This is not a port, but a complete rewrite of SaMS (http://rbe.homeip.net/content/projects/MeApps/sams.html), in padrino.
 
