@@ -20,5 +20,10 @@ FactoryGirl.define do
     body "The body text"
     account
     category
+    published true
+
+    factory :unpublished_post do
+      published false
+    end
   end
 end

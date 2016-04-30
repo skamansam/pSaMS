@@ -13,17 +13,15 @@
 #  comment_for_type :string
 #
 
-# This represetns a comment. A comment is a publicly-createable object that
-# can be for anyother object (via polymorphic association).
-class Comment < ActiveRecord::Base
-  belongs_to :comment_for, polymorphic: true
-  has_many :comments, as: :comment_for
-  belongs_to :user, class_name: 'Account'
+FactoryGirl.define do
+  factory :comment do
+    title { Forgery('lorem_ipsum').words }
+    body { Forgery('lorem_ipsum').paragraph }
+    user { FactoryGirl.build(:account) }
+    comment_for { FactoryGirl.build(:post) }
 
-  alias_method :children, :comments
-
-  def parent
-    comment_for
+    factory :post_comment do
+      comment_for { FactoryGirl.build(:post) }
+    end
   end
-
 end

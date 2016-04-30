@@ -15,7 +15,10 @@ PSaMs::Admin.controllers :preferences do
   end
 
   post :create, provides: [:json, :html] do
-    i = PreferencesInteractor::CreateOrUpdate.new(current_account,params[:key],params[:value],params[:context])
+    i = PreferencesInteractor::CreateOrUpdate.new(
+      account: current_account, key: params[:key],
+      value: params[:value], context: params[:context]
+    )
     flash[:error] = error_check
     if i.perform
       if request_format.json?
@@ -23,7 +26,8 @@ PSaMs::Admin.controllers :preferences do
       else
         @title = pat(:create_title, :model => "preference #{@preference.id}")
         flash[:success] = pat(:create_success, :model => 'Preference')
-        params[:save_and_continue] ? redirect(url(:preferences, :index)) : redirect(url(:preferences, :edit, :id => @preference.id))
+        redirect_url = url(:preferences, :edit, :id => @preference.id)
+        params[:save_and_continue] ? redirect(url(:preferences, :index)) : redirect(redirect_url)
       end
     else
       if request_format.json?

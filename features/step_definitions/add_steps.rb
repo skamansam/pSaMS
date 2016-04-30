@@ -13,5 +13,3 @@ end
 Then /^I should see '(.*)'$/ do |text|
   response_body.should contain(/#{text}/m)
 end
-
-

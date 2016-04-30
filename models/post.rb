@@ -14,7 +14,6 @@
 #  published   :boolean          default(FALSE)
 #
 
-# require ActsAsTaggableOn
 class Post < ActiveRecord::Base
   include ActsAsTaggableOn
   belongs_to :account

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe "PluginManagerController" do
+RSpec.describe "PluginManagerController", type: :controller do
   before do
     get "/"
   end

@@ -5,10 +5,21 @@ RSpec.describe 'PreferencesInteractor::CreateOrUpdate' do
     let(:params_key) { 'editor' }
     let(:params_value) { 'html' }
     let(:params_context) { 'admin.post.editor' }
-    let(:prefs_create_or_update) { PreferencesInteractor::CreateOrUpdate.perform(current_account, params_key, params_value, params_context) }
+    subject do
+      PreferencesInteractor::CreateOrUpdate.new(
+        account: current_account, key: params_key,
+        value: params_value, context: params_context
+      )
+    end
     context 'given user, key, value, and context' do
-      it 'should save' do
-        expect { prefs_create_or_update }.to change { Preference.count }.by 1
+      it 'should succeed' do
+        current_account.save
+        expect(subject.perform).to eql true
+        expect(subject.errors).to be_blank
+        expect(Preference.where(
+          account: current_account, key: params_key,
+          value: params_value, context: params_context
+        ).size).to eql 1
       end
     end
     context 'missing required attributes' do
