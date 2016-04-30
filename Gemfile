@@ -48,9 +48,10 @@ group :test do
   gem 'cucumber'
   gem 'rack-test', require: 'rack/test'
   gem 'database_cleaner'
+  gem 'mutant-rspec'
 end
 
-group :development do
+group :development, :test do
   gem 'pry'
   gem 'pry-rescue'
   gem 'pry-byebug' # same as pry-debugger, but for 2.0
@@ -59,6 +60,9 @@ group :development do
   gem 'pry-macro'
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'rubocop'
+  gem 'overcommit'
+  gem 'scss_lint'
 end
 
 # Or Individual Gems
