@@ -42,6 +42,7 @@ gem 'annotate'
 group :test do
   # gem 'shoulda'
   gem 'rspec'
+  gem 'rspec-padrino'
   gem 'forgery'
   gem 'factory_girl'
   gem 'capybara'
@@ -62,7 +63,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'rubocop'
   gem 'overcommit'
-  gem 'scss_lint'
+  gem 'scss_lint', require: false
 end
 
 # Or Individual Gems
@@ -101,7 +102,7 @@ gem 'carrierwave', require: %w(carrierwave carrierwave/orm/activerecord)
 gem 'method_source', '>=0.8.2'
 
 # Padrino Stable Gem
-gem 'padrino', '>=0.13.1'
+gem 'padrino', '>=0.13.2'
 
 # Or Padrino Edge
 # gem 'padrino', :github => 'padrino/padrino-framework'

@@ -25,6 +25,9 @@ require 'factory_girl'
 require 'pry'
 
 RSpec.configure do |config|
+  config.include RSpec::Padrino
+  config.include Rack::Test::Methods
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -100,6 +103,8 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
+
+  #config.infer_spec_type_from_file_location!
 end
 
 FactoryGirl.definition_file_paths = [

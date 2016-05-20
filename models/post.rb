@@ -38,6 +38,10 @@ class Post < ActiveRecord::Base
     where account_id: account_id
   end
 
+  def self.by_category(category_path)
+    Category.find_by_path(category_path).try(:posts)
+  end
+
   # finds all posts according to category path
   # Examples:
   # <code>

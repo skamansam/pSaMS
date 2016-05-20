@@ -2,65 +2,75 @@
 # You can use other adapters like:
 #
 #   ActiveRecord::Base.configurations[:development] = {
-#     :adapter   => 'mysql2',
-#     :encoding  => 'utf8',
-#     :reconnect => true,
-#     :database  => 'your_database',
-#     :pool      => 5,
-#     :username  => 'root',
-#     :password  => '',
-#     :host      => 'localhost',
-#     :socket    => '/tmp/mysql.sock'
+#     adapter:   'mysql2',
+#     encoding:  'utf8',
+#     reconnect: true,
+#     database:  'your_database',
+#     pool:      5,
+#     username:  'root',
+#     password:  '',
+#     host:      'localhost',
+#     socket:    '/tmp/mysql.sock'
 #   }
 #
-# SQLite Configurtion
+
+# SQLite Configurtion for local developer testing
 ActiveRecord::Base.configurations[:development] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'pSaMS_development.db'),
-  #:wait_timeout => 10,
-  #:timeout => 250,
-  :pool => 3
+  adapter: 'sqlite3',
+  database: Padrino.root('db', 'pSaMS_development.db'),
+  #wait_timeout: 10,
+  #timeout: 250,
+  pool: 3
 }
 
 =begin # MongoDB configuration
 
 ActiveRecord::Base.configurations[:development] = {
-  :adapter => 'mongodb',
-  :database => 'pSaMS_development'
-
+  adapter: 'mongodb',
+  database: 'pSaMS_development'
 }
 
 =end
 
-if ENV['PG_DB'] && ENV['PG_USER'] && ENV['PG_PASS']  # we are using Heroku
-   ActiveRecord::Base.configurations[:production] = ENV['HEROKU_POSTGRESQL_CRIMSON_URL']
-#   {
-#     :adapter   => 'pg',
-#     :ssl       => true,
-#     :encoding  => 'utf8',
-#     :reconnect => true,
-#     :database  => ENV['PG_DB'],
-#     :username  => ENV['PG_USER'],
-#     :password  => ENV['PG_PASS'],
-#     :host      => ENV['PG_HOST']
-#   }
-else
-
-  # MySQL or MariaDB Configuration
-  ActiveRecord::Base.configurations[:production] = {
-    :adapter => 'mysql2',
-    :database => 'pSaMS',
-      :host=>ENV['OPENSHIFT_MYSQL_DB_HOST'],
-      :port => ENV['OPENSHIFT_MYSQL_DB_PORT'].to_i,
-      :username => ENV['OPENSHIFT_MYSQL_DB_USERNAME'],
-      :password => ENV['OPENSHIFT_MYSQL_DB_PASSWORD']
-  }
-
-end
+# database for testing, the defaults should be enough.
 ActiveRecord::Base.configurations[:test] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'pSaMS_test.db')
+  adapter: 'mysql2',
+  database: 'pSaMS_test',
+  username: 'root'
 
+  # Use this if you want to use sqlite for testing. I wouldn't recommend this, though,
+  # due to the nature of sqlite being single-threaded. This means in order to run
+  # mutation testing, you have to use the `--jobs 1` option, which makes tings
+  # really really slow.
+  # adapter: 'sqlite3',
+  # database: Padrino.root('db', 'pSaMS_test.db')
+
+}
+
+# detect production environment
+db_adapter = ENV['PG_DB'].present? ? 'pg' : 'mysql2'
+db_name = ENV['PG_DB'] || 'pSaMS'
+db_host = ENV['PG_HOST'] || ENV['OPENSHIFT_MYSQL_DB_HOST']
+db_port = (
+  ENV['PG_PORT'] || ENV['OPENSHIFT_MYSQL_DB_PORT'] ||
+  (5_432 if db_adapter == 'pg') || (5_432 if db_adapter == 'mysql2') ||
+  (27_017 if db_adapter == 'mongodb')
+).to_i
+db_user = ENV['PG_USER'] || ENV['OPENSHIFT_MYSQL_DB_USERNAME'] || 'root'
+db_password = ENV['PG_PASS'] || ENV['OPENSHIFT_MYSQL_DB_PASSWORD'] || ''
+db_ssl = ENV.key?('HEROKU_POSTGRESQL_CRIMSON_URL')
+db_reconnect = ENV.key?('HEROKU_POSTGRESQL_CRIMSON_URL')
+
+ActiveRecord::Base.configurations[:production] = {
+  adapter:   db_adapter,
+  ssl:       db_ssl,
+  encoding:  'utf8',
+  reconnect: db_reconnect,
+  database:  db_name,
+  username:  db_user,
+  password:  db_password,
+  host:      db_host,
+  port:      db_port
 }
 
 # Setup our logger

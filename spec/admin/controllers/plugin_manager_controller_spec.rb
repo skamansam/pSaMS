@@ -1,11 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe "PluginManagerController", type: :controller do
-  before do
-    get "/"
-  end
-
-  it "returns hello world" do
-    last_response.body.should == "Hello World"
+RSpec.describe "PluginManager Controller", :type => :controller do
+  it "redirects without login" do
+    get "/admin/plugins"
+    expect(last_response.location).to eql 'http://example.org/admin/sessions/new'
   end
 end
