@@ -96,7 +96,7 @@ GEM
     execjs (2.6.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
-    ffi (1.9.10)
+    ffi (1.13.1)
     forgery (0.6.0)
     gherkin (3.2.0)
     haml (4.0.7)
